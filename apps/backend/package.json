@@ -13,7 +13,7 @@
     "watch:ts": "tsc -w",
     "dev": "pnpm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"pnpm:watch:ts\" \"pnpm:dev:start\"",
     "dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/app.js",
-    "prisma:generate": "npx prisma generate --schema=../../prisma/schema.prisma"
+    "prisma:generate": "prisma generate --schema=../../prisma/schema.prisma"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +21,6 @@
   "dependencies": {
     "@fastify/autoload": "^5.0.0",
     "@fastify/sensible": "^5.0.0",
-    "@prisma/client": "^5.6.0",
     "fastify": "^4.0.0",
     "fastify-cli": "^5.9.0",
     "fastify-plugin": "^4.0.0"
