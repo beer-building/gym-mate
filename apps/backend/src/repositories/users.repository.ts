@@ -1,30 +1,33 @@
-import { FastifyInstance } from 'fastify'
-import { User } from '@prisma/client'
-import { CreateUserDto, UpdateUserDto } from '../schemas/users'
+import { FastifyInstance } from "fastify";
+import { User } from "@prisma/client";
+import { CreateUserDto, UpdateUserDto } from "@gym-mate/shared-types";
 
 export class UsersRepository {
-  server: FastifyInstance
+  server: FastifyInstance;
 
   constructor(server: FastifyInstance) {
-    this.server = server
+    this.server = server;
   }
 
   async findUser(email: string): Promise<User | null> {
-    return this.server.prisma.user.findUnique({ where: { email } })
+    return this.server.prisma.user.findUnique({ where: { email } });
   }
 
   async createUser(
-    user: Omit<CreateUserDto['user'], 'password'> & { passwordHash: string }
+    user: Omit<CreateUserDto["user"], "password"> & { passwordHash: string }
   ): Promise<User> {
-    return this.server.prisma.user.create({ data: user })
+    return this.server.prisma.user.create({ data: user });
   }
 
-  async updateUser({ id }: User, { user }: UpdateUserDto): Promise<User | null> {
+  async updateUser(
+    { id }: User,
+    { user }: UpdateUserDto
+  ): Promise<User | null> {
     return this.server.prisma.user.update({
       where: {
-        id
+        id,
       },
-      data: user
-    })
+      data: user,
+    });
   }
 }

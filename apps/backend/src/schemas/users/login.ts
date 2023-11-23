@@ -1,29 +1,20 @@
-import { FastifySchema } from 'fastify'
-import { Static, Type } from '@sinclair/typebox'
-import { RouteGenericInterface } from 'fastify/types/route'
+import { FastifySchema } from "fastify";
 
-import { UserReply, UserReplyType } from './user-reply'
+import { RouteGenericInterface } from "fastify/types/route";
 
-const LoginUserDto = Type.Object({
-  user: Type.Object({
-    email: Type.String({ format: 'email' }),
-    password: Type.String()
-  })
-})
-
-export type LoginUserDto = Static<typeof LoginUserDto>
+import { LoginUserDto, UserReply, UserReplyType } from "@gym-mate/shared-types";
 
 export interface LoginRequest extends RouteGenericInterface {
-  Body: LoginUserDto
-  Reply: UserReplyType
+  Body: LoginUserDto;
+  Reply: UserReplyType;
 }
 
 export const LoginSchema: FastifySchema = {
   body: LoginUserDto,
-  description: 'Sign in user',
-  tags: ['Authentication'],
-  summary: 'sign in',
+  description: "Sign in user",
+  tags: ["Authentication"],
+  summary: "sign in",
   response: {
-    200: UserReply
-  }
-}
+    200: UserReply,
+  },
+};

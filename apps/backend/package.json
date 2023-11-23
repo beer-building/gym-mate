@@ -29,7 +29,8 @@
     "bcryptjs": "^2.4.3",
     "fastify": "^4.0.0",
     "fastify-cli": "^5.9.0",
-    "fastify-plugin": "^4.0.0"
+    "fastify-plugin": "^4.0.0",
+    "@gym-mate/shared-types": "workspace:*"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
