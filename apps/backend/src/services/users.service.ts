@@ -29,12 +29,7 @@ export class UsersService {
 
     Reflect.deleteProperty(user, 'password')
 
-    const formattedUser = {
-      ...user,
-      passwordHash
-    }
-
-    Reflect.deleteProperty(formattedUser, 'password')
+    const formattedUser = { ...user, passwordHash }
 
     const newUser = await this.usersRepository.createUser(formattedUser)
 
