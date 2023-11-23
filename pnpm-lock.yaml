@@ -31,6 +31,9 @@ importers:
       '@fastify/swagger-ui':
         specifier: ^1.10.1
         version: 1.10.1
+      '@gym-mate/shared-types':
+        specifier: workspace:*
+        version: link:../../libs/shared-types
       '@sinclair/typebox':
         specifier: ^0.31.28
         version: 0.31.28
@@ -141,6 +144,12 @@ importers:
       vite:
         specifier: ^4.4.2
         version: 4.5.0(@types/node@20.9.4)
+
+  libs/shared-types:
+    dependencies:
+      '@sinclair/typebox':
+        specifier: ^0.31.28
+        version: 0.31.28
 
   libs/ui:
     dependencies:
