@@ -1,6 +1,7 @@
-body {
-	margin: 0;
+:root {
+	font-size: 14px;
 	font-family:
+		'Inter',
 		system-ui,
 		-apple-system,
 		BlinkMacSystemFont,
@@ -12,4 +13,26 @@ body {
 		'Open Sans',
 		'Helvetica Neue',
 		sans-serif;
+}
+
+body {
+	margin: 0;
+	background: var(--color-background);
+	color: var(--color-text);
+	min-height: 100vh;
+}
+
+button,
+input {
+	font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	color: var(--color-title);
 }

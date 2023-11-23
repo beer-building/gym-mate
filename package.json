@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "frontend:dev": "pnpm --filter @gym-mate/frontend run dev",
     "dev": "pnpm --parallel --filter \"@gym-mate/frontend\" --filter \"@gym-mate/backend\" run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

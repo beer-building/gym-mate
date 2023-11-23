@@ -12,7 +12,9 @@
 		"format": "prettier --write ."
 	},
 	"dependencies": {
-		"@gym-mate/ui": "workspace:*"
+		"@farfetched/core": "^0.10.6",
+		"@gym-mate/ui": "workspace:*",
+		"effector": "^22.8.7"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
