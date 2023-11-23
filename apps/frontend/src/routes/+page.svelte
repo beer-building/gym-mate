@@ -1,2 +1,17 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import { Button } from '@gym-mate/ui';
+</script>
+
+<div class="wrapper">
+	<h1>Welcome to GYMMATE</h1>
+</div>
+
+<Button>test</Button>
+
+<style lang="postcss">
+	.wrapper {
+		& h1 {
+			color: blue;
+		}
+	}
+</style>
