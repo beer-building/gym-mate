@@ -28,11 +28,10 @@
   .kind {
     &__default {
       border-radius: var(--base-radius);
-      background-color: var(--color-accent20);
+      background-color: var(--color-accent100);
+      color: var(--color-text-on-accent);
       transition: var(--transition);
-      &:hover {
-        background: var(--color-accent100);
-      }
+      font-weight: 500;
     }
   }
   .size {
