@@ -11,5 +11,5 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["./src/**/*.js", "./src/**/*.ts", "./src/**/*.svelte"],
-  "exclude": ["../../node_modules/**", "./node_modules"]
+  "exclude": ["../../node_modules/**"]
 }
