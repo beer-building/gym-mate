@@ -21,16 +21,14 @@ model User {
 }
 
 model WorkoutProgram {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  createdBy User     @relation(fields: [userId], references: [id])
-  updatedAt DateTime @updatedAt
-
-  title       String  @default("")
-  description String? @default("")
-
-  workouts Workout[]
-  userId   Int
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now())
+  createdBy   User      @relation(fields: [userId], references: [id])
+  updatedAt   DateTime  @updatedAt
+  title       String    @default("")
+  description String?   @default("")
+  workouts    Workout[]
+  userId      Int
 }
 
 model Workout {
@@ -52,40 +50,28 @@ model Exercise {
 }
 
 model BodyLoad {
-  id               Int               @id @default(autoincrement())
-  exercise         Exercise          @relation(fields: [exerciseId], references: [id])
-  exerciseId       Int
-  largeMuscleGroup LargeMuscleGroup?
-  smallMuscleGroup SmallMuscleGroup?
-  value            Int               @default(0)
+  id         Int      @id @default(autoincrement())
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId Int
+  muscle     Muscle
+  value      Int      @default(0)
 }
 
-// exercises.filter((exercise) => exercise.bodyLoad.map(({largeMuscleGroup}) => largeMuscleGroup))
-
-enum LargeMuscleGroup {
-  BACK_AND_NECK
-  BUTTOCKS
-  ABS_AND_OBLIQUES
-  SHOULDERS
-  HANDS
-  CHEST
-  LEGS
-  SHIN
-}
-
-enum SmallMuscleGroup {
+enum Muscle {
   // BACK_AND_NECK
   SMALL_OF_THE_BACK
-  LATISSIMUS_MUSCLES
+  LATISSIMUS
   TRAPEZE
   NECK
+
+  BUTTOCKS
 
   // ABS_AND_OBLIQUES
   ABS
   OBLIQUES
 
   // SHOULDERS
-  ANTERIOR_DELTA
+  FRONT_DELTA
   MIDDLE_DELTA
   REAR_DELTA
 
@@ -94,9 +80,13 @@ enum SmallMuscleGroup {
   TRICEPS
   FOREARMS
 
+  CHEST
+
   // LEGS
   FRONT_THIGH
   POSTERIOR_THIGH
   INNER_THIGH
   OUTER_THIGH
+
+  SHIN
 }

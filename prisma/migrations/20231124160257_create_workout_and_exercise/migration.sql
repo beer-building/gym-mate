@@ -1,8 +1,5 @@
 -- CreateEnum
-CREATE TYPE "LargeMuscleGroup" AS ENUM ('BACK_AND_NECK', 'BUTTOCKS', 'ABS_AND_OBLIQUES', 'SHOULDERS', 'HANDS', 'CHEST', 'LEGS', 'SHIN');
-
--- CreateEnum
-CREATE TYPE "SmallMucleGroup" AS ENUM ('SMALL_OF_THE_BACK', 'LATISSIMUS_MUSCLES', 'TRAPEZE', 'NECK', 'ABS', 'OBLUQUES', 'ANTERIOR_DELTA', 'MIDDLE_DELTA', 'REAR_DELTA', 'BICEPS', 'TRICEPS', 'FOREARMS', 'FRONT_THIGH', 'POSTERIOR_THIGH', 'INNER_THIGH', 'OUTER_THIGH');
+CREATE TYPE "Muscle" AS ENUM ('SMALL_OF_THE_BACK', 'LATISSIMUS', 'TRAPEZE', 'NECK', 'BUTTOCKS', 'ABS', 'OBLIQUES', 'FRONT_DELTA', 'MIDDLE_DELTA', 'REAR_DELTA', 'BICEPS', 'TRICEPS', 'FOREARMS', 'CHEST', 'FRONT_THIGH', 'POSTERIOR_THIGH', 'INNER_THIGH', 'OUTER_THIGH', 'SHIN');
 
 -- CreateTable
 CREATE TABLE "WorkoutProgram" (
@@ -31,8 +28,6 @@ CREATE TABLE "Exercise" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL DEFAULT '',
     "description" TEXT DEFAULT '',
-    "largeMuscleGroup" "LargeMuscleGroup" NOT NULL,
-    "smallMucleGroup" "SmallMucleGroup",
     "workoutId" INTEGER,
 
     CONSTRAINT "Exercise_pkey" PRIMARY KEY ("id")
@@ -42,14 +37,11 @@ CREATE TABLE "Exercise" (
 CREATE TABLE "BodyLoad" (
     "id" SERIAL NOT NULL,
     "exerciseId" INTEGER NOT NULL,
-    "largeMuscleGroup" "LargeMuscleGroup" NOT NULL,
+    "muscle" "Muscle" NOT NULL,
     "value" INTEGER NOT NULL DEFAULT 0,
 
     CONSTRAINT "BodyLoad_pkey" PRIMARY KEY ("id")
 );
-
--- CreateIndex
-CREATE UNIQUE INDEX "Exercise_smallMucleGroup_key" ON "Exercise"("smallMucleGroup");
 
 -- AddForeignKey
 ALTER TABLE "WorkoutProgram" ADD CONSTRAINT "WorkoutProgram_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -1,0 +1,8 @@
+import './exercises/abs-and-obliques'
+import './exercises/back-and-neck'
+import './exercises/buttocks'
+import './exercises/chest'
+import './exercises/hands'
+import './exercises/legs'
+import './exercises/shin'
+import './exercises/shoulders'
