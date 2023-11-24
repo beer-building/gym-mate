@@ -11,10 +11,92 @@ datasource db {
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  createdAt    DateTime @default(now())
-  email        String   @unique
-  passwordHash String
-  username     String   @default("")
-  image        String?
+  id             Int              @id @default(autoincrement())
+  createdAt      DateTime         @default(now())
+  email          String           @unique
+  passwordHash   String
+  username       String           @default("")
+  image          String?
+  WorkoutProgram WorkoutProgram[]
+}
+
+model WorkoutProgram {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  createdBy User     @relation(fields: [userId], references: [id])
+  updatedAt DateTime @updatedAt
+
+  title       String  @default("")
+  description String? @default("")
+
+  workouts Workout[]
+  userId   Int
+}
+
+model Workout {
+  id               Int             @id @default(autoincrement())
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  exercises        Exercise[]
+  WorkoutProgram   WorkoutProgram? @relation(fields: [workoutProgramId], references: [id])
+  workoutProgramId Int?
+}
+
+model Exercise {
+  id          Int        @id @default(autoincrement())
+  title       String     @default("")
+  description String?    @default("")
+  bodyLoad    BodyLoad[]
+  Workout     Workout?   @relation(fields: [workoutId], references: [id])
+  workoutId   Int?
+}
+
+model BodyLoad {
+  id               Int               @id @default(autoincrement())
+  exercise         Exercise          @relation(fields: [exerciseId], references: [id])
+  exerciseId       Int
+  largeMuscleGroup LargeMuscleGroup?
+  smallMuscleGroup SmallMuscleGroup?
+  value            Int               @default(0)
+}
+
+// exercises.filter((exercise) => exercise.bodyLoad.map(({largeMuscleGroup}) => largeMuscleGroup))
+
+enum LargeMuscleGroup {
+  BACK_AND_NECK
+  BUTTOCKS
+  ABS_AND_OBLIQUES
+  SHOULDERS
+  HANDS
+  CHEST
+  LEGS
+  SHIN
+}
+
+enum SmallMuscleGroup {
+  // BACK_AND_NECK
+  SMALL_OF_THE_BACK
+  LATISSIMUS_MUSCLES
+  TRAPEZE
+  NECK
+
+  // ABS_AND_OBLIQUES
+  ABS
+  OBLIQUES
+
+  // SHOULDERS
+  ANTERIOR_DELTA
+  MIDDLE_DELTA
+  REAR_DELTA
+
+  // HANDS
+  BICEPS
+  TRICEPS
+  FOREARMS
+
+  // LEGS
+  FRONT_THIGH
+  POSTERIOR_THIGH
+  INNER_THIGH
+  OUTER_THIGH
 }
