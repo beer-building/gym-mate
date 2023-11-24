@@ -11,6 +11,11 @@
 
 <style>
 	.inner {
-		padding-bottom: 50px;
+		padding-bottom: var(--header-height);
+
+		@media (--desktop-viewport) {
+			padding-top: var(--header-height);
+			padding-bottom: 0;
+		}
 	}
 </style>
