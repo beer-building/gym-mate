@@ -1,7 +1,3 @@
-<script>
-	// import { Button, Icon } from '@gym-mate/ui';
-</script>
-
 <div class="page">
 	<h1>Profile</h1>
 
@@ -14,5 +10,3 @@
 		</p>
 	{/each}
 </div>
-<!-- <Button kind="default">test</Button> -->
-<!--  -->
