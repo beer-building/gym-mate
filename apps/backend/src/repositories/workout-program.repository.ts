@@ -30,4 +30,11 @@ export class WorkoutProgramRepository {
       where: { userId }
     })
   }
+
+  async findUserWorkoutProgram(userId: number, workoutProgramId: number) {
+    return this.server.prisma.workoutProgram.findUnique({
+      where: { userId: userId, id: workoutProgramId },
+      include: { workouts: true }
+    })
+  }
 }

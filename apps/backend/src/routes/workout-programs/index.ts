@@ -13,6 +13,10 @@ import {
   GetWorkoutProgramsRequest,
   GetWorkoutProgramsSchema
 } from '../../schemas/workout-programs/get-workout-programs'
+import {
+  GetWorkoutProgramRequest,
+  GetWorkoutProgramSchema
+} from '../../schemas/workout-programs/get-workout-program'
 
 const workoutProgramsRoutes: FastifyPluginAsync = async (server) => {
   const workoutProgramService = new WorkoutProgramService(server)
@@ -30,6 +34,24 @@ const workoutProgramsRoutes: FastifyPluginAsync = async (server) => {
     }
   )
 
+  server.get<GetWorkoutProgramRequest>(
+    '/:id',
+    { schema: GetWorkoutProgramSchema },
+    async (request, reply) => {
+      const userId = request.user.id
+      const workoutProgramId = request.params.id
+
+      const workoutProgram = await workoutProgramService.findUserWorkoutProgram(
+        userId,
+        workoutProgramId
+      )
+
+      if (!workoutProgram) throw server.httpErrors.badRequest(workoutProgramErrors.NOT_EXIST)
+
+      reply.send({ workoutProgram })
+    }
+  )
+
   server.post<CreateWorkoutProgramRequest>(
     '/',
     { schema: CreateWorkoutProgramSchema },
@@ -38,9 +60,7 @@ const workoutProgramsRoutes: FastifyPluginAsync = async (server) => {
 
       const workoutProgram = await workoutProgramService.createWorkoutProgram(request.body, userId)
 
-      reply.status(201)
-
-      return { workoutProgram }
+      reply.status(201).send({ workoutProgram })
     }
   )
 
@@ -48,7 +68,7 @@ const workoutProgramsRoutes: FastifyPluginAsync = async (server) => {
     '/:id/edit',
     { schema: EditWorkoutProgramSchema },
     async (request, reply) => {
-      const workoutProgramId = Number(request.params.id)
+      const workoutProgramId = request.params.id
 
       const existWorkoutProgram = workoutProgramService.findWorkoutProgram(workoutProgramId)
 

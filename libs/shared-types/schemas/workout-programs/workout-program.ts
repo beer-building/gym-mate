@@ -11,7 +11,7 @@ export type WorkoutProgramsReply = {
   workoutPrograms: Array<WorkoutProgram>
 }
 
-const workoutProgram = Type.Object({
+export const workoutProgram = Type.Object({
   id: Type.Number(),
   title: Type.String(),
   userId: Type.Number(),

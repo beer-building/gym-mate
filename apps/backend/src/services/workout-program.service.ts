@@ -28,4 +28,8 @@ export class WorkoutProgramService {
   async findUserWorkoutPrograms(userId: number) {
     return this.workoutProgramRepository.findUserWorkoutPrograms(userId)
   }
+
+  async findUserWorkoutProgram(userId: number, workoutProgramId: number) {
+    return this.workoutProgramRepository.findUserWorkoutProgram(userId, workoutProgramId)
+  }
 }
