@@ -98,9 +98,6 @@ importers:
       effector:
         specifier: ^22.8.7
         version: 22.8.7
-      effector-storage:
-        specifier: ^6.1.1
-        version: 6.1.1(effector@22.8.7)
       patronum:
         specifier: ^1.20.0
         version: 1.20.0(effector@22.8.7)
@@ -1728,14 +1725,6 @@ packages:
     resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
     dependencies:
       safe-buffer: 5.2.1
-    dev: false
-
-  /effector-storage@6.1.1(effector@22.8.7):
-    resolution: {integrity: sha512-xSzat/P7v8PTF9NQcoN6fmPD7gTJhPyp5+T1EaDKSfokseq7WG0cv4t05gYNF6RF6hWY2OCEo3gD/V9KlhmyZQ==}
-    peerDependencies:
-      effector: '>=22.0.0'
-    dependencies:
-      effector: 22.8.7
     dev: false
 
   /effector@22.8.7:
