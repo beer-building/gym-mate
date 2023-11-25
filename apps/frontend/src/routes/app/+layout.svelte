@@ -2,11 +2,9 @@
 	import { Header } from '$lib/shared';
 </script>
 
-<div class="wrapper">
-	<Header />
-	<div class="inner">
-		<slot />
-	</div>
+<Header />
+<div class="inner">
+	<slot />
 </div>
 
 <style>
