@@ -1,22 +1,16 @@
 import { FastifyPluginAsync } from 'fastify'
 import {
   CreateWorkoutProgramRequest,
-  CreateWorkoutProgramSchema
-} from '../../schemas/workout-programs'
-import { WorkoutProgramService } from '../../services/workout-program.service'
-import {
+  CreateWorkoutProgramSchema,
   EditWorkoutProgramRequest,
-  EditWorkoutProgramSchema
-} from '../../schemas/workout-programs/edit-workout-program'
-import { workoutProgramErrors } from '../../constants'
-import {
+  EditWorkoutProgramSchema,
   GetWorkoutProgramsRequest,
-  GetWorkoutProgramsSchema
-} from '../../schemas/workout-programs/get-workout-programs'
-import {
+  GetWorkoutProgramsSchema,
   GetWorkoutProgramRequest,
   GetWorkoutProgramSchema
-} from '../../schemas/workout-programs/get-workout-program'
+} from '../../schemas/workout-programs'
+import { WorkoutProgramService } from '../../services/workout-program.service'
+import { workoutProgramErrors } from '../../constants'
 
 const workoutProgramsRoutes: FastifyPluginAsync = async (server) => {
   const workoutProgramService = new WorkoutProgramService(server)
