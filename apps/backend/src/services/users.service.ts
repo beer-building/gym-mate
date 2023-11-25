@@ -16,11 +16,7 @@ export class UsersService {
   }
 
   async findUser(email: string) {
-    const user = await this.usersRepository.findUser(email)
-
-    if (!user) return null
-
-    return user
+    return await this.usersRepository.findUser(email)
   }
 
   async createUser({ user }: CreateUserDto) {

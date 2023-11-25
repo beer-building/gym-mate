@@ -11,24 +11,35 @@ datasource db {
 }
 
 model User {
-  id             Int              @id @default(autoincrement())
-  createdAt      DateTime         @default(now())
-  email          String           @unique
-  passwordHash   String
-  username       String           @default("")
-  image          String?
-  WorkoutProgram WorkoutProgram[]
+  id                     Int                   @id @default(autoincrement())
+  createdAt              DateTime              @default(now())
+  email                  String                @unique
+  passwordHash           String
+  username               String                @default("")
+  image                  String?
+  createdWorkoutPrograms WorkoutProgram[]
+  workoutPrograms        UserWorkoutPrograms[]
 }
 
 model WorkoutProgram {
-  id          Int       @id @default(autoincrement())
-  createdAt   DateTime  @default(now())
-  createdBy   User      @relation(fields: [userId], references: [id])
-  updatedAt   DateTime  @updatedAt
-  title       String    @default("")
-  description String?   @default("")
-  workouts    Workout[]
-  userId      Int
+  id                  Int                   @id @default(autoincrement())
+  createdAt           DateTime              @default(now())
+  createdBy           User                  @relation(fields: [userId], references: [id])
+  userId              Int
+  updatedAt           DateTime              @updatedAt
+  title               String                @default("")
+  description         String?               @default("")
+  workouts            Workout[]
+  userWorkoutPrograms UserWorkoutPrograms[]
+}
+
+model UserWorkoutPrograms {
+  user             User           @relation(fields: [userId], references: [id])
+  userId           Int
+  workoutProgram   WorkoutProgram @relation(fields: [workoutProgramId], references: [id])
+  workoutProgramId Int
+
+  @@id([userId, workoutProgramId])
 }
 
 model Workout {
@@ -36,7 +47,7 @@ model Workout {
   createdAt        DateTime        @default(now())
   updatedAt        DateTime        @updatedAt
   exercises        Exercise[]
-  WorkoutProgram   WorkoutProgram? @relation(fields: [workoutProgramId], references: [id])
+  workoutProgram   WorkoutProgram? @relation(fields: [workoutProgramId], references: [id])
   workoutProgramId Int?
 }
 
@@ -45,7 +56,7 @@ model Exercise {
   title       String     @default("")
   description String?    @default("")
   bodyLoad    BodyLoad[]
-  Workout     Workout?   @relation(fields: [workoutId], references: [id])
+  workout     Workout?   @relation(fields: [workoutId], references: [id])
   workoutId   Int?
 }
 

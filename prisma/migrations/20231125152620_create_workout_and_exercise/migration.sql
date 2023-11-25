@@ -5,12 +5,20 @@ CREATE TYPE "Muscle" AS ENUM ('SMALL_OF_THE_BACK', 'LATISSIMUS', 'TRAPEZE', 'NEC
 CREATE TABLE "WorkoutProgram" (
     "id" SERIAL NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "userId" INTEGER NOT NULL,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "title" TEXT NOT NULL DEFAULT '',
     "description" TEXT DEFAULT '',
-    "userId" INTEGER NOT NULL,
 
     CONSTRAINT "WorkoutProgram_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "UserWorkoutPrograms" (
+    "userId" INTEGER NOT NULL,
+    "workoutProgramId" INTEGER NOT NULL,
+
+    CONSTRAINT "UserWorkoutPrograms_pkey" PRIMARY KEY ("userId","workoutProgramId")
 );
 
 -- CreateTable
@@ -45,6 +53,12 @@ CREATE TABLE "BodyLoad" (
 
 -- AddForeignKey
 ALTER TABLE "WorkoutProgram" ADD CONSTRAINT "WorkoutProgram_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "UserWorkoutPrograms" ADD CONSTRAINT "UserWorkoutPrograms_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "UserWorkoutPrograms" ADD CONSTRAINT "UserWorkoutPrograms_workoutProgramId_fkey" FOREIGN KEY ("workoutProgramId") REFERENCES "WorkoutProgram"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Workout" ADD CONSTRAINT "Workout_workoutProgramId_fkey" FOREIGN KEY ("workoutProgramId") REFERENCES "WorkoutProgram"("id") ON DELETE SET NULL ON UPDATE CASCADE;

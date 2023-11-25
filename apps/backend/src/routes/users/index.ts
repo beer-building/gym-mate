@@ -5,7 +5,7 @@ import { LoginRequest, LoginSchema, RegisterRequest, RegisterSchema } from '../.
 import { UsersService } from '../../services'
 import { usersErrors } from '../../constants'
 
-const usersRoute: FastifyPluginAsync = async (server) => {
+const usersRoutes: FastifyPluginAsync = async (server) => {
   const usersService = new UsersService(server)
 
   server.post<RegisterRequest>('/', { schema: RegisterSchema }, async (request, reply) => {
@@ -41,4 +41,4 @@ const usersRoute: FastifyPluginAsync = async (server) => {
   server.get('/', { onRequest: server.authenticate }, async (request, reply) => request.user)
 }
 
-export default usersRoute
+export default usersRoutes
