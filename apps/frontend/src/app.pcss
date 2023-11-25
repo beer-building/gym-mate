@@ -1,3 +1,5 @@
+@custom-media --desktop-viewport (min-width: 650px);
+
 :root {
 	font-size: 14px;
 	font-family:
@@ -13,18 +15,26 @@
 		'Open Sans',
 		'Helvetica Neue',
 		sans-serif;
+
+	--header-height: calc(64.5px + env(safe-area-inset-bottom));
 }
 
 body {
 	margin: 0;
 	background: var(--color-background);
-	color: var(--color-text);
 	min-height: 100vh;
+	color: var(--color-text);
 }
 
 button,
 input {
 	font-family: inherit;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
 h1,

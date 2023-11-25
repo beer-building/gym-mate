@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -17,6 +17,7 @@
 		"effector": "^22.8.7"
 	},
 	"devDependencies": {
+		"@csstools/postcss-global-data": "^2.1.0",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.27.4",
 		"@types/node": "^20.9.4",
@@ -27,6 +28,7 @@
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-svelte": "^2.30.0",
 		"postcss": "^8.4.24",
+		"postcss-custom-media": "^10.0.2",
 		"postcss-load-config": "^4.0.1",
 		"postcss-nested": "^6.0.1",
 		"prettier": "^3.0.0",
