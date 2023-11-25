@@ -82,6 +82,7 @@
 		font-weight: 500;
 		font-size: 0.8rem;
 		text-decoration: none;
+		-webkit-tap-highlight-color: transparent;
 
 		@media (--desktop-viewport) {
 			flex: none;

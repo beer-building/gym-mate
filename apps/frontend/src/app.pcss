@@ -24,6 +24,12 @@ body {
 	background: var(--color-background);
 	min-height: 100vh;
 	color: var(--color-text);
+	user-select: none;
+}
+
+.page {
+	padding-top: calc(env(safe-area-inset-bottom) + 12px);
+	user-select: auto;
 }
 
 button,
