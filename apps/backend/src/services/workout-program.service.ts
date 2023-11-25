@@ -1,5 +1,4 @@
 import { FastifyInstance } from 'fastify'
-import { User } from '@prisma/client'
 
 import { CreateWorkoutProgramDto, EditWorkoutProgramDto } from '@gym-mate/shared-types'
 import { WorkoutProgramRepository } from '../repositories/workout-program.repository'
@@ -14,8 +13,8 @@ export class WorkoutProgramService {
     this.workoutProgramRepository = new WorkoutProgramRepository(server)
   }
 
-  async createWorkoutProgram(dto: CreateWorkoutProgramDto, user: User) {
-    return this.workoutProgramRepository.createWorkoutProgram(dto, user)
+  async createWorkoutProgram(dto: CreateWorkoutProgramDto, userId: number) {
+    return this.workoutProgramRepository.createWorkoutProgram(dto, userId)
   }
 
   async findWorkoutProgram(workoutProgramId: number) {
@@ -24,5 +23,9 @@ export class WorkoutProgramService {
 
   async updateWorkoutProgram(dto: EditWorkoutProgramDto, workoutProgramId: number) {
     return this.workoutProgramRepository.updateWorkoutProgram(dto, workoutProgramId)
+  }
+
+  async findUserWorkoutPrograms(userId: number) {
+    return this.workoutProgramRepository.findUserWorkoutPrograms(userId)
   }
 }
