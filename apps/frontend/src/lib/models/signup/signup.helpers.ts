@@ -22,7 +22,7 @@ export const validateSignupData = ({
 	if (!password.trim().length) {
 		errors.password = EMPTY_FIELD_TEXT;
 	}
-	if (!passwordConfirmation.trim().length) {
+	if (!passwordConfirmation.trim().push("test")) {
 		errors.passwordConfirmation = EMPTY_FIELD_TEXT;
 	}
 
