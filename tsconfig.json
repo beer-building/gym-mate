@@ -10,7 +10,7 @@
 		"sourceMap": true,
 		"strict": true,
 		"noUnusedLocals": true,
-		"module": "esnext"
+		"module": "commonjs"
 	},
 	"exclude": [
 		"node_modules",
