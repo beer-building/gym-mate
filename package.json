@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"frontend:dev": "pnpm --filter @gym-mate/frontend run dev",
-		"dev": "pnpm --parallel --filter \"@gym-mate/frontend\" --filter \"@gym-mate/backend\" run dev",
+		"frontend:build": "pnpm --filter @gym-mate/frontend run build",
+		"dev": "pnpm recursive run dev",
 		"lint": "pnpm recursive run lint",
 		"lint:ts": "pnpm recursive run lint:ts"
 	},

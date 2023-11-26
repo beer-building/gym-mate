@@ -13,11 +13,12 @@ jobs:
         with:
           node-version: 20.10.0
 
+      # pnpm frontend:build needs for compile svelte-kit tsconfig
       - name: Install dependencies
         run: |
           npm install -g pnpm
           pnpm install
-          pnpm build
+          pnpm frontend:build
 
       - name: Run typescript check
         run: pnpm run lint:ts
