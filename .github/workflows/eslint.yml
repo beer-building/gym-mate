@@ -1,7 +1,5 @@
 name: Lint Code Base
-on:
-  push:
-    branches-ignore: [master, main]
+on: push
 jobs:
   build:
     name: Lint Code Base
