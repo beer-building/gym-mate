@@ -1,8 +1,8 @@
-name: Eslint check
+name: Check
 on: push
 jobs:
   build:
-    name: Eslint check
+    name: Eslint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

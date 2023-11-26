@@ -1,8 +1,8 @@
-name: Tslint check
+name: Check
 on: push
 jobs:
   build:
-    name: Tslint check
+    name: Tslint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
