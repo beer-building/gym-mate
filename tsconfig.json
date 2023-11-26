@@ -9,7 +9,8 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"noUnusedLocals": true
+		"noUnusedLocals": true,
+		"module": "esnext"
 	},
 	"exclude": [
 		"node_modules",
