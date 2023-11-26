@@ -1,6 +1,7 @@
 name: Lint Code Base
 on:
   push:
+    branches-ignore: [master, main]
 jobs:
   build:
     name: Lint Code Base
@@ -15,9 +16,9 @@ jobs:
         node-version: 18
 
     - name: Install dependencies
-    run: |
-      npm install -g pnpm
-      pnpm install
+      run: |
+        npm install -g pnpm
+        pnpm install
 
     - name: Run lint
-    run: pnpm run lint
+      run: pnpm run lint
