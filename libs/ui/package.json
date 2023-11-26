@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"lint": "prettier --check . && eslint .--ext .ts,.svelte"
+		"lint": "prettier --check . && eslint . --ext .ts,.svelte"
 	},
 	"keywords": [],
 	"author": "",

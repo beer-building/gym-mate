@@ -38,6 +38,7 @@ const usersRoute: FastifyPluginAsync = async (server) => {
 	})
 
 	// TEST
+	// eslint-disable-next-line
 	server.get('/', { onRequest: server.authenticate }, async (request, reply) => request.user)
 }
 

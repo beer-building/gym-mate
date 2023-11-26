@@ -3,9 +3,10 @@ import { User } from '@prisma/client'
 import fastifyJwt, { FastifyJWTOptions } from '@fastify/jwt'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
+// eslint-disable-next-line
 export default fp<FastifyJWTOptions>(async (server, opts) => {
 	server.register(fastifyJwt, {
-		secret: server.JWT_SECRET
+		secret: server.config.JWT_SECRET
 	})
 
 	server.decorate('authenticate', async (request: FastifyRequest, reply: FastifyReply) => {

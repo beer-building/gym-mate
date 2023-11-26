@@ -2,6 +2,7 @@ import fp from 'fastify-plugin'
 import fastifySwagger, { SwaggerOptions } from '@fastify/swagger'
 import fastifySwaggerUI, { FastifySwaggerUiOptions } from '@fastify/swagger-ui'
 
+// eslint-disable-next-line
 export default fp(async (fastify, opts) => {
 	await fastify.register<SwaggerOptions>(fastifySwagger, {
 		swagger: {
@@ -29,6 +30,7 @@ export default fp(async (fastify, opts) => {
 		},
 		staticCSP: true,
 		transformStaticCSP: (header) => header,
+		// eslint-disable-next-line
 		transformSpecification: (swaggerObject, request, reply) => {
 			return swaggerObject
 		},

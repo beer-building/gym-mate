@@ -6,8 +6,8 @@
 	"scripts": {
 		"frontend:dev": "pnpm --filter @gym-mate/frontend run dev",
 		"dev": "pnpm --parallel --filter \"@gym-mate/frontend\" --filter \"@gym-mate/backend\" run dev",
-		"lint": "pnpm --parallel --filter \"@gym-mate/frontend\" --filter \"@gym-mate/backend\" run lint",
-		"lint:ts": "pnpm --parallel --filter \"@gym-mate/frontend\" --filter \"@gym-mate/backend\" run lint:ts"
+		"lint": "pnpm recursive run lint",
+		"lint:ts": "pnpm recursive run lint:ts"
 	},
 	"keywords": [],
 	"author": "",

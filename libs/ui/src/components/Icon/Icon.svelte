@@ -16,7 +16,7 @@
 </script>
 
 <div class="icon" style:--size={`${size}px`}>
-	{@html iconContent}
+	{iconContent}
 </div>
 
 <style lang="postcss">
