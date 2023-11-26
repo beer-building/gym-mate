@@ -5,9 +5,6 @@ jobs:
     name: Eslint
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -18,5 +15,5 @@ jobs:
           npm install -g pnpm
           pnpm install
 
-      - name: Run Elsint
+      - name: Run Eslint
         run: pnpm run lint
