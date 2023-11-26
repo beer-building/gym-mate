@@ -1,8 +1,8 @@
-name: Lint Code Base
+name: Eslint
 on: push
 jobs:
   build:
-    name: Lint Code Base
+    name: Eslint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
