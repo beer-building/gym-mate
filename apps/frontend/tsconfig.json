@@ -11,5 +11,5 @@
 		"strict": true,
 		"moduleResolution": "bundler"
 	},
-	"include": ["src/**/*.ts", "node_modules/@gym-mate/**/*"]
+	"include": ["src/**/*.ts"]
 }
