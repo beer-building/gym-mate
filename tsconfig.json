@@ -9,8 +9,7 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"noUnusedLocals": true,
-		"module": "commonjs"
+		"noUnusedLocals": true
 	},
 	"exclude": [
 		"node_modules",
