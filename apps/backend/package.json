@@ -15,7 +15,7 @@
 		"dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/src/app.js",
 		"prisma:generate": "prisma generate --schema=../../prisma/schema.prisma",
 		"lint": "prettier --check . && eslint . --ext .js,.ts",
-		"lint:ts": "tsc -p tsconfig.json --noEmit --pretty --incremental true --tsBuildInfoFile ../../cache/ts_lint"
+		"lint:ts": "tsc -p tsconfig.json --noEmit --pretty"
 	},
 	"keywords": [],
 	"author": "",

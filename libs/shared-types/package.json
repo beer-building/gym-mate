@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"lint": "prettier --check . && eslint . --ext .ts",
-		"lint:ts": "tsc -p tsconfig.json --noEmit --pretty --incremental true --tsBuildInfoFile ../../cache/ts_lint"
+		"lint:ts": "tsc -p tsconfig.json --noEmit --pretty"
 	},
 	"keywords": [],
 	"author": "",
