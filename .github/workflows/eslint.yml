@@ -15,7 +15,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install -g pnpm
+          npm install -g pnpm@7.27.1
           pnpm install
 
       - name: Run lint
