@@ -1,8 +1,8 @@
-name: Code check
+name: Eslint check
 on: push
 jobs:
   build:
-    name: Code check
+    name: Eslint check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -13,15 +13,10 @@ jobs:
         with:
           node-version: 20.10.0
 
-      # pnpm frontend:build needs for compile svelte-kit tsconfig
       - name: Install dependencies
         run: |
           npm install -g pnpm
           pnpm install
-          pnpm frontend:build
-
-      - name: Run typescript check
-        run: pnpm run lint:ts
 
       - name: Run Elsint
         run: pnpm run lint
