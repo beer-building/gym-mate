@@ -1,2 +1,2 @@
-import '@gym-mate/ui/styles.pcss';
-import '../app.pcss';
+import '@gym-mate/ui/styles.pcss'
+import '../app.pcss'

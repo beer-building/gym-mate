@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Input } from '@gym-mate/ui';
+	import { Button, Input } from '@gym-mate/ui'
 	import {
 		username$,
 		email$,
@@ -8,9 +8,9 @@
 		signupErrors$,
 		fieldChanged,
 		signupButtonClicked
-	} from '../../../models';
+	} from '../../../models'
 
-	let isPasswordShown = false;
+	let isPasswordShown = false
 </script>
 
 <div class="page">
@@ -21,7 +21,7 @@
 			placeholder="Username"
 			value={$username$}
 			on:change={({ detail }) => {
-				fieldChanged({ username: detail });
+				fieldChanged({ username: detail })
 			}}
 			errorText={$signupErrors$.username}
 		/>
@@ -29,7 +29,7 @@
 			placeholder="Email"
 			value={$email$}
 			on:change={({ detail }) => {
-				fieldChanged({ email: detail });
+				fieldChanged({ email: detail })
 			}}
 			errorText={$signupErrors$.email}
 		/>
@@ -38,7 +38,7 @@
 			placeholder="Password"
 			value={$password$}
 			on:change={({ detail }) => {
-				fieldChanged({ password: detail });
+				fieldChanged({ password: detail })
 			}}
 			errorText={$signupErrors$.password}
 		/>
@@ -47,7 +47,7 @@
 			placeholder="Confirm password"
 			value={$passwordConfirmation$}
 			on:change={({ detail }) => {
-				fieldChanged({ passwordConfirmation: detail });
+				fieldChanged({ passwordConfirmation: detail })
 			}}
 			errorText={$signupErrors$.passwordConfirmation || ''}
 		/>
@@ -58,7 +58,7 @@
 		<Button
 			size="large"
 			on:click={() => {
-				signupButtonClicked();
+				signupButtonClicked()
 			}}>Sign up</Button
 		>
 	</form>
@@ -66,29 +66,29 @@
 
 <style lang="postcss">
 	.page {
-		max-width: 500px;
-		margin: 0 auto;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		margin: 0 auto;
+		padding: 12px;
+		max-width: 500px;
 		height: 100%;
 		min-height: inherit;
-		padding: 12px;
 	}
 	form {
-		background: var(--color-surface);
-		border-radius: var(--base-radius);
-		padding: 20px;
-		box-shadow: var(--shadow1);
 		display: flex;
 		flex-direction: column;
 		gap: 5px;
 		margin-top: 24px;
+		box-shadow: var(--shadow1);
+		border-radius: var(--base-radius);
+		background: var(--color-surface);
+		padding: 20px;
 
 		& :global(button) {
+			justify-content: center;
 			margin-top: 12px;
 			width: 100%;
-			justify-content: center;
 		}
 
 		& .password-toggler {

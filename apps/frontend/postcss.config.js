@@ -1,7 +1,7 @@
-import autoprefixer from 'autoprefixer';
-import nested from 'postcss-nested';
-import customMedia from 'postcss-custom-media';
-import postcssGlobalData from '@csstools/postcss-global-data';
+import autoprefixer from 'autoprefixer'
+import nested from 'postcss-nested'
+import customMedia from 'postcss-custom-media'
+import postcssGlobalData from '@csstools/postcss-global-data'
 
 export default {
 	plugins: [
@@ -12,4 +12,4 @@ export default {
 		}),
 		customMedia()
 	]
-};
+}

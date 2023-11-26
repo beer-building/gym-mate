@@ -1,15 +1,15 @@
-import { combine, createEffect, createEvent, createStore, sample } from 'effector';
-import { spread } from 'patronum';
-import { validateSignupData } from './signup.helpers';
-import { signupApi } from '$lib/api';
-import type { SignupFormData } from '$lib/shared/types';
+import { combine, createEffect, createEvent, createStore, sample } from 'effector'
+import { spread } from 'patronum'
+import { validateSignupData } from './signup.helpers'
+import { signupApi } from '$lib/api'
+import type { SignupFormData } from '$lib/shared/types'
 
 // Stores
-export const username$ = createStore<string>('');
-export const email$ = createStore<string>('');
-export const password$ = createStore<string>('');
-export const passwordConfirmation$ = createStore<string>('');
-export const signupErrors$ = createStore<Record<string, string>>({});
+export const username$ = createStore<string>('')
+export const email$ = createStore<string>('')
+export const password$ = createStore<string>('')
+export const passwordConfirmation$ = createStore<string>('')
+export const signupErrors$ = createStore<Record<string, string>>({})
 
 const signupFormData$ = combine(
 	username$,
@@ -22,19 +22,19 @@ const signupFormData$ = combine(
 		password,
 		passwordConfirmation
 	})
-);
+)
 
 // Events
-export const fieldChanged = createEvent<Record<string, string>>();
-export const signupButtonClicked = createEvent();
-const validationCompleted = createEvent();
+export const fieldChanged = createEvent<Record<string, string>>()
+export const signupButtonClicked = createEvent()
+const validationCompleted = createEvent()
 
 // Effects
 const signupFx = createEffect((data: SignupFormData) =>
 	signupApi.signupQuery.start({
 		user: { username: data.username, email: data.email, password: data.password }
 	})
-);
+)
 
 spread({
 	source: fieldChanged,
@@ -44,28 +44,28 @@ spread({
 		password: password$,
 		passwordConfirmation: passwordConfirmation$
 	}
-});
+})
 
 sample({
 	clock: fieldChanged,
 	source: signupErrors$,
 	filter: (errors, field) => {
-		return Object.keys(field)[0] in errors;
+		return Object.keys(field)[0] in errors
 	},
 	fn: (errors, field) => {
-		Reflect.deleteProperty(errors, Object.keys(field)[0]);
+		Reflect.deleteProperty(errors, Object.keys(field)[0])
 
-		return { ...errors };
+		return { ...errors }
 	},
 	target: signupErrors$
-});
+})
 
 sample({
 	clock: signupButtonClicked,
 	source: signupFormData$,
 	fn: validateSignupData,
 	target: [validationCompleted, signupErrors$]
-});
+})
 
 sample({
 	clock: validationCompleted,
@@ -73,14 +73,14 @@ sample({
 	filter: ([errors]) => !Object.keys(errors).length,
 	fn: ([_, data]) => data,
 	target: signupFx
-});
+})
 
 signupApi.signupQuery.$data.watch((data) => {
 	if (data && 'user' in data) {
-		localStorage.setItem('token', data.user.token);
+		localStorage.setItem('token', data.user.token)
 	}
 
 	if (data && 'error' in data) {
-		console.error(data.message);
+		console.error(data.message)
 	}
-});
+})

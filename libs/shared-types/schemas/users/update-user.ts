@@ -1,4 +1,4 @@
-import { Type, type Static } from '@sinclair/typebox';
+import { Type, type Static } from '@sinclair/typebox'
 
 export const UpdateUserDto = Type.Object({
 	user: Type.Object({
@@ -8,6 +8,6 @@ export const UpdateUserDto = Type.Object({
 		bio: Type.Optional(Type.String()),
 		image: Type.Optional(Type.String({ format: 'uri', default: '' }))
 	})
-});
+})
 
-export type UpdateUserDto = Static<typeof UpdateUserDto>;
+export type UpdateUserDto = Static<typeof UpdateUserDto>

@@ -8,7 +8,8 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check . && eslint .",
+		"lint": "prettier --check . && eslint . --ext .js,.ts,.svelte",
+		"lint:ts": "tsc -p tsconfig.json --noEmit --pretty --incremental true --tsBuildInfoFile ../../.cache/ts_lint",
 		"format": "prettier --write ."
 	},
 	"dependencies": {
@@ -23,22 +24,13 @@
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.27.4",
 		"@types/node": "^20.9.4",
-		"@typescript-eslint/eslint-plugin": "^6.0.0",
-		"@typescript-eslint/parser": "^6.0.0",
 		"autoprefixer": "^10.4.14",
-		"eslint": "^8.28.0",
-		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-svelte": "^2.30.0",
 		"postcss": "^8.4.24",
 		"postcss-custom-media": "^10.0.2",
 		"postcss-load-config": "^4.0.1",
 		"postcss-nested": "^6.0.1",
-		"prettier": "^3.0.0",
-		"prettier-plugin-svelte": "^3.0.0",
 		"svelte": "^4.2.7",
 		"svelte-check": "^3.6.0",
-		"tslib": "^2.4.1",
-		"typescript": "^5.0.0",
 		"vite": "^4.4.2"
 	},
 	"type": "module"

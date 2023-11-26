@@ -1,15 +1,15 @@
 {
-  "name": "@gym-mate/ui",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "svelte": "^4.2.7"
-  }
+	"name": "@gym-mate/ui",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"lint": "prettier --check . && eslint .--ext .ts,.svelte"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"svelte": "^4.2.7"
+	}
 }

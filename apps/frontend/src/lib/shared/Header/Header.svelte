@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { Icon } from '@gym-mate/ui';
+	import { page } from '$app/stores'
+	import { Icon } from '@gym-mate/ui'
 
 	const SCOPES = [
 		{
@@ -13,7 +13,7 @@
 			title: 'Profile',
 			url: '/profile'
 		}
-	];
+	]
 </script>
 
 <header>

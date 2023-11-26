@@ -1,4 +1,4 @@
-import { Type, type Static } from '@sinclair/typebox';
+import { Type, type Static } from '@sinclair/typebox'
 
 export const UserReply = Type.Object({
 	user: Type.Object({
@@ -8,6 +8,6 @@ export const UserReply = Type.Object({
 		username: Type.String(),
 		image: Type.String({ format: 'uri', default: '' })
 	})
-});
+})
 
-export type UserReplyType = Static<typeof UserReply>;
+export type UserReplyType = Static<typeof UserReply>
