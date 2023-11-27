@@ -1,29 +1,30 @@
 <script lang="ts">
-  export let name = "";
-  export let size = 24;
+	export let name = '';
+	export let size = 24;
 
-  let iconContent = "";
+	let iconContent = '';
 
-  const fetchIcon = (name: string) => {
-    import(`./icons/${name}.svg?raw`).then((module) => {
-      iconContent = module.default;
-    });
-  };
+	const fetchIcon = (name: string) => {
+		import(`./icons/${name}.svg?raw`).then((module) => {
+			iconContent = module.default;
+		});
+	};
 
-  $: {
-    fetchIcon(name);
-  }
+	$: {
+		fetchIcon(name);
+	}
 </script>
 
 <div class="icon" style:--size={`${size}px`}>
-  {@html iconContent}
+	{@html iconContent}
 </div>
 
 <style lang="postcss">
-  .icon {
-    & :global(svg) {
-      height: var(--size);
-      width: var(--size);
-    }
-  }
+	.icon {
+		display: flex;
+		& :global(svg) {
+			width: var(--size);
+			height: var(--size);
+		}
+	}
 </style>
