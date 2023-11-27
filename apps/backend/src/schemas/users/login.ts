@@ -1,20 +1,21 @@
-import { FastifySchema } from "fastify";
+import { FastifySchema } from 'fastify'
 
-import { RouteGenericInterface } from "fastify/types/route";
+import { RouteGenericInterface } from 'fastify/types/route'
 
-import { LoginUserDto, UserReply, UserReplyType } from "@gym-mate/shared-types";
+import { ErrorReply, LoginUserDto, UserReply, UserReplyType } from '@gym-mate/shared-types'
 
 export interface LoginRequest extends RouteGenericInterface {
-  Body: LoginUserDto;
-  Reply: UserReplyType;
+  Body: LoginUserDto
+  Reply: UserReplyType
 }
 
 export const LoginSchema: FastifySchema = {
   body: LoginUserDto,
-  description: "Sign in user",
-  tags: ["Authentication"],
-  summary: "sign in",
+  description: 'Sign in user',
+  tags: ['Authentication'],
+  summary: 'sign in',
   response: {
     200: UserReply,
-  },
-};
+    401: ErrorReply
+  }
+}
