@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { workoutPrograms$, pageMounted } from '../model';
+	import { workoutPrograms, pageMounted, isLoading } from '../model';
 
 	onMount(() => {
 		pageMounted();
@@ -9,7 +9,13 @@
 
 <div class="page">
 	<h1>Workout Programs</h1>
-	{#each $workoutPrograms$ as workoutProgram}
-		<div>{workoutProgram.title}</div>
-	{/each}
+	{#if $isLoading}
+		..Loading
+	{:else}
+		{#each $workoutPrograms as workoutProgram}
+			<div>{workoutProgram.title}</div>
+		{/each}
+	{/if}
+
+	<a href="/app/workout-programs/new">Create new</a>
 </div>
