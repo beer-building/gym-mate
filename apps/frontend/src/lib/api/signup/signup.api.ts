@@ -1,9 +1,8 @@
-import type { SignupResponse } from '$lib/shared/types';
-import { createQuery } from '@farfetched/core';
-import type { CreateUserDto } from '@gym-mate/shared-types';
+import { createMutation } from '@farfetched/core';
+import type { CreateUserDto, UserReplyType } from '@gym-mate/shared-types';
 
-export const signupQuery = createQuery({
-	handler: async (userData: CreateUserDto): Promise<SignupResponse> => {
+export const signupQuery = createMutation({
+	handler: async (userData: CreateUserDto): Promise<UserReplyType> => {
 		const requestOptions: RequestInit = {
 			method: 'POST',
 			headers: {
