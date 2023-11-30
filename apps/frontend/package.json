@@ -13,9 +13,10 @@
 	},
 	"dependencies": {
 		"@farfetched/core": "^0.10.6",
-		"@gym-mate/ui": "workspace:*",
 		"@gym-mate/shared-types": "workspace:*",
+		"@gym-mate/ui": "workspace:*",
 		"effector": "^22.8.7",
+		"effector-storage": "^6.1.1",
 		"patronum": "^1.20.0"
 	},
 	"devDependencies": {

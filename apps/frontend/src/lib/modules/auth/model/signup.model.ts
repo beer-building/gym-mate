@@ -1,8 +1,8 @@
-import { combine, createEffect, createEvent, createStore, sample } from 'effector';
+import { combine, createEvent, createStore, sample } from 'effector';
 import { spread } from 'patronum';
-import { validateSignupData } from './signup.helpers';
 import { signupApi } from '$lib/api';
-import type { SignupFormData } from '$lib/shared/types';
+import { authService } from '$lib/services';
+import { validateSignupData } from './signup.helpers';
 
 // Stores
 export const username$ = createStore<string>('');
@@ -28,13 +28,6 @@ const signupFormData$ = combine(
 export const fieldChanged = createEvent<Record<string, string>>();
 export const signupButtonClicked = createEvent();
 const validationCompleted = createEvent();
-
-// Effects
-const signupFx = createEffect((data: SignupFormData) =>
-	signupApi.signupQuery.start({
-		user: { username: data.username, email: data.email, password: data.password }
-	})
-);
 
 spread({
 	source: fieldChanged,
@@ -71,16 +64,14 @@ sample({
 	clock: validationCompleted,
 	source: [signupErrors$, signupFormData$] as const,
 	filter: ([errors]) => !Object.keys(errors).length,
-	fn: ([_, data]) => data,
-	target: signupFx
+	fn: ([_, data]) => ({
+		user: { username: data.username, email: data.email, password: data.password }
+	}),
+	target: signupApi.signupQuery.start
 });
 
-signupApi.signupQuery.$data.watch((data) => {
-	if (data && 'user' in data) {
-		localStorage.setItem('token', data.user.token);
-	}
-
-	if (data && 'error' in data) {
-		console.error(data.message);
-	}
+sample({
+	clock: signupApi.signupQuery.finished.success,
+	fn: ({ result }) => ({ token: result.user.token }),
+	target: authService.setToken
 });
