@@ -1,4 +1,4 @@
-import { $token } from '$lib/services/auth/auth.service';
+import { HttpService } from '$lib/shared/services/http-service';
 import { createMutation, createQuery } from '@farfetched/core';
 import type {
 	CreateWorkoutProgramDto,
@@ -10,43 +10,14 @@ import { createEffect } from 'effector';
 
 export const getAll = createQuery({
 	effect: createEffect<void, WorkoutProgramsReply, ErrorReply>(async () => {
-		const requestOptions: RequestInit = {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${$token.getState().token}`
-			}
-		};
-
-		const response = await fetch('http://localhost:3000/workout-programs', requestOptions);
-
-		return response.json();
+		const res = await HttpService.instance.get<WorkoutProgramsReply>('/workout-programs');
+		return res.data;
 	})
 });
 
 export const create = createMutation({
-	effect: createEffect<CreateWorkoutProgramDto, WorkoutProgramReply, ErrorReply>(
-		(data) =>
-			new Promise(async (resolve, reject) => {
-				const requestOptions: RequestInit = {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						Authorization: `Bearer ${$token.getState().token}`
-					},
-					body: JSON.stringify(data)
-				};
-
-				const response = await await fetch(
-					'http://localhost:3000/workout-programs',
-					requestOptions
-				);
-
-				if (response.status !== 200) {
-					reject(response.json());
-				}
-
-				resolve(response.json());
-			})
-	)
+	effect: createEffect<CreateWorkoutProgramDto, WorkoutProgramReply, ErrorReply>(async (data) => {
+		const res = await HttpService.instance.post<WorkoutProgramReply>('/workout-programs', data);
+		return res.data;
+	})
 });

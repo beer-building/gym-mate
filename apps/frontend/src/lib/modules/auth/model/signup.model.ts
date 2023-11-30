@@ -1,7 +1,7 @@
 import { combine, createEvent, createStore, sample } from 'effector';
 import { spread } from 'patronum';
 import { signupApi } from '$lib/api';
-import { authService } from '$lib/services';
+import { authService } from '$lib/modules/auth/services';
 import { validateSignupData } from './signup.helpers';
 
 // Stores
