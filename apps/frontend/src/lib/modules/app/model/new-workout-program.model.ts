@@ -12,7 +12,7 @@ export const fieldChanged = createEvent<Record<string, string>>();
 
 export const createWorkoutProgram = createEvent();
 
-const redirectToAuthFx = createEffect(() => {
+const redirectToWorkoutProgramsFx = createEffect(() => {
 	goto('/app/workout-programs');
 });
 
@@ -33,7 +33,7 @@ sample({
 
 sample({
 	clock: workoutProgramsApi.create.finished.success,
-	target: redirectToAuthFx
+	target: redirectToWorkoutProgramsFx
 });
 
 sample({
