@@ -37,15 +37,16 @@ export const create = createMutation({
 					body: JSON.stringify(data)
 				};
 
-				const response = await (
-					await fetch('http://localhost:3000/workout-programs', requestOptions)
-				).json();
+				const response = await await fetch(
+					'http://localhost:3000/workout-programs',
+					requestOptions
+				);
 
-				if ('statusCode' in response) {
-					reject(response);
+				if (response.status !== 200) {
+					reject(response.json());
 				}
 
-				resolve(response);
+				resolve(response.json());
 			})
 	)
 });
