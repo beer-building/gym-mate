@@ -8,7 +8,7 @@
 		signupErrors$,
 		fieldChanged,
 		signupButtonClicked
-	} from '../../../models';
+	} from '../model';
 
 	let isPasswordShown = false;
 </script>
@@ -66,29 +66,29 @@
 
 <style lang="postcss">
 	.page {
-		max-width: 500px;
-		margin: 0 auto;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		margin: 0 auto;
+		padding: 12px;
+		max-width: 500px;
 		height: 100%;
 		min-height: inherit;
-		padding: 12px;
 	}
 	form {
-		background: var(--color-surface);
-		border-radius: var(--base-radius);
-		padding: 20px;
-		box-shadow: var(--shadow1);
 		display: flex;
 		flex-direction: column;
 		gap: 5px;
 		margin-top: 24px;
+		box-shadow: var(--shadow1);
+		border-radius: var(--base-radius);
+		background: var(--color-surface);
+		padding: 20px;
 
 		& :global(button) {
+			justify-content: center;
 			margin-top: 12px;
 			width: 100%;
-			justify-content: center;
 		}
 
 		& .password-toggler {

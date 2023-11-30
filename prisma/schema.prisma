@@ -11,10 +11,93 @@ datasource db {
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  createdAt    DateTime @default(now())
-  email        String   @unique
-  passwordHash String
-  username     String   @default("")
-  image        String?
+  id                     Int                   @id @default(autoincrement())
+  createdAt              DateTime              @default(now())
+  email                  String                @unique
+  passwordHash           String
+  username               String                @default("")
+  image                  String?
+  createdWorkoutPrograms WorkoutProgram[]
+  workoutPrograms        UserWorkoutPrograms[]
+}
+
+model WorkoutProgram {
+  id                  Int                   @id @default(autoincrement())
+  createdAt           DateTime              @default(now())
+  createdBy           User                  @relation(fields: [userId], references: [id])
+  userId              Int
+  updatedAt           DateTime              @updatedAt
+  title               String                @default("")
+  description         String?               @default("")
+  workouts            Workout[]
+  userWorkoutPrograms UserWorkoutPrograms[]
+}
+
+model UserWorkoutPrograms {
+  user             User           @relation(fields: [userId], references: [id])
+  userId           Int
+  workoutProgram   WorkoutProgram @relation(fields: [workoutProgramId], references: [id])
+  workoutProgramId Int
+
+  @@id([userId, workoutProgramId])
+}
+
+model Workout {
+  id               Int             @id @default(autoincrement())
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  exercises        Exercise[]
+  workoutProgram   WorkoutProgram? @relation(fields: [workoutProgramId], references: [id])
+  workoutProgramId Int?
+}
+
+model Exercise {
+  id          Int        @id @default(autoincrement())
+  title       String     @default("")
+  description String?    @default("")
+  bodyLoad    BodyLoad[]
+  workout     Workout?   @relation(fields: [workoutId], references: [id])
+  workoutId   Int?
+}
+
+model BodyLoad {
+  id         Int      @id @default(autoincrement())
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId Int
+  muscle     Muscle
+  value      Int      @default(0)
+}
+
+enum Muscle {
+  // BACK_AND_NECK
+  SMALL_OF_THE_BACK
+  LATISSIMUS
+  TRAPEZE
+  NECK
+
+  BUTTOCKS
+
+  // ABS_AND_OBLIQUES
+  ABS
+  OBLIQUES
+
+  // SHOULDERS
+  FRONT_DELTA
+  MIDDLE_DELTA
+  REAR_DELTA
+
+  // HANDS
+  BICEPS
+  TRICEPS
+  FOREARMS
+
+  CHEST
+
+  // LEGS
+  FRONT_THIGH
+  POSTERIOR_THIGH
+  INNER_THIGH
+  OUTER_THIGH
+
+  SHIN
 }

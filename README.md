@@ -1,24 +1,32 @@
 ## 🚀 Getting started
 
+### 1. Clone repository and install dependencies
+
 ```bash
 git clone https://github.com/beer-building/gym-mate.git
 cd gym-mate
 pnpm i
 ```
 
-### Generate prisma types
+### 2. Generate prisma types
 
 ```
 pnpm prisma generate
 ```
 
-### Start docker
+### 3. Start docker
 
 ```
 docker-compose up --build
 ```
 
-### Start frontend && backend
+### 3. Create seed data
+
+```
+npx prisma db seed
+```
+
+### 4. Start frontend && backend
 
 ```
 pnpm dev
