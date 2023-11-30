@@ -47,6 +47,9 @@ importers:
       '@fastify/swagger-ui':
         specifier: ^1.10.1
         version: 1.10.1
+      '@fastify/type-provider-typebox':
+        specifier: ^3.5.0
+        version: 3.5.0(@sinclair/typebox@0.31.28)
       '@gym-mate/shared-types':
         specifier: workspace:*
         version: link:../../libs/shared-types
@@ -808,6 +811,14 @@ packages:
       yaml: 2.3.4
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@fastify/type-provider-typebox@3.5.0(@sinclair/typebox@0.31.28):
+    resolution: {integrity: sha512-f48uGzvLflE/y4pvXOS8qjAC+mZmlqev9CPHnB8NDsBSL4EbeydO61IgPuzOkeNlAYeRP9Y56UOKj1XWFibgMw==}
+    peerDependencies:
+      '@sinclair/typebox': '>=0.26 <=0.31'
+    dependencies:
+      '@sinclair/typebox': 0.31.28
     dev: false
 
   /@humanwhocodes/config-array@0.11.13:

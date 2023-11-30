@@ -15,8 +15,8 @@ export const workoutProgram = Type.Object({
 	id: Type.Number(),
 	title: Type.String(),
 	userId: Type.Number(),
-	description: Type.Optional(Type.String()),
-	createdAt: Type.Optional(Type.String())
+	description: Type.Union([Type.Null(), Type.String()]),
+	createdAt: Type.Optional(Type.Date())
 });
 
 export const WorkoutProgramReply = Type.Object({
