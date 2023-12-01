@@ -1,6 +1,8 @@
+import { FastifySchema } from 'fastify';
+
 import { ErrorReply, WorkoutProgramsReply } from '@gym-mate/shared-types';
 
-export const GetWorkoutProgramsSchema = {
+export const GetWorkoutProgramsSchema: FastifySchema = {
 	description: 'Get workout programs list',
 	tags: ['Authentication'],
 	summary: 'Workout programs list',

@@ -20,7 +20,8 @@ const app: FastifyPluginAsyncTypebox<AppOptions> = async (fastify, opts): Promis
 	// define your routes in one of these
 	void fastify.register(AutoLoad, {
 		dir: join(__dirname, 'routes'),
-		options: opts
+		options: opts,
+		routeParams: true
 	});
 };
 

@@ -1,35 +1,35 @@
-import { FastifyInstance } from 'fastify'
+import { FastifyInstance } from 'fastify';
 
-import { CreateWorkoutProgramDto, EditWorkoutProgramDto } from '@gym-mate/shared-types'
-import { WorkoutProgramRepository } from '../repositories/workout-program.repository'
+import { CreateWorkoutProgramDto, EditWorkoutProgramDto } from '@gym-mate/shared-types';
+import { WorkoutProgramRepository } from '../repositories';
 
 export class WorkoutProgramService {
-  server: FastifyInstance
+	server: FastifyInstance;
 
-  workoutProgramRepository: WorkoutProgramRepository
+	workoutProgramRepository: WorkoutProgramRepository;
 
-  constructor(server: FastifyInstance) {
-    this.server = server
-    this.workoutProgramRepository = new WorkoutProgramRepository(server)
-  }
+	constructor(server: FastifyInstance) {
+		this.server = server;
+		this.workoutProgramRepository = new WorkoutProgramRepository(server);
+	}
 
-  async createWorkoutProgram(dto: CreateWorkoutProgramDto, userId: number) {
-    return this.workoutProgramRepository.createWorkoutProgram(dto, userId)
-  }
+	async createWorkoutProgram(dto: CreateWorkoutProgramDto, userId: number) {
+		return this.workoutProgramRepository.createWorkoutProgram(dto, userId);
+	}
 
-  async findWorkoutProgram(workoutProgramId: number) {
-    return this.workoutProgramRepository.findWorkoutProgram(workoutProgramId)
-  }
+	async findWorkoutProgram(workoutProgramId: number) {
+		return this.workoutProgramRepository.findWorkoutProgram(workoutProgramId);
+	}
 
-  async updateWorkoutProgram(dto: EditWorkoutProgramDto, workoutProgramId: number) {
-    return this.workoutProgramRepository.updateWorkoutProgram(dto, workoutProgramId)
-  }
+	async updateWorkoutProgram(dto: EditWorkoutProgramDto, workoutProgramId: number) {
+		return this.workoutProgramRepository.updateWorkoutProgram(dto, workoutProgramId);
+	}
 
-  async findUserWorkoutPrograms(userId: number) {
-    return this.workoutProgramRepository.findUserWorkoutPrograms(userId)
-  }
+	async findUserWorkoutPrograms(userId: number) {
+		return this.workoutProgramRepository.findUserWorkoutPrograms(userId);
+	}
 
-  async findUserWorkoutProgram(userId: number, workoutProgramId: number) {
-    return this.workoutProgramRepository.findUserWorkoutProgram(userId, workoutProgramId)
-  }
+	async findUserWorkoutProgram(userId: number, workoutProgramId: number) {
+		return this.workoutProgramRepository.findUserWorkoutProgram(userId, workoutProgramId);
+	}
 }

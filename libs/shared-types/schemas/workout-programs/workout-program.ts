@@ -1,5 +1,6 @@
-import { Type } from '@sinclair/typebox';
+import { Static, Type } from '@sinclair/typebox';
 import type { WorkoutProgram } from '@prisma/client';
+import { TDate } from '../t-date';
 
 type WorkoutProgramUnit = Omit<WorkoutProgram, 'userId'>;
 
@@ -8,15 +9,16 @@ export type WorkoutProgramReply = {
 };
 
 export type WorkoutProgramsReply = {
-	workoutPrograms: Array<WorkoutProgram>;
+	workoutPrograms: Array<Static<typeof workoutProgram>>;
 };
 
 export const workoutProgram = Type.Object({
 	id: Type.Number(),
 	title: Type.String(),
 	userId: Type.Number(),
-	description: Type.Union([Type.Null(), Type.String()]),
-	createdAt: Type.Optional(Type.Date())
+	description: Type.String(),
+	createdAt: TDate(),
+	updatedAt: TDate()
 });
 
 export const WorkoutProgramReply = Type.Object({
