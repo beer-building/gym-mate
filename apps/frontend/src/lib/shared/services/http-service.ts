@@ -1,3 +1,5 @@
+import { createEffect } from 'effector';
+
 type Body = object | string;
 
 type Response<T> = {
@@ -6,7 +8,6 @@ type Response<T> = {
 };
 
 export class HttpService {
-	static instance = new HttpService('http://localhost:3000');
 	private _overriddenHeaders: Record<string, string> = {
 		'Content-Type': 'application/json'
 	};
@@ -26,6 +27,7 @@ export class HttpService {
 
 	private async _buildResponse<T>(res: Promise<globalThis.Response>): Promise<Response<T>> {
 		const _res = await res;
+
 		return {
 			status: _res.status,
 			data: (await _res.json()) as T
@@ -102,3 +104,57 @@ export class HttpService {
 		this._overriddenHeaders['Authorization'] = `Bearer ${token}`;
 	}
 }
+
+class HttpServiceWrapEffect {
+	constructor(private httpService: HttpService) {}
+
+	setAuthCredentials() {
+		return createEffect((token: string) => {
+			this.httpService.setToken(token);
+		});
+	}
+
+	get<T = unknown, E = unknown>(path: string, queryParams?: Record<string, string | number>) {
+		return createEffect<void, T, E>(async () => {
+			const res = await this.httpService.get<T>(path, queryParams);
+
+			return res.data;
+		});
+	}
+	delete<T = unknown, E = unknown>(path: string, queryParams?: Record<string, string | number>) {
+		return createEffect<void, T, E>(async () => {
+			const res = await this.httpService.delete<T>(path, queryParams);
+
+			return res.data;
+		});
+	}
+	post<P extends Body, T = unknown, E = unknown>(
+		path: string,
+		queryParams?: Record<string, string | number>
+	) {
+		return createEffect<P, T, E>(async (body: P) => {
+			const res = await this.httpService.post<T>(path, body, queryParams);
+			return res.data;
+		});
+	}
+	put<P extends Body, T = unknown, E = unknown>(
+		path: string,
+		queryParams?: Record<string, string | number>
+	) {
+		return createEffect<P, T, E>(async (body: P) => {
+			const res = await this.httpService.put<T>(path, body, queryParams);
+			return res.data;
+		});
+	}
+	patch<P extends Body, T = unknown, E = unknown>(
+		path: string,
+		queryParams?: Record<string, string | number>
+	) {
+		return createEffect<P, T, E>(async (body: P) => {
+			const res = await this.httpService.patch<T>(path, body, queryParams);
+			return res.data;
+		});
+	}
+}
+
+export const httpService = new HttpServiceWrapEffect(new HttpService('http://localhost:3000'));

@@ -1,4 +1,4 @@
-import { HttpService } from '$lib/shared/services/http-service';
+import { httpService } from '$lib/shared/services/http-service';
 import { createMutation, createQuery } from '@farfetched/core';
 import type {
 	CreateWorkoutProgramDto,
@@ -6,18 +6,13 @@ import type {
 	WorkoutProgramReply,
 	WorkoutProgramsReply
 } from '@gym-mate/shared-types';
-import { createEffect } from 'effector';
 
 export const getAll = createQuery({
-	effect: createEffect<void, WorkoutProgramsReply, ErrorReply>(async () => {
-		const res = await HttpService.instance.get<WorkoutProgramsReply>('/workout-programs');
-		return res.data;
-	})
+	effect: httpService.get<WorkoutProgramsReply, ErrorReply>('/workout-programs')
 });
 
 export const create = createMutation({
-	effect: createEffect<CreateWorkoutProgramDto, WorkoutProgramReply, ErrorReply>(async (data) => {
-		const res = await HttpService.instance.post<WorkoutProgramReply>('/workout-programs', data);
-		return res.data;
-	})
+	effect: httpService.post<CreateWorkoutProgramDto, WorkoutProgramReply, ErrorReply>(
+		'/workout-programs'
+	)
 });
