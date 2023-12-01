@@ -1,11 +1,11 @@
-import { Type } from '@sinclair/typebox'
-import { workoutProgram } from './workout-program'
-import { workout } from '../workout/workout'
+import { Type } from '@sinclair/typebox';
+import { WorkoutProgramSchema } from './workout-program';
+import { WorkoutSchema } from '../workout';
 
-const withWorkouts = Type.Object({ workouts: Type.Array(workout) })
+const withWorkouts = Type.Object({ workouts: Type.Array(WorkoutSchema) });
 
-const workoutProgramWithWorkouts = Type.Intersect([workoutProgram, withWorkouts])
+const WorkoutProgramWithWorkouts = Type.Intersect([WorkoutProgramSchema, withWorkouts]);
 
 export const GetWorkoutProgramReply = Type.Object({
-  workoutProgram: workoutProgramWithWorkouts
-})
+	workoutProgram: WorkoutProgramWithWorkouts
+});

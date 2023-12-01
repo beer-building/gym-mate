@@ -30,10 +30,9 @@ export class WorkoutsRepository {
 	//   })
 	// }
 
-	// async findUserWorkoutProgram(userId: number, workoutProgramId: number) {
-	//   return this.server.prisma.workoutProgram.findUnique({
-	//     where: { userId: userId, id: workoutProgramId },
-	//     include: { workouts: true }
-	//   })
-	// }
+	async findWorkoutProgramWorkouts(workoutProgramId: number) {
+		return this.server.prisma.workout.findMany({
+			where: { id: workoutProgramId }
+		});
+	}
 }

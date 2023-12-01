@@ -2,6 +2,7 @@ import { FastifyInstance } from 'fastify';
 
 import { CreateWorkoutProgramDto, EditWorkoutProgramDto } from '@gym-mate/shared-types';
 import { WorkoutProgramRepository } from '../repositories';
+import { workoutProgramErrors } from '../constants';
 
 export class WorkoutProgramService {
 	server: FastifyInstance;
@@ -13,23 +14,38 @@ export class WorkoutProgramService {
 		this.workoutProgramRepository = new WorkoutProgramRepository(server);
 	}
 
-	async createWorkoutProgram(dto: CreateWorkoutProgramDto, userId: number) {
+	createWorkoutProgram(dto: CreateWorkoutProgramDto, userId: number) {
 		return this.workoutProgramRepository.createWorkoutProgram(dto, userId);
 	}
 
-	async findWorkoutProgram(workoutProgramId: number) {
-		return this.workoutProgramRepository.findWorkoutProgram(workoutProgramId);
+	async findWorkoutProgram(userId: number, workoutProgramId: number) {
+		const existWorkoutProgram = this.workoutProgramRepository.findWorkoutProgram(
+			userId,
+			workoutProgramId
+		);
+
+		if (!existWorkoutProgram)
+			throw this.server.httpErrors.badRequest(workoutProgramErrors.NOT_EXIST);
+
+		return existWorkoutProgram;
 	}
 
-	async updateWorkoutProgram(dto: EditWorkoutProgramDto, workoutProgramId: number) {
+	updateWorkoutProgram(dto: EditWorkoutProgramDto, workoutProgramId: number) {
 		return this.workoutProgramRepository.updateWorkoutProgram(dto, workoutProgramId);
 	}
 
-	async findUserWorkoutPrograms(userId: number) {
+	findUserWorkoutPrograms(userId: number) {
 		return this.workoutProgramRepository.findUserWorkoutPrograms(userId);
 	}
 
 	async findUserWorkoutProgram(userId: number, workoutProgramId: number) {
-		return this.workoutProgramRepository.findUserWorkoutProgram(userId, workoutProgramId);
+		const workoutProgram = await this.workoutProgramRepository.findUserWorkoutProgram(
+			userId,
+			workoutProgramId
+		);
+
+		if (!workoutProgram) throw this.server.httpErrors.badRequest(workoutProgramErrors.NOT_EXIST);
+
+		return workoutProgram;
 	}
 }

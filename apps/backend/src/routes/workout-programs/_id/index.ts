@@ -4,7 +4,6 @@ import {
 	EditWorkoutProgramSchema,
 	GetWorkoutProgramSchema
 } from '../../../schemas/workout-programs';
-import { workoutProgramErrors } from '../../../constants';
 
 const workoutProgramRoutes: FastifyPluginAsyncTypebox = async (server) => {
 	const workoutProgramService = new WorkoutProgramService(server);
@@ -20,17 +19,14 @@ const workoutProgramRoutes: FastifyPluginAsyncTypebox = async (server) => {
 			workoutProgramId
 		);
 
-		if (!workoutProgram) throw server.httpErrors.badRequest(workoutProgramErrors.NOT_EXIST);
-
 		reply.send({ workoutProgram });
 	});
 
 	server.post('/edit', { schema: EditWorkoutProgramSchema }, async (request, reply) => {
+		const userId = request.user.id;
 		const workoutProgramId = request.params.id;
 
-		const existWorkoutProgram = workoutProgramService.findWorkoutProgram(workoutProgramId);
-
-		if (!existWorkoutProgram) throw server.httpErrors.badRequest(workoutProgramErrors.NOT_EXIST);
+		await workoutProgramService.findWorkoutProgram(userId, workoutProgramId);
 
 		const workoutProgram = await workoutProgramService.updateWorkoutProgram(
 			request.body,

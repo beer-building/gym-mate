@@ -9,10 +9,10 @@ export type WorkoutProgramReply = {
 };
 
 export type WorkoutProgramsReply = {
-	workoutPrograms: Array<Static<typeof workoutProgram>>;
+	workoutPrograms: Array<Static<typeof WorkoutProgramSchema>>;
 };
 
-export const workoutProgram = Type.Object({
+export const WorkoutProgramSchema = Type.Object({
 	id: Type.Number(),
 	title: Type.String(),
 	userId: Type.Number(),
@@ -22,9 +22,9 @@ export const workoutProgram = Type.Object({
 });
 
 export const WorkoutProgramReply = Type.Object({
-	workoutProgram
+	workoutProgram: WorkoutProgramSchema
 });
 
 export const WorkoutProgramsReply = Type.Object({
-	workoutPrograms: Type.Array(workoutProgram)
+	workoutPrograms: Type.Array(WorkoutProgramSchema)
 });

@@ -1,3 +1,4 @@
 import { Type, TDate as TDateType } from '@sinclair/typebox';
 
-export const TDate = () => Type.Number() as unknown as TDateType;
+// Convert to date-time, as for satisfies types from Prisma
+export const TDate = () => Type.String({ format: 'date-time' }) as unknown as TDateType;
