@@ -19,7 +19,7 @@ export class WorkoutProgramService {
 	}
 
 	async findWorkoutProgram(userId: number, workoutProgramId: number) {
-		const existWorkoutProgram = this.workoutProgramRepository.findWorkoutProgram(
+		const existWorkoutProgram = await this.workoutProgramRepository.findWorkoutProgram(
 			userId,
 			workoutProgramId
 		);

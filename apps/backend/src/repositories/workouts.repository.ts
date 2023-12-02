@@ -7,11 +7,11 @@ export class WorkoutsRepository {
 		this.server = server;
 	}
 
-	// async createWorkoutProgram(dto: CreateWorkoutProgramDto, userId: number) {
-	//   return this.server.prisma.workoutProgram.create({
-	//     data: { ...dto.workoutProgram, userId }
-	//   })
-	// }
+	async createWorkout(workoutProgramId: number) {
+		return this.server.prisma.workout.create({
+			data: { workoutProgramId }
+		});
+	}
 
 	// async findWorkoutProgram(id: number) {
 	//   return this.server.prisma.workoutProgram.findUnique({ where: { id } })
@@ -32,7 +32,7 @@ export class WorkoutsRepository {
 
 	async findWorkoutProgramWorkouts(workoutProgramId: number) {
 		return this.server.prisma.workout.findMany({
-			where: { id: workoutProgramId }
+			where: { workoutProgramId }
 		});
 	}
 }

@@ -7,3 +7,7 @@ export const WorkoutSchema = Type.Object({
 	updatedAt: TDate(),
 	workoutProgramId: Type.Union([Type.Null(), Type.Number()])
 });
+
+export const WorkoutReply = Type.Object({
+	workout: WorkoutSchema
+});

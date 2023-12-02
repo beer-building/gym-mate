@@ -15,9 +15,11 @@ export class WorkoutsService {
 	}
 
 	async findWorkoutProgramWorkouts(userId: number, workoutProgramId: number) {
-		await this.workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId);
-
 		return this.workoutRepository.findWorkoutProgramWorkouts(workoutProgramId);
+	}
+
+	async createWorkout(workoutProgramId: number) {
+		return this.workoutRepository.createWorkout(workoutProgramId);
 	}
 
 	findWorkouts() {}
