@@ -22,7 +22,7 @@ const workoutProgramRoutes: FastifyPluginAsyncTypebox = async (server) => {
 		reply.send({ workoutProgram });
 	});
 
-	server.post('/edit', { schema: EditWorkoutProgramSchema }, async (request, reply) => {
+	server.put('/', { schema: EditWorkoutProgramSchema }, async (request, reply) => {
 		const userId = request.user.id;
 		const workoutProgramId = request.params.id;
 
