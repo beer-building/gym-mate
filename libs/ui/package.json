@@ -3,8 +3,11 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
-	".": {
-		"import": "./index.ts"
+	"exports": {
+		".": {
+			"import": "./index.ts"
+		},
+		"./styles.pcss": "./styles.pcss"
 	},
 	"scripts": {
 		"lint": "prettier --check . && eslint . --ext .ts,.svelte",
