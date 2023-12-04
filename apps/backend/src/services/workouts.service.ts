@@ -31,5 +31,9 @@ export class WorkoutsService {
 		return this.workoutRepository.createWorkout(workoutProgramId);
 	}
 
+	async deleteWorkout(workoutId: number) {
+		return this.workoutRepository.deleteWorkout(workoutId);
+	}
+
 	findWorkouts() {}
 }

@@ -8,7 +8,7 @@ export const UpdateWorkoutSchema = {
 	tags: ['Authentication'],
 	summary: 'Workout program workout',
 	response: {
-		201: WorkoutReply,
+		204: WorkoutReply,
 		400: ErrorReply
 	}
 };

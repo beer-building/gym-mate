@@ -32,4 +32,10 @@ export class WorkoutsRepository {
 			where: { workoutProgramId }
 		});
 	}
+
+	async deleteWorkout(workoutId: number) {
+		return this.server.prisma.workout.delete({
+			where: { id: workoutId }
+		});
+	}
 }

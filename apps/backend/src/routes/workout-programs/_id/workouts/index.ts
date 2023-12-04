@@ -1,5 +1,5 @@
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
-import { GetWorkoutsSchema, UpdateWorkoutSchema } from '../../../../schemas';
+import { DeleteWorkoutSchema, GetWorkoutsSchema, UpdateWorkoutSchema } from '../../../../schemas';
 import { WorkoutProgramService, WorkoutsService } from '../../../../services';
 import { CreateWorkoutSchema } from '../../../../schemas';
 
@@ -28,7 +28,7 @@ const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 		return { workout: newWorkout };
 	});
 
-	server.put('/:workoutId', { schema: UpdateWorkoutSchema }, async (request) => {
+	server.put('/:workoutId', { schema: UpdateWorkoutSchema }, async (request, reply) => {
 		const workoutProgramId = request.params.id;
 		const workoutId = request.params.workoutId;
 		const userId = request.user.id;
@@ -38,7 +38,19 @@ const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 
 		const workout = await workoutsService.updateWorkout(workoutId, body);
 
-		return { workout };
+		reply.status(204).send({ workout });
+	});
+
+	server.delete('/:workoutId', { schema: DeleteWorkoutSchema }, async (request) => {
+		const workoutProgramId = request.params.id;
+		const workoutId = request.params.workoutId;
+		const userId = request.user.id;
+
+		await workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId);
+
+		await workoutsService.deleteWorkout(workoutId);
+
+		return { ok: true };
 	});
 };
 
