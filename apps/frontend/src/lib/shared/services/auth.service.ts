@@ -1,6 +1,8 @@
 import { goto } from '$app/navigation';
+import { httpService } from '$lib/shared/services/http-service';
 import type { TokenStorage } from '$lib/shared/types/auth';
 import { createEffect, createEvent, createStore, sample } from 'effector';
+
 import { persist } from 'effector-storage/local';
 
 export const $token = createStore<{ token: string }>({ token: '' });
@@ -11,6 +13,12 @@ export const checkAuthorization = createEvent();
 
 const redirectToAuthFx = createEffect(() => {
 	goto('/auth/login');
+});
+
+sample({
+	clock: $token,
+	fn: ({ token }) => token,
+	target: httpService.setAuthCredentials()
 });
 
 persist<{ token: string }>({
