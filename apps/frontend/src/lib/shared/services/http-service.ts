@@ -29,7 +29,7 @@ export class HttpService {
 		const _res = await res;
 		const data = (await _res.json()) as T;
 
-		if (_res.status >= 400) return Promise.reject(data);
+		if (!_res.ok) return Promise.reject(data);
 
 		return {
 			data,
