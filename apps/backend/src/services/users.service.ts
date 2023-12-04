@@ -6,41 +6,41 @@ import { CreateUserDto, UserReplyType } from '@gym-mate/shared-types'
 import { UsersRepository } from '../repositories'
 
 export class UsersService {
-  server: FastifyInstance
+	server: FastifyInstance
 
-  usersRepository: UsersRepository
+	usersRepository: UsersRepository
 
-  constructor(server: FastifyInstance) {
-    this.server = server
-    this.usersRepository = new UsersRepository(server)
-  }
+	constructor(server: FastifyInstance) {
+		this.server = server
+		this.usersRepository = new UsersRepository(server)
+	}
 
-  async findUser(email: string) {
-    return await this.usersRepository.findUser(email)
-  }
+	async findUser(email: string) {
+		return await this.usersRepository.findUser(email)
+	}
 
-  async createUser({ user }: CreateUserDto) {
-    const salt = await genSalt(10)
-    const passwordHash = await hash(user.password, salt)
+	async createUser({ user }: CreateUserDto): Promise<User> {
+		const salt = await genSalt(10)
+		const passwordHash = await hash(user.password, salt)
 
-    Reflect.deleteProperty(user, 'password')
+		Reflect.deleteProperty(user, 'password')
 
-    const formattedUser = { ...user, passwordHash }
+		const formattedUser = { ...user, passwordHash }
 
-    const newUser = await this.usersRepository.createUser(formattedUser)
+		const newUser = await this.usersRepository.createUser(formattedUser)
 
-    return newUser
-  }
+		return newUser
+	}
 
-  buildUserResponse(user: User): UserReplyType {
-    const userResponse = {
-      id: user.id,
-      email: user.email,
-      username: user.username,
-      image: user.image || '',
-      token: this.server.jwt.sign(user)
-    }
+	buildUserResponse(user: User): UserReplyType {
+		const userResponse = {
+			id: user.id,
+			email: user.email,
+			username: user.username,
+			image: user.image || '',
+			token: this.server.jwt.sign(user)
+		}
 
-    return { user: userResponse }
-  }
+		return { user: userResponse }
+	}
 }

@@ -3,12 +3,10 @@
 		"moduleResolution": "node",
 		"target": "es2017",
 		"isolatedModules": true,
-		"sourceMap": true,
-		"types": ["svelte"],
 		"strict": false,
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true
 	},
-	"include": ["./src/**/*.js", "./src/**/*.ts", "./src/**/*.svelte"]
+	"include": ["./schemas/**/*.js", "./schemas/**/*.ts"]
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Header } from '$lib/shared/components';
+	import { Header } from '$lib/shared/components'
 </script>
 
 <Header />

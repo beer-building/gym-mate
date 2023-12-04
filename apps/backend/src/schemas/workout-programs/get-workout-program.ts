@@ -5,17 +5,17 @@ import { ErrorReply, GetWorkoutProgramReply, WorkoutProgramReply } from '@gym-ma
 import { IdParams } from '../id-params'
 
 export interface GetWorkoutProgramRequest extends RouteGenericInterface {
-  Reply: WorkoutProgramReply
-  Params: { id: number }
+	Reply: WorkoutProgramReply
+	Params: { id: number }
 }
 
 export const GetWorkoutProgramSchema: FastifySchema = {
-  description: 'Get workout programs list',
-  tags: ['Authentication'],
-  summary: 'Workout Program',
-  params: IdParams,
-  response: {
-    200: GetWorkoutProgramReply,
-    400: ErrorReply
-  }
+	description: 'Get workout programs list',
+	tags: ['Authentication'],
+	summary: 'Workout Program',
+	params: IdParams,
+	response: {
+		200: GetWorkoutProgramReply,
+		400: ErrorReply
+	}
 }

@@ -1,1 +1,1 @@
-export * as signupApi from './signup';
+export * as signupApi from './signup'

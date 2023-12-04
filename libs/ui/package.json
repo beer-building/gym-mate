@@ -1,15 +1,22 @@
 {
-  "name": "@gym-mate/ui",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "svelte": "^4.2.7"
-  }
+	"name": "@gym-mate/ui",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"exports": {
+		".": {
+			"import": "./index.ts"
+		},
+		"./styles.pcss": "./styles.pcss"
+	},
+	"scripts": {
+		"lint": "prettier --check . && eslint . --ext .ts,.svelte",
+		"lint:ts": "tsc -p tsconfig.json --noEmit --pretty"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"svelte": "^4.2.7"
+	}
 }

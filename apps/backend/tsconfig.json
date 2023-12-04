@@ -1,8 +1,8 @@
 {
-  "extends": "fastify-tsconfig",
-  "compilerOptions": {
-    "outDir": "dist",
-    "sourceMap": true
-  },
-  "include": ["src/**/*.ts", "node_modules/@gym-mate/**/*"]
+	"extends": ["../../tsconfig.json", "fastify-tsconfig"],
+	"compilerOptions": {
+		"outDir": "dist",
+		"sourceMap": true
+	},
+	"include": ["src/**/*.ts"]
 }
