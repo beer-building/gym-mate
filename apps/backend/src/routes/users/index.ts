@@ -38,7 +38,7 @@ const usersRoutes: FastifyPluginAsync = async (server) => {
 	})
 
 	// TEST
-	server.get('/', { onRequest: server.authenticate }, async (request, reply) => request.user)
+	server.get('/', { onRequest: server.authenticate }, async (request) => request.user)
 }
 
 export default usersRoutes

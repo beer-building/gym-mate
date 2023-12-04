@@ -1,12 +1,12 @@
 <script>
-	import { Button, Input } from '@gym-mate/ui';
+	import { Button, Input } from '@gym-mate/ui'
 	import {
 		programName,
 		programDescription,
 		createWorkoutProgram,
 		fieldChanged,
 		errorMessage
-	} from '../model/new-workout-program.model';
+	} from '../model/new-workout-program.model'
 </script>
 
 <div>

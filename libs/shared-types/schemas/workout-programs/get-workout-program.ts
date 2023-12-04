@@ -7,5 +7,5 @@ const withWorkouts = Type.Object({ workouts: Type.Array(workout) })
 const workoutProgramWithWorkouts = Type.Intersect([workoutProgram, withWorkouts])
 
 export const GetWorkoutProgramReply = Type.Object({
-  workoutProgram: workoutProgramWithWorkouts
+	workoutProgram: workoutProgramWithWorkouts
 })

@@ -1,8 +1,7 @@
 import { FastifyPluginAsync } from 'fastify'
 
-// eslint-disable-next-line
-const root: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
-	fastify.get('/', async function (request, reply) {
+const root: FastifyPluginAsync = async (fastify): Promise<void> => {
+	fastify.get('/', async function () {
 		return { root: 'health check' }
 	})
 }

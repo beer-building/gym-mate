@@ -13,10 +13,15 @@ jobs:
         with:
           node-version: 20.10.0
 
+      # pnpm frontend:build needs for compile svelte-kit tsconfig
       - name: Install dependencies
         run: |
           npm install -g pnpm
           pnpm install
+          pnpm frontend:build
 
       - name: Run Eslint
         run: pnpm run lint
+
+      - name: Run ts check
+        run: pnpm run lint:ts

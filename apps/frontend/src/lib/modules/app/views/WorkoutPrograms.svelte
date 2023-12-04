@@ -1,10 +1,10 @@
 <script>
-	import { onMount } from 'svelte';
-	import { workoutPrograms, pageMounted, isLoading } from '../model';
+	import { onMount } from 'svelte'
+	import { workoutPrograms, pageMounted, isLoading } from '../model'
 
 	onMount(() => {
-		pageMounted();
-	});
+		pageMounted()
+	})
 </script>
 
 <div class="page">

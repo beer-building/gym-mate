@@ -1,1 +1,1 @@
-export type TokenStorage = { token: string };
+export type TokenStorage = { token: string }
