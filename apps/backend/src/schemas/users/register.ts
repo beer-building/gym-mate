@@ -1,4 +1,4 @@
-import { CreateUserDto, ErrorReply, UserReply } from '@gym-mate/shared-types';
+import { CreateUserDto, ErrorReply, UserReply } from '@gym-mate/shared-types'
 
 export const RegisterSchema = {
 	body: CreateUserDto,
@@ -9,4 +9,4 @@ export const RegisterSchema = {
 		201: UserReply,
 		400: ErrorReply
 	}
-};
+}

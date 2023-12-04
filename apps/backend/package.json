@@ -13,7 +13,9 @@
 		"watch:ts": "tsc -w",
 		"dev": "pnpm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"pnpm:watch:ts\" \"pnpm:dev:start\"",
 		"dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/src/app.js",
-		"prisma:generate": "prisma generate --schema=../../prisma/schema.prisma"
+		"prisma:generate": "prisma generate --schema=../../prisma/schema.prisma",
+		"lint": "prettier --check . && eslint . --ext .js,.ts",
+		"lint:ts": "tsc -p tsconfig.json --noEmit --pretty"
 	},
 	"keywords": [],
 	"author": "",

@@ -1,4 +1,4 @@
-import { CreateWorkoutProgramDto, ErrorReply, WorkoutProgramReply } from '@gym-mate/shared-types';
+import { CreateWorkoutProgramDto, ErrorReply, WorkoutProgramReply } from '@gym-mate/shared-types'
 
 export const CreateWorkoutProgramSchema = {
 	body: CreateWorkoutProgramDto,
@@ -9,4 +9,4 @@ export const CreateWorkoutProgramSchema = {
 		201: WorkoutProgramReply,
 		400: ErrorReply
 	}
-};
+}

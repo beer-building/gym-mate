@@ -1,5 +1,5 @@
-import { EditWorkoutProgramDto, ErrorReply, WorkoutProgramReply } from '@gym-mate/shared-types';
-import { IdParams } from '../id-params';
+import { EditWorkoutProgramDto, ErrorReply, WorkoutProgramReply } from '@gym-mate/shared-types'
+import { IdParams } from '../id-params'
 
 export const EditWorkoutProgramSchema = {
 	body: EditWorkoutProgramDto,
@@ -11,4 +11,4 @@ export const EditWorkoutProgramSchema = {
 		201: WorkoutProgramReply,
 		400: ErrorReply
 	}
-};
+}

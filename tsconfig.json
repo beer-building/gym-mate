@@ -1,0 +1,24 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"noUnusedLocals": true
+	},
+	"exclude": [
+		"node_modules",
+		"tmp",
+		".cache",
+		"scripts",
+		"utils",
+		"public",
+		"dist",
+		"jest.config.ts"
+	]
+}

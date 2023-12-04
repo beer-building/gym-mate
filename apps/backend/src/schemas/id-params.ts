@@ -1,11 +1,11 @@
-import { Type } from '@sinclair/typebox';
+import { Type } from '@sinclair/typebox'
 
 export const IdParams = Type.Object({
 	id: Type.Number()
-});
+})
 
 export const WorkoutParams = Type.Object({
 	workoutId: Type.Number()
-});
+})
 
-export const WorkoutProgramWorkoutParams = Type.Intersect([IdParams, WorkoutParams]);
+export const WorkoutProgramWorkoutParams = Type.Intersect([IdParams, WorkoutParams])

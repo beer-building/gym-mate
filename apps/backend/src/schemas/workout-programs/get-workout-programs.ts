@@ -1,6 +1,6 @@
-import { FastifySchema } from 'fastify';
+import { FastifySchema } from 'fastify'
 
-import { ErrorReply, WorkoutProgramsReply } from '@gym-mate/shared-types';
+import { ErrorReply, WorkoutProgramsReply } from '@gym-mate/shared-types'
 
 export const GetWorkoutProgramsSchema: FastifySchema = {
 	description: 'Get workout programs list',
@@ -10,4 +10,4 @@ export const GetWorkoutProgramsSchema: FastifySchema = {
 		200: WorkoutProgramsReply,
 		400: ErrorReply
 	}
-};
+}

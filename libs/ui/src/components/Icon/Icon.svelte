@@ -1,22 +1,22 @@
 <script lang="ts">
-	export let name = '';
-	export let size = 24;
+	export let name = ''
+	export let size = 24
 
-	let iconContent = '';
+	let iconContent = ''
 
 	const fetchIcon = (name: string) => {
 		import(`./icons/${name}.svg?raw`).then((module) => {
-			iconContent = module.default;
-		});
-	};
+			iconContent = module.default
+		})
+	}
 
 	$: {
-		fetchIcon(name);
+		fetchIcon(name)
 	}
 </script>
 
 <div class="icon" style:--size={`${size}px`}>
-	{@html iconContent}
+	{iconContent}
 </div>
 
 <style lang="postcss">

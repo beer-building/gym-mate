@@ -1,19 +1,19 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher } from 'svelte'
 
-	export let type = 'text';
-	export let label = '';
-	export let placeholder = '';
-	export let value = '';
-	export let errorText = '';
+	export let type = 'text'
+	export let label = ''
+	export let placeholder = ''
+	export let value = ''
+	export let errorText = ''
 
 	const handleChange = (event: Event) => {
-		const _value = (event.target as HTMLInputElement).value;
-		dispatch('change', _value);
-		(event.target as HTMLInputElement).value = value;
-	};
+		const _value = (event.target as HTMLInputElement).value
+		dispatch('change', _value)
+		;(event.target as HTMLInputElement).value = value
+	}
 
-	const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher()
 </script>
 
 <label>
@@ -28,28 +28,28 @@
 
 <style lang="postcss">
 	label {
-		height: 55px;
 		display: flex;
 		flex-direction: column;
+		height: 55px;
 	}
 	.label {
 		opacity: 0.8;
-		font-size: 0.9rem;
-		font-weight: bold;
 		margin-bottom: 3px;
+		font-weight: bold;
+		font-size: 0.9rem;
 	}
 	input {
 		appearance: none;
-		font-size: 1rem;
 		border: none;
-		padding: 0 6px;
-		background: var(--color-surface-on-background);
 		border: 1px solid var(--color-border);
 		border-radius: var(--base-radius);
+		background: var(--color-surface-on-background);
+		padding: 0 6px;
 		height: 36px;
+		font-size: 1rem;
 	}
 	.error {
-		color: var(--color-error);
 		border-color: var(--color-error);
+		color: var(--color-error);
 	}
 </style>
