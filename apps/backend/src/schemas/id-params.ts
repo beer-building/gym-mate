@@ -8,4 +8,4 @@ export const WorkoutParams = Type.Object({
 	workoutId: Type.Number()
 });
 
-export const WorkoutProgramWorkoutParams = Type.Union([IdParams, WorkoutParams]);
+export const WorkoutProgramWorkoutParams = Type.Intersect([IdParams, WorkoutParams]);

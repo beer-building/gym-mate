@@ -1,3 +1,4 @@
+import { UpdateWorkoutDto } from '@gym-mate/shared-types';
 import { FastifyInstance } from 'fastify';
 
 export class WorkoutsRepository {
@@ -13,22 +14,18 @@ export class WorkoutsRepository {
 		});
 	}
 
-	// async findWorkoutProgram(id: number) {
-	//   return this.server.prisma.workoutProgram.findUnique({ where: { id } })
-	// }
+	async updateWorkout(id: number, dto: UpdateWorkoutDto) {
+		return this.server.prisma.workout.update({
+			data: { ...dto.workout },
+			where: { id }
+		});
+	}
 
-	// async updateWorkoutProgram(dto: EditWorkoutProgramDto, workoutProgramId: number) {
-	//   return this.server.prisma.workoutProgram.update({
-	//     where: { id: workoutProgramId },
-	//     data: dto.workoutProgram
-	//   })
-	// }
-
-	// async findUserWorkoutPrograms(userId: number) {
-	//   return this.server.prisma.workoutProgram.findMany({
-	//     where: { userId }
-	//   })
-	// }
+	async findWorkout(id: number) {
+		return this.server.prisma.workout.findUnique({
+			where: { id }
+		});
+	}
 
 	async findWorkoutProgramWorkouts(workoutProgramId: number) {
 		return this.server.prisma.workout.findMany({

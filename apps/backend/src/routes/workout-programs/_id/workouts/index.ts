@@ -1,7 +1,7 @@
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
-import { GetWorkoutsSchema } from '../../../../schemas';
+import { GetWorkoutsSchema, UpdateWorkoutSchema } from '../../../../schemas';
 import { WorkoutProgramService, WorkoutsService } from '../../../../services';
-import { CreateWorkoutSchema } from '../../../../schemas/workouts/create-workout-schema';
+import { CreateWorkoutSchema } from '../../../../schemas';
 
 const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 	const workoutsService = new WorkoutsService(server);
@@ -11,9 +11,8 @@ const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 
 	server.get('/', { schema: GetWorkoutsSchema }, async (request) => {
 		const workoutProgramId = request.params.id;
-		const userId = request.user.id;
 
-		const workouts = await workoutsService.findWorkoutProgramWorkouts(userId, workoutProgramId);
+		const workouts = await workoutsService.findWorkoutProgramWorkouts(workoutProgramId);
 
 		return { workouts };
 	});
@@ -27,6 +26,19 @@ const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 		const newWorkout = await workoutsService.createWorkout(workoutProgramId);
 
 		return { workout: newWorkout };
+	});
+
+	server.put('/:workoutId', { schema: UpdateWorkoutSchema }, async (request) => {
+		const workoutProgramId = request.params.id;
+		const workoutId = request.params.workoutId;
+		const userId = request.user.id;
+		const body = request.body;
+
+		await workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId);
+
+		const workout = await workoutsService.updateWorkout(workoutId, body);
+
+		return { workout };
 	});
 };
 
