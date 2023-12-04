@@ -1,4 +1,4 @@
-import { Static, Type } from '@sinclair/typebox'
+import { type Static, Type } from '@sinclair/typebox'
 
 export const EditWorkoutProgramDto = Type.Object({
 	workoutProgram: Type.Object({
