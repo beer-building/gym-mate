@@ -3,7 +3,9 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
-	"exports": "./index.ts",
+	".": {
+		"import": "./index.ts"
+	},
 	"scripts": {
 		"lint": "prettier --check . && eslint . --ext .ts,.svelte",
 		"lint:ts": "tsc -p tsconfig.json --noEmit --pretty"
