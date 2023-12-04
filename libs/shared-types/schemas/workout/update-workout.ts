@@ -1,8 +1,8 @@
-import { Static, Type } from '@sinclair/typebox';
-import { WorkoutSchema } from './workout';
+import { type Static, Type } from '@sinclair/typebox'
+import { WorkoutSchema } from './workout'
 
 export const UpdateWorkoutDto = Type.Object({
 	workout: WorkoutSchema
-});
+})
 
-export type UpdateWorkoutDto = Static<typeof UpdateWorkoutDto>;
+export type UpdateWorkoutDto = Static<typeof UpdateWorkoutDto>

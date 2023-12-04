@@ -1,4 +1,4 @@
-import { Static, Type } from '@sinclair/typebox'
+import { type Static, Type } from '@sinclair/typebox'
 import type { WorkoutProgram } from '@prisma/client'
 import { TDate } from '../t-date'
 

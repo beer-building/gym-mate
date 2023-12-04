@@ -1,5 +1,5 @@
-import { ErrorReply, WorkoutReply } from '@gym-mate/shared-types';
-import { IdParams } from '../id-params';
+import { ErrorReply, WorkoutReply } from '@gym-mate/shared-types'
+import { IdParams } from '../id-params'
 
 export const CreateWorkoutSchema = {
 	description: 'Create workout in workout program',
@@ -10,4 +10,4 @@ export const CreateWorkoutSchema = {
 		201: WorkoutReply,
 		400: ErrorReply
 	}
-};
+}

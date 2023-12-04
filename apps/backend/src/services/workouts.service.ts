@@ -1,38 +1,38 @@
-import { FastifyInstance } from 'fastify';
-import { WorkoutsRepository } from '../repositories';
-import { WorkoutProgramService } from './workout-program.service';
-import { UpdateWorkoutDto } from '@gym-mate/shared-types';
+import { FastifyInstance } from 'fastify'
+import { WorkoutsRepository } from '../repositories'
+import { WorkoutProgramService } from './workout-program.service'
+import { UpdateWorkoutDto } from '@gym-mate/shared-types'
 
 export class WorkoutsService {
-	server: FastifyInstance;
+	server: FastifyInstance
 
-	workoutRepository: WorkoutsRepository;
-	workoutProgramService: WorkoutProgramService;
+	workoutRepository: WorkoutsRepository
+	workoutProgramService: WorkoutProgramService
 
 	constructor(server: FastifyInstance) {
-		this.server = server;
-		this.workoutRepository = new WorkoutsRepository(server);
-		this.workoutProgramService = new WorkoutProgramService(server);
+		this.server = server
+		this.workoutRepository = new WorkoutsRepository(server)
+		this.workoutProgramService = new WorkoutProgramService(server)
 	}
 
 	async findWorkoutProgramWorkouts(id: number) {
-		return this.workoutRepository.findWorkoutProgramWorkouts(id);
+		return this.workoutRepository.findWorkoutProgramWorkouts(id)
 	}
 
 	async findWorkout(id: number) {
-		return this.workoutRepository.findWorkout(id);
+		return this.workoutRepository.findWorkout(id)
 	}
 
 	async updateWorkout(id: number, dto: UpdateWorkoutDto) {
-		return this.workoutRepository.updateWorkout(id, dto);
+		return this.workoutRepository.updateWorkout(id, dto)
 	}
 
 	async createWorkout(workoutProgramId: number) {
-		return this.workoutRepository.createWorkout(workoutProgramId);
+		return this.workoutRepository.createWorkout(workoutProgramId)
 	}
 
 	async deleteWorkout(workoutId: number) {
-		return this.workoutRepository.deleteWorkout(workoutId);
+		return this.workoutRepository.deleteWorkout(workoutId)
 	}
 
 	findWorkouts() {}

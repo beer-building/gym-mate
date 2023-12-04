@@ -18,11 +18,9 @@ export class WorkoutProgramService {
 		return this.workoutProgramRepository.createWorkoutProgram(dto, userId)
 	}
 
-	async findWorkoutProgram(userId: number, workoutProgramId: number) {
-		const existWorkoutProgram = await this.workoutProgramRepository.findWorkoutProgram(
-			userId,
-			workoutProgramId
-		)
+	async findWorkoutProgram(workoutProgramId: number) {
+		const existWorkoutProgram =
+			await this.workoutProgramRepository.findWorkoutProgram(workoutProgramId)
 
 		if (!existWorkoutProgram)
 			throw this.server.httpErrors.badRequest(workoutProgramErrors.NOT_EXIST)
