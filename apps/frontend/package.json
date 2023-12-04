@@ -14,9 +14,10 @@
 	},
 	"dependencies": {
 		"@farfetched/core": "^0.10.6",
-		"@gym-mate/ui": "workspace:*",
 		"@gym-mate/shared-types": "workspace:*",
+		"@gym-mate/ui": "workspace:*",
 		"effector": "^22.8.7",
+		"effector-storage": "^6.1.1",
 		"patronum": "^1.20.0"
 	},
 	"devDependencies": {
@@ -25,6 +26,7 @@
 		"@sveltejs/kit": "^1.27.4",
 		"@types/node": "^20.9.4",
 		"autoprefixer": "^10.4.14",
+		"effector-logger": "^0.15.0",
 		"postcss": "^8.4.24",
 		"postcss-custom-media": "^10.0.2",
 		"postcss-load-config": "^4.0.1",

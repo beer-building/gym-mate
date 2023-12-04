@@ -2,7 +2,7 @@ import { FastifySchema } from 'fastify'
 
 import { RouteGenericInterface } from 'fastify/types/route'
 
-import { LoginUserDto, UserReply, UserReplyType } from '@gym-mate/shared-types'
+import { ErrorReply, LoginUserDto, UserReply, UserReplyType } from '@gym-mate/shared-types'
 
 export interface LoginRequest extends RouteGenericInterface {
 	Body: LoginUserDto
@@ -15,6 +15,7 @@ export const LoginSchema: FastifySchema = {
 	tags: ['Authentication'],
 	summary: 'sign in',
 	response: {
-		200: UserReply
+		200: UserReply,
+		401: ErrorReply
 	}
 }

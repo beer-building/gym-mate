@@ -10,6 +10,9 @@
 		"lint": "pnpm recursive run lint",
 		"lint:ts": "pnpm recursive run lint:ts"
 	},
+	"prisma": {
+		"seed": "ts-node ./prisma/seeds/index.ts"
+	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
@@ -25,9 +28,7 @@
 		"prettier-plugin-svelte": "^3.0.0",
 		"prisma": "^5.6.0",
 		"tslib": "^2.4.1",
-		"typescript": "^5.2.2"
-	},
-	"dependencies": {
-		"pnpm": "^8.11.0"
+		"typescript": "^5.2.2",
+		"ts-node": "^10.4.0"
 	}
 }

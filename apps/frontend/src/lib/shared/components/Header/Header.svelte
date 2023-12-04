@@ -6,7 +6,7 @@
 		{
 			icon: 'workout',
 			title: 'Workout',
-			url: '/workout'
+			url: '/workout-programs'
 		},
 		{
 			icon: 'profile',

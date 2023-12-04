@@ -8,7 +8,7 @@
 		signupErrors$,
 		fieldChanged,
 		signupButtonClicked
-	} from '../../../models'
+	} from '../model'
 
 	let isPasswordShown = false
 </script>
