@@ -32,6 +32,16 @@ export class WorkoutProgramService {
 		return this.workoutProgramRepository.updateWorkoutProgram(dto, workoutProgramId)
 	}
 
+	async updateUserWorkoutProgram(
+		dto: EditWorkoutProgramDto,
+		workoutProgramId: number,
+		userId: number
+	) {
+		await this.findUserWorkoutProgram(userId, workoutProgramId)
+
+		return this.workoutProgramRepository.updateWorkoutProgram(dto, workoutProgramId)
+	}
+
 	findUserWorkoutPrograms(userId: number) {
 		return this.workoutProgramRepository.findUserWorkoutPrograms(userId)
 	}

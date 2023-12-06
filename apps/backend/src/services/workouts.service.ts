@@ -23,15 +23,26 @@ export class WorkoutsService {
 		return this.workoutRepository.findWorkout(id)
 	}
 
-	async updateWorkout(id: number, dto: UpdateWorkoutDto) {
-		return this.workoutRepository.updateWorkout(id, dto)
+	async updateWorkout(
+		workoutId: number,
+		dto: UpdateWorkoutDto,
+		userId: number,
+		workoutProgramId: number
+	) {
+		await this.workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId)
+
+		return this.workoutRepository.updateWorkout(workoutId, dto)
 	}
 
-	async createWorkout(workoutProgramId: number) {
+	async createWorkout(userId: number, workoutProgramId: number) {
+		await this.workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId)
+
 		return this.workoutRepository.createWorkout(workoutProgramId)
 	}
 
-	async deleteWorkout(workoutId: number) {
+	async deleteWorkout(workoutId: number, userId: number, workoutProgramId: number) {
+		await this.workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId)
+
 		return this.workoutRepository.deleteWorkout(workoutId)
 	}
 

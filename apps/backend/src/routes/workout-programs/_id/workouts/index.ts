@@ -1,11 +1,10 @@
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox'
 import { DeleteWorkoutSchema, GetWorkoutsSchema, UpdateWorkoutSchema } from '../../../../schemas'
-import { WorkoutProgramService, WorkoutsService } from '../../../../services'
+import { WorkoutsService } from '../../../../services'
 import { CreateWorkoutSchema } from '../../../../schemas'
 
 const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 	const workoutsService = new WorkoutsService(server)
-	const workoutProgramService = new WorkoutProgramService(server)
 
 	server.addHook('onRequest', server.authenticate)
 
@@ -21,9 +20,7 @@ const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 		const workoutProgramId = request.params.id
 		const userId = request.user.id
 
-		await workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId)
-
-		const newWorkout = await workoutsService.createWorkout(workoutProgramId)
+		const newWorkout = await workoutsService.createWorkout(userId, workoutProgramId)
 
 		return { workout: newWorkout }
 	})
@@ -32,11 +29,9 @@ const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 		const workoutProgramId = request.params.id
 		const workoutId = request.params.workoutId
 		const userId = request.user.id
-		const body = request.body
+		const dto = request.body
 
-		await workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId)
-
-		const workout = await workoutsService.updateWorkout(workoutId, body)
+		const workout = await workoutsService.updateWorkout(workoutId, dto, userId, workoutProgramId)
 
 		reply.status(204).send({ workout })
 	})
@@ -46,9 +41,7 @@ const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 		const workoutId = request.params.workoutId
 		const userId = request.user.id
 
-		await workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId)
-
-		await workoutsService.deleteWorkout(workoutId)
+		await workoutsService.deleteWorkout(workoutId, userId, workoutProgramId)
 
 		return { ok: true }
 	})
