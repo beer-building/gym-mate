@@ -1,5 +1,3 @@
-import { goto } from '$app/navigation'
-import { page } from '$app/stores'
 import { httpService } from '$lib/shared/services/http-service'
 import type { TokenStorage } from '$lib/shared/types/auth'
 import { createEvent, createStore, sample } from 'effector'
