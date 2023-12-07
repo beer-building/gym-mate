@@ -16,7 +16,8 @@
 </script>
 
 <div class="icon" style:--size={`${size}px`}>
-	{iconContent}
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html iconContent}
 </div>
 
 <style lang="postcss">
