@@ -12,6 +12,15 @@ services:
     networks:
       - postgres
 
+  # TODO: For feature (It isn't working now)
+  # frontend: 
+  #   container_name: frontend
+  #   build: 
+  #     context: .
+  #     dockerfile: ./configs/docker/frontend/Dockerfile
+  #   ports:
+  #     - '4000:80'
+
 networks:
   postgres:
     driver: bridge
