@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto } from '$app/navigation'
-
-	goto('/auth/login', { replaceState: true })
+	import { RouteGuard } from '$lib/shared/components/RouteGuard'
 </script>
+
+<RouteGuard allow={false} redirectTo="/auth/login" />
