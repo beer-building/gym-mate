@@ -1,5 +1,6 @@
 import '@gym-mate/ui/styles.pcss'
 import '../app.pcss'
-import { authService } from '$lib/shared/services'
+import '$lib/shared/services/auth.service'
 
-authService.checkAuthorization()
+export const prerender = true
+export const ssr = false

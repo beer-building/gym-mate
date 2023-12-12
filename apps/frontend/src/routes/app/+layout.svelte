@@ -1,11 +1,17 @@
 <script lang="ts">
 	import { Header } from '$lib/shared/components'
+	import { RouteGuard } from '$lib/shared/components/RouteGuard'
+	import { authService } from '$lib/shared/services'
+
+	const isAuthorized = authService.$isAuthorized
 </script>
 
-<Header />
-<div class="inner">
-	<slot />
-</div>
+<RouteGuard allow={$isAuthorized} redirectTo="/auth">
+	<Header />
+	<div class="inner">
+		<slot />
+	</div>
+</RouteGuard>
 
 <style>
 	.inner {

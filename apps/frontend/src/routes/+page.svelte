@@ -1,6 +1,5 @@
 <script>
+	import Landing from '$lib/modules/landing/views/Landing.svelte'
 </script>
 
-<div class="wrapper">
-	<h1>Welcome to GYMMATE</h1>
-</div>
+<Landing />
