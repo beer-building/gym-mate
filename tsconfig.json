@@ -1,6 +1,7 @@
 {
 	"compileOnSave": false,
 	"compilerOptions": {
+    "lib": ["ESNext"],
 		"allowJs": true,
 		"checkJs": true,
 		"esModuleInterop": true,
