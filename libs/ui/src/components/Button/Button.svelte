@@ -4,11 +4,12 @@
 	export let type: 'button' | 'submit' = 'button'
 	export let kind: 'default' | 'icon' = 'default'
 	export let size: 'normal' | 'small' | 'large' = 'normal'
+	export let disabled = false
 
 	const dispatch = createEventDispatcher()
 </script>
 
-<button {type} class="kind__{kind} size__{size}" on:click={() => dispatch('click')}>
+<button {type} class="kind__{kind} size__{size}" {disabled} on:click={() => dispatch('click')}>
 	<slot />
 </button>
 
@@ -25,6 +26,7 @@
 		font-size: 1rem;
 
 		&:disabled {
+			opacity: 0.7;
 			cursor: not-allowed;
 		}
 	}
