@@ -28,7 +28,7 @@ model WorkoutProgram {
   userId              Int
   updatedAt           DateTime              @updatedAt
   title               String                @default("")
-  description         String?               @default("")
+  description         String                @default("")
   workouts            Workout[]
   userWorkoutPrograms UserWorkoutPrograms[]
 }

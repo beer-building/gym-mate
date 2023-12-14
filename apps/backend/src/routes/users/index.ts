@@ -1,44 +1,28 @@
-import { FastifyPluginAsync } from 'fastify'
-import { compare } from 'bcryptjs'
+import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox'
 
-import { LoginRequest, LoginSchema, RegisterRequest, RegisterSchema } from '../../schemas/users'
+import { LoginSchema, RegisterSchema } from '../../schemas/users'
 import { UsersService } from '../../services'
-import { usersErrors } from '../../constants'
 
-const usersRoutes: FastifyPluginAsync = async (server) => {
+const usersRoutes: FastifyPluginAsyncTypebox = async (server) => {
 	const usersService = new UsersService(server)
 
-	server.post<RegisterRequest>('/', { schema: RegisterSchema }, async (request, reply) => {
-		const { email } = request.body.user
-
-		const existUser = await usersService.findUser(email)
-
-		if (existUser) throw server.httpErrors.badRequest(usersErrors.ALREADY_REGISTERED_ERROR)
-
-		const createdUser = await usersService.createUser(request.body)
+	server.post('/', { schema: RegisterSchema }, async (request, reply) => {
+		const createdUser = await usersService.registerUser(request.body)
 
 		reply.status(201)
 
 		return usersService.buildUserResponse(createdUser)
 	})
 
-	server.post<LoginRequest>('/login', { schema: LoginSchema }, async (request, reply) => {
+	server.post('/login', { schema: LoginSchema }, async (request, reply) => {
 		const { email, password } = request.body.user
-		const existUser = await usersService.findUser(email)
 
-		if (!existUser) throw server.httpErrors.unauthorized(usersErrors.USER_NOT_FOUND_ERROR)
-
-		const isCorrectPass = await compare(password, existUser.passwordHash)
-
-		if (!isCorrectPass) throw server.httpErrors.unauthorized(usersErrors.WRONG_PASS_ERROR)
+		const user = await usersService.loginUser(email, password)
 
 		reply.status(200)
 
-		return usersService.buildUserResponse(existUser)
+		return usersService.buildUserResponse(user)
 	})
-
-	// TEST
-	server.get('/', { onRequest: server.authenticate }, async (request) => request.user)
 }
 
 export default usersRoutes

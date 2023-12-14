@@ -1,14 +1,6 @@
-import { FastifySchema } from 'fastify'
-import { RouteGenericInterface } from 'fastify/types/route'
-
 import { CreateWorkoutProgramDto, ErrorReply, WorkoutProgramReply } from '@gym-mate/shared-types'
 
-export interface CreateWorkoutProgramRequest extends RouteGenericInterface {
-	Body: CreateWorkoutProgramDto
-	Reply: WorkoutProgramReply
-}
-
-export const CreateWorkoutProgramSchema: FastifySchema = {
+export const CreateWorkoutProgramSchema = {
 	body: CreateWorkoutProgramDto,
 	description: 'Create empty workout program',
 	tags: ['Authentication'],

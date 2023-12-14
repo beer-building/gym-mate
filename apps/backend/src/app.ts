@@ -1,12 +1,13 @@
 import { join } from 'path'
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
-import { FastifyPluginAsync, FastifyServerOptions } from 'fastify'
+import { FastifyServerOptions } from 'fastify'
+import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox'
 
 export interface AppOptions extends FastifyServerOptions, Partial<AutoloadPluginOptions> {}
 // Pass --options via CLI arguments in command to enable these options.
 const options: AppOptions = {}
 
-const app: FastifyPluginAsync<AppOptions> = async (fastify, opts): Promise<void> => {
+const app: FastifyPluginAsyncTypebox<AppOptions> = async (fastify, opts): Promise<void> => {
 	// This loads all plugins defined in plugins
 	// those should be support plugins that are reused
 	// through your application
@@ -19,7 +20,8 @@ const app: FastifyPluginAsync<AppOptions> = async (fastify, opts): Promise<void>
 	// define your routes in one of these
 	void fastify.register(AutoLoad, {
 		dir: join(__dirname, 'routes'),
-		options: opts
+		options: opts,
+		routeParams: true
 	})
 }
 
