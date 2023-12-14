@@ -5,7 +5,7 @@
 	export let label = ''
 	export let placeholder = ''
 	export let value = ''
-	export let errorText = ''
+	export let error = ''
 
 	const handleChange = (event: Event) => {
 		const _value = (event.target as HTMLInputElement).value
@@ -16,15 +16,17 @@
 	const dispatch = createEventDispatcher()
 </script>
 
-<label>
-	{#if label}
-		<span class="label">{label}</span>
+<div class="wrapper" class:error>
+	<label>
+		{#if label}
+			<span class="label">{label}</span>
+		{/if}
+		<input {type} {placeholder} on:input={handleChange} {value} />
+	</label>
+	{#if error}
+		<span class="error__text">{error}</span>
 	{/if}
-	<input class:error={errorText} {type} {placeholder} on:input={handleChange} {value} />
-	{#if errorText}
-		<span class="error">{errorText}</span>
-	{/if}
-</label>
+</div>
 
 <style lang="postcss">
 	label {
@@ -49,7 +51,13 @@
 		font-size: 1rem;
 	}
 	.error {
-		border-color: var(--color-error);
-		color: var(--color-error);
+		& input {
+			border-color: var(--color-error);
+			color: var(--color-error);
+		}
+		&__text {
+			color: var(--color-error);
+			font-size: 0.8rem;
+		}
 	}
 </style>
