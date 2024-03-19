@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { Button, Input } from '@gym-mate/ui'
-	import {
+	import { signupModel } from '../model/signup'
+
+	let isPasswordShown = false
+
+	const {
 		username$,
 		email$,
 		password$,
@@ -8,9 +12,7 @@
 		signupErrors$,
 		fieldChanged,
 		signupButtonClicked
-	} from '../model'
-
-	let isPasswordShown = false
+	} = signupModel
 </script>
 
 <div class="page">
@@ -23,7 +25,7 @@
 			on:change={({ detail }) => {
 				fieldChanged({ username: detail })
 			}}
-			errorText={$signupErrors$.username}
+			error={$signupErrors$.username}
 		/>
 		<Input
 			placeholder="Email"
@@ -31,7 +33,7 @@
 			on:change={({ detail }) => {
 				fieldChanged({ email: detail })
 			}}
-			errorText={$signupErrors$.email}
+			error={$signupErrors$.email}
 		/>
 		<Input
 			type={isPasswordShown ? 'text' : 'password'}
@@ -40,7 +42,7 @@
 			on:change={({ detail }) => {
 				fieldChanged({ password: detail })
 			}}
-			errorText={$signupErrors$.password}
+			error={$signupErrors$.password}
 		/>
 		<Input
 			type={isPasswordShown ? 'text' : 'password'}
@@ -49,7 +51,7 @@
 			on:change={({ detail }) => {
 				fieldChanged({ passwordConfirmation: detail })
 			}}
-			errorText={$signupErrors$.passwordConfirmation || ''}
+			error={$signupErrors$.passwordConfirmation || ''}
 		/>
 		<label class="password-toggler">
 			Show password
