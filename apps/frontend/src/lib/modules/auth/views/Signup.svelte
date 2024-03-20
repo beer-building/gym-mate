@@ -10,6 +10,7 @@
 		password$,
 		passwordConfirmation$,
 		signupErrors$,
+		signupError$,
 		fieldChanged,
 		signupButtonClicked
 	} = signupModel
@@ -17,6 +18,7 @@
 
 <div class="page">
 	<h1>Sign up</h1>
+	<div class="errors">{$signupError$}</div>
 
 	<form>
 		<Input
@@ -76,6 +78,9 @@
 		max-width: 500px;
 		height: 100%;
 		min-height: inherit;
+	}
+	.errors {
+		color: red;
 	}
 	form {
 		display: flex;

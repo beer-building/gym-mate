@@ -1,5 +1,5 @@
 import { goto } from '$app/navigation'
-import { workoutProgramsApi } from '$lib/api/workout-programs'
+import { workoutProgramsApi } from '$lib/api'
 import { createEffect, createEvent, createStore, sample } from 'effector'
 import { spread } from 'patronum'
 

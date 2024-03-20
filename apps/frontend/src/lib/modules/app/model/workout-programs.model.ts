@@ -1,4 +1,4 @@
-import { workoutProgramsApi } from '$lib/api/workout-programs'
+import { workoutProgramsApi } from '$lib/api'
 import type { WorkoutProgram } from '@prisma/client'
 import { createEvent, createStore, sample } from 'effector'
 

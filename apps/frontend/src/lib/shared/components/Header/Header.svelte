@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores'
+	import { authService } from '$lib/shared/services'
 	import { Icon } from '@gym-mate/ui'
 
 	const SCOPES = [
@@ -14,6 +15,10 @@
 			url: '/profile'
 		}
 	]
+
+	function logout() {
+		authService.logout()
+	}
 </script>
 
 <header>
@@ -27,6 +32,7 @@
 			<span>{scope.title}</span>
 		</a>
 	{/each}
+	<button on:click={logout} class="scope__button">Logout</button>
 </header>
 
 <style lang="postcss">

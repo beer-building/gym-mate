@@ -1,1 +1,1 @@
-export * as workoutProgramsApi from './workout-programs.api'
+export * from './workout-programs.api'

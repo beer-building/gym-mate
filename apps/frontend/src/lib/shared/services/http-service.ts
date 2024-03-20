@@ -106,6 +106,9 @@ export class HttpService {
 	setToken(token: string) {
 		this._overriddenHeaders['Authorization'] = `Bearer ${token}`
 	}
+	removeToken() {
+		this._overriddenHeaders['Authorization'] = ''
+	}
 }
 
 class HttpServiceWrapEffect {
@@ -114,6 +117,12 @@ class HttpServiceWrapEffect {
 	setAuthCredentials() {
 		return createEffect((token: string) => {
 			this.httpService.setToken(token)
+		})
+	}
+
+	removeAuthCredentials() {
+		return createEffect(() => {
+			this.httpService.removeToken()
 		})
 	}
 
