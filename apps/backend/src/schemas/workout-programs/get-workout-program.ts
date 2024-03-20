@@ -2,9 +2,9 @@ import { ErrorReply, GetWorkoutProgramReply } from '@gym-mate/shared-types'
 import { IdParams } from '../id-params'
 
 export const GetWorkoutProgramSchema = {
-	description: 'Get workout programs list',
-	tags: ['Authentication'],
-	summary: 'Workout Program',
+	description: 'Get workout program by id',
+	tags: ['Workout program'],
+	summary: 'Get workout program by id',
 	params: IdParams,
 	response: {
 		200: GetWorkoutProgramReply,
