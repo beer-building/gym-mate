@@ -1,4 +1,4 @@
-import { loginApi } from '$lib/api'
+import { authApi } from '$lib/api'
 import { EMPTY_FIELD_TEXT } from '$lib/shared/constants'
 import { authService } from '$lib/shared/services'
 import type { Record } from '@prisma/client/runtime/library'
@@ -9,7 +9,8 @@ import { spread } from 'patronum'
 export const login$ = createStore('')
 export const password$ = createStore('')
 export const errors$ = createStore<Record<string, string>>({})
-export const formDisabled$ = combine(loginApi.loginQuery.$pending, errors$).map(
+
+export const formDisabled$ = combine(authApi.loginMutation.$pending, errors$).map(
 	([pending, errors]) => {
 		const hasErrors = Object.entries(errors).some(([_, value]) => value)
 
@@ -65,17 +66,17 @@ sample({
 		password: password$
 	},
 	fn: (form) => ({ user: form }),
-	target: loginApi.loginQuery.start
+	target: authApi.loginMutation.start
 })
 
 sample({
-	clock: loginApi.loginQuery.finished.success,
+	clock: authApi.loginMutation.finished.success,
 	fn: ({ result }) => ({ token: result.user.token }),
 	target: authService.setToken
 })
 
 sample({
-	clock: loginApi.loginQuery.finished.failure,
+	clock: authApi.loginMutation.finished.failure,
 	fn: ({ error }) => ({ login: error.message }),
 	target: errors$
 })

@@ -1,15 +1,16 @@
 import { combine, createEvent, createStore, sample } from 'effector'
-import { spread } from 'patronum'
-import { signupApi } from '$lib/api'
+import { reset, spread } from 'patronum'
+import { authApi } from '$lib/api'
 import { authService } from '$lib/shared/services'
 import { validateSignupData } from './signup.helpers'
 
 // Stores
-export const username$ = createStore<string>('')
-export const email$ = createStore<string>('')
-export const password$ = createStore<string>('')
-export const passwordConfirmation$ = createStore<string>('')
+export const username$ = createStore('')
+export const email$ = createStore('')
+export const password$ = createStore('')
+export const passwordConfirmation$ = createStore('')
 export const signupErrors$ = createStore<Record<string, string>>({})
+export const signupError$ = createStore('')
 
 const signupFormData$ = combine(
 	username$,
@@ -67,11 +68,27 @@ sample({
 	fn: ([_, data]) => ({
 		user: { username: data.username, email: data.email, password: data.password }
 	}),
-	target: signupApi.signupQuery.start
+	target: authApi.signupMutation.start
 })
 
 sample({
-	clock: signupApi.signupQuery.finished.success,
+	clock: authApi.signupMutation.finished.success,
 	fn: ({ result }) => ({ token: result.user.token }),
 	target: authService.setToken
+})
+
+sample({
+	clock: authApi.signupMutation.finished.failure,
+	fn: ({ error }) => error.message,
+	target: signupError$
+})
+
+reset({
+	clock: authApi.signupMutation.started,
+	target: signupError$
+})
+
+reset({
+	clock: authApi.signupMutation.$succeeded,
+	target: [signupError$, username$, email$, password$, passwordConfirmation$, signupErrors$]
 })

@@ -8,11 +8,25 @@ export const $token = createStore<{ token: string }>({ token: '' })
 export const $isAuthorized = $token.map(({ token }) => Boolean(token.length))
 
 export const setToken = createEvent<TokenStorage>()
+export const logout = createEvent()
+
+const resetToken = createEvent()
 
 sample({
 	clock: $token,
 	fn: ({ token }) => token,
 	target: httpService.setAuthCredentials()
+})
+
+sample({
+	clock: logout,
+	target: [httpService.removeAuthCredentials(), resetToken]
+})
+
+sample({
+	clock: resetToken,
+	fn: () => ({ token: '' }),
+	target: setToken
 })
 
 persist<{ token: string }>({

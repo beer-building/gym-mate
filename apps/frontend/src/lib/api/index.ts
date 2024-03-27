@@ -1,2 +1,2 @@
-export * as signupApi from './auth/signup.api'
-export * as loginApi from './auth/login.api'
+export * as authApi from './auth'
+export * as workoutProgramsApi from './workout-programs'
