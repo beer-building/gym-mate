@@ -65,7 +65,7 @@ model BodyLoad {
   exercise   Exercise @relation(fields: [exerciseId], references: [id])
   exerciseId Int
   muscle     Muscle
-  value      Int      @default(0)
+  value      Int      @default(0) // max - 10 min - 1
 }
 
 enum Muscle {
