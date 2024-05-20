@@ -14,7 +14,10 @@ const config = {
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build'
-		})
+		}),
+		prerender: {
+			entries: ['*', '/app/workout-programs/1']
+		}
 	}
 }
 

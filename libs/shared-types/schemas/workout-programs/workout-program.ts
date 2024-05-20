@@ -2,7 +2,7 @@ import { type Static, Type } from '@sinclair/typebox'
 import type { WorkoutProgram } from '@prisma/client'
 import { TDate } from '../t-date'
 
-type WorkoutProgramUnit = Omit<WorkoutProgram, 'userId'>
+export type WorkoutProgramUnit = Omit<WorkoutProgram, 'userId'>
 
 export type WorkoutProgramReply = {
 	workoutProgram: WorkoutProgramUnit

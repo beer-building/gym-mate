@@ -4,8 +4,8 @@ import { IdParams } from '../id-params'
 export const CreateWorkoutSchema = {
 	description: 'Create workout in workout program',
 	params: IdParams,
-	tags: ['Authentication'],
-	summary: 'Workout program workout',
+	tags: ['Workouts'],
+	summary: 'Create workout in workout program',
 	response: {
 		201: WorkoutReply,
 		400: ErrorReply

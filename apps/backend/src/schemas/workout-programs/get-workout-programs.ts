@@ -4,7 +4,7 @@ import { ErrorReply, WorkoutProgramsReply } from '@gym-mate/shared-types'
 
 export const GetWorkoutProgramsSchema: FastifySchema = {
 	description: 'Get workout programs list',
-	tags: ['Authentication'],
+	tags: ['Workout program'],
 	summary: 'Workout programs list',
 	response: {
 		200: WorkoutProgramsReply,

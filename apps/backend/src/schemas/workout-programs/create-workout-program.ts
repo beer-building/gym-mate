@@ -3,8 +3,8 @@ import { CreateWorkoutProgramDto, ErrorReply, WorkoutProgramReply } from '@gym-m
 export const CreateWorkoutProgramSchema = {
 	body: CreateWorkoutProgramDto,
 	description: 'Create empty workout program',
-	tags: ['Authentication'],
-	summary: 'Workout program',
+	tags: ['Workout program'],
+	summary: 'Create new workout program',
 	response: {
 		201: WorkoutProgramReply,
 		400: ErrorReply
