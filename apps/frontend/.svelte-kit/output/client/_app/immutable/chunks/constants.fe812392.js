@@ -1,0 +1,1 @@
+import{h as s}from"./http-service.b939156e.js";import{a as t}from"./index.9a7c659e.js";const r=t({effect:s.post("/users")}),a=t({effect:s.post("/users/login")}),i="This field cannot be empty.";export{i as E,a as l,r as s};

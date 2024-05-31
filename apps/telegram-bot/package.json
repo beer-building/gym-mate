@@ -1,0 +1,17 @@
+{
+	"name": "telegram-bot",
+	"version": "1.0.0",
+	"description": "Gymmate telegram bot",
+	"main": "index.js",
+	"scripts": {
+		"dev": "tsx watch ./src/index.ts",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "^16.4.5",
+		"grammy": "^1.24.0",
+		"tsx": "^4.11.0"
+	}
+}
