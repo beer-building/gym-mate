@@ -4,7 +4,7 @@ import { serverHttp } from '../services/http.service'
 
 const composer = new Composer<AppContext>()
 
-composer.command('authorization', async (ctx) => {
+composer.command('login', async (ctx) => {
 	await serverHttp.get('/')
 
 	ctx.reply('reply')
