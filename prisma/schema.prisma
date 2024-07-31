@@ -10,13 +10,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Used for session management in telegram bot
+model Session {
+  id    Int    @id @default(autoincrement())
+  key   String @unique
+  value String
+}
+
 model User {
   id                     Int                   @id @default(autoincrement())
   createdAt              DateTime              @default(now())
-  email                  String                @unique
-  passwordHash           String
+  email                  String?               @unique
+  passwordHash           String?
   username               String                @default("")
   image                  String?
+  isRegistered           Boolean               @default(false)
+  chatId                 Int?                  @unique
   createdWorkoutPrograms WorkoutProgram[]
   workoutPrograms        UserWorkoutPrograms[]
 }

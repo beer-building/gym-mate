@@ -16,7 +16,7 @@ if (!envValidationResult.success) {
 }
 
 if (envValidationResult.success) {
-	console.log('HERE')
+	console.log('Environment variables are valid')
 }
 
 const env = envValidationResult.data

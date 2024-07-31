@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify'
-import { User } from '@prisma/client'
-import { CreateUserDto, UpdateUserDto } from '@gym-mate/shared-types'
+import { User, Prisma } from '@prisma/client'
+import { UpdateUserDto } from '@gym-mate/shared-types'
 
 export class UsersRepository {
 	server: FastifyInstance
@@ -13,9 +13,11 @@ export class UsersRepository {
 		return this.server.prisma.user.findUnique({ where: { email } })
 	}
 
-	async createUser(
-		user: Omit<CreateUserDto['user'], 'password'> & { passwordHash: string }
-	): Promise<User> {
+	async findUserByChatId(chatId: number): Promise<User | null> {
+		return this.server.prisma.user.findUnique({ where: { chatId } })
+	}
+
+	async createUser(user: Prisma.UserCreateInput): Promise<User> {
 		return this.server.prisma.user.create({ data: user })
 	}
 

@@ -2,7 +2,7 @@
 	"name": "@gym-mate/shared-types",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "index.ts",
 	"scripts": {
 		"lint": "prettier --check . && eslint . --ext .ts",
 		"lint:ts": "tsc -p tsconfig.json --noEmit --pretty"
