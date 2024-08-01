@@ -9,10 +9,12 @@ composer.callbackQuery(/open_workout_(\d+)/, async (ctx) => {
 
 	const { data } = await api.getWorkout(workoutId)
 
-	const programsKeyboard = new InlineKeyboard()
+	const keyboard = new InlineKeyboard()
+
+	console.log(data.workout.exercises, 'data.workout.exercises')
 
 	data.workout.exercises.forEach((exercise) => {
-		programsKeyboard.text(exercise.title)
+		keyboard.text(exercise.title, 'open_exercise_' + exercise.id)
 	})
 
 	const text = `
@@ -21,7 +23,7 @@ composer.callbackQuery(/open_workout_(\d+)/, async (ctx) => {
 
 	ctx.answerCallbackQuery()
 	ctx.reply(text, {
-		reply_markup: programsKeyboard.toFlowed(1),
+		reply_markup: keyboard.toFlowed(1),
 		parse_mode: 'Markdown'
 	})
 })

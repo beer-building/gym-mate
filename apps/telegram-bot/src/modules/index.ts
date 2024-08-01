@@ -7,6 +7,7 @@ import StartModule from './start.module'
 import WorkoutModule from './workout.module'
 import ProgramModule from './program.module'
 import ProgramsModule from './programs.module'
+import ExerciseModule from './exercise.module'
 import { serverHttp } from '../services/http.service'
 
 const composer = new Composer<AppContext>((ctx, next) => {
@@ -22,6 +23,7 @@ composer.use(StartModule)
 composer.use(ProgramModule)
 composer.use(ProgramsModule)
 composer.use(WorkoutModule)
+composer.use(ExerciseModule)
 
 composer.command('current_state', (ctx) => {
 	ctx.reply(`<pre>${JSON.stringify(ctx.session)}</pre>`, {

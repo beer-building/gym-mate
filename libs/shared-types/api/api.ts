@@ -7,6 +7,7 @@ import {
 	WorkoutProgramsReply
 } from '../schemas/workout-programs'
 import { FullWorkoutReply } from '../schemas/workout'
+import { FullExerciseReply } from '../schemas/exercises'
 
 type Body = object | string
 
@@ -25,6 +26,7 @@ interface HttpServiceInterface {
 	delete: <T = unknown, E = unknown>(value: string) => Promise<Response<T, E>>
 }
 
+// TODO: Find other place for this
 export class Api {
 	constructor(private readonly httpClient: HttpServiceInterface) {}
 	loginUser(body: LoginUserDto) {
@@ -47,6 +49,9 @@ export class Api {
 	}
 	getWorkout(workoutId: string | number) {
 		return this.httpClient.get<FullWorkoutReply, ErrorReply>(`/workouts/${workoutId}`)
+	}
+	getExercise(exerciseId: string | number) {
+		return this.httpClient.get<FullExerciseReply, ErrorReply>(`/exercises/${exerciseId}`)
 	}
 	getWorkoutProgramWorkouts(workoutProgramId: string | number, workoutId: string | number) {
 		return this.httpClient.get<FullWorkoutReply, ErrorReply>(
