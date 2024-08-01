@@ -16,7 +16,7 @@ composer.command(Command.programs, async (ctx) => {
 	const programsKeyboard = new InlineKeyboard()
 
 	data.workoutPrograms.forEach((program) => {
-		programsKeyboard.text(program.title, 'program_' + program.id)
+		programsKeyboard.text(program.title, 'open_program_' + program.id)
 	})
 
 	ctx.reply('Choose a program:', {

@@ -22,6 +22,7 @@ interface HttpServiceInterface {
 		body: P
 	) => Promise<Response<T, E>>
 	get: <T = unknown, E = unknown>(value: string) => Promise<Response<T, E>>
+	delete: <T = unknown, E = unknown>(value: string) => Promise<Response<T, E>>
 }
 
 export class Api {
@@ -57,5 +58,8 @@ export class Api {
 			'/workout-programs',
 			body
 		)
+	}
+	deleteWorkoutProgram(id: string) {
+		return this.httpClient.delete<boolean, ErrorReply>(`/workout-programs/${id}`)
 	}
 }

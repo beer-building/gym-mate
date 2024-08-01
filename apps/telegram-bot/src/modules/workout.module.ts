@@ -19,6 +19,7 @@ composer.callbackQuery(/open_workout_(\d+)/, async (ctx) => {
 	    *Workout:* ${data.workout.title}
 	    `
 
+	ctx.answerCallbackQuery()
 	ctx.reply(text, {
 		reply_markup: programsKeyboard.toFlowed(1),
 		parse_mode: 'Markdown'
