@@ -1,4 +1,4 @@
-import { Type } from '@sinclair/typebox'
+import { Static, Type } from '@sinclair/typebox'
 import { WorkoutProgramSchema } from './workout-program'
 import { WorkoutSchema } from '../workout'
 
@@ -9,3 +9,5 @@ const WorkoutProgramWithWorkouts = Type.Intersect([WorkoutProgramSchema, withWor
 export const GetWorkoutProgramReply = Type.Object({
 	workoutProgram: WorkoutProgramWithWorkouts
 })
+
+export type GetWorkoutProgramReply = Static<typeof GetWorkoutProgramReply>

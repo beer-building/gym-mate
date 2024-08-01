@@ -2,6 +2,7 @@ import { FastifyInstance } from 'fastify'
 import { WorkoutsRepository } from '../repositories'
 import { WorkoutProgramService } from './workout-program.service'
 import { UpdateWorkoutDto } from '@gym-mate/shared-types'
+import { workoutErrors } from '../constants'
 
 export class WorkoutsService {
 	server: FastifyInstance
@@ -21,6 +22,14 @@ export class WorkoutsService {
 
 	async findWorkout(id: number) {
 		return this.workoutRepository.findWorkout(id)
+	}
+
+	async getFullWorkout(id: number) {
+		const workout = await this.workoutRepository.getFullWorkout(id)
+
+		if (!workout) throw this.server.httpErrors.badRequest(workoutErrors.NOT_EXIST)
+
+		return workout
 	}
 
 	async updateWorkout(

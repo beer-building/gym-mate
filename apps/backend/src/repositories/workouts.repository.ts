@@ -27,6 +27,13 @@ export class WorkoutsRepository {
 		})
 	}
 
+	async getFullWorkout(id: number) {
+		return this.server.prisma.workout.findUnique({
+			where: { id },
+			include: { exercises: { include: { bodyLoad: true } } }
+		})
+	}
+
 	async findWorkoutProgramWorkouts(workoutProgramId: number) {
 		return this.server.prisma.workout.findMany({
 			where: { workoutProgramId }

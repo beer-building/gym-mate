@@ -2,9 +2,11 @@ import { ErrorReply } from '../schemas/error'
 import { CreateTelegramUserDto, CreateUserDto, LoginUserDto, UserReplyType } from '../schemas/users'
 import {
 	CreateWorkoutProgramDto,
+	GetWorkoutProgramReply,
 	WorkoutProgramReply,
 	WorkoutProgramsReply
 } from '../schemas/workout-programs'
+import { FullWorkoutReply } from '../schemas/workout'
 
 type Body = object | string
 
@@ -38,6 +40,17 @@ export class Api {
 	}
 	workoutProgramsList() {
 		return this.httpClient.get<WorkoutProgramsReply, ErrorReply>('/workout-programs')
+	}
+	getWorkoutProgram(id: string) {
+		return this.httpClient.get<GetWorkoutProgramReply, ErrorReply>(`/workout-programs/${id}`)
+	}
+	getWorkout(workoutId: string | number) {
+		return this.httpClient.get<FullWorkoutReply, ErrorReply>(`/workouts/${workoutId}`)
+	}
+	getWorkoutProgramWorkouts(workoutProgramId: string | number, workoutId: string | number) {
+		return this.httpClient.get<FullWorkoutReply, ErrorReply>(
+			`/workout-programs/${workoutProgramId}/workouts/${workoutId}`
+		)
 	}
 	createWorkoutProgram(body: CreateWorkoutProgramDto) {
 		return this.httpClient.post<CreateWorkoutProgramDto, WorkoutProgramReply, ErrorReply>(

@@ -1,7 +1,11 @@
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox'
-import { DeleteWorkoutSchema, GetWorkoutsSchema, UpdateWorkoutSchema } from '../../../../schemas'
+import {
+	DeleteWorkoutSchema,
+	GetWorkoutsSchema,
+	UpdateWorkoutSchema,
+	CreateWorkoutSchema
+} from '../../../../schemas'
 import { WorkoutsService } from '../../../../services'
-import { CreateWorkoutSchema } from '../../../../schemas'
 
 const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 	const workoutsService = new WorkoutsService(server)
