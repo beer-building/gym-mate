@@ -12,5 +12,5 @@ declare module 'fastify' {
 
 // eslint-disable-next-line
 export default fp<FastifyEnvOptions>(async (server, opts) => {
-	server.register(fastifyEnv, { schema: ConfigSchema })
+	server.register(fastifyEnv, { schema: ConfigSchema, dotenv: true })
 })
