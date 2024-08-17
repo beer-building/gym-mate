@@ -12,3 +12,10 @@ export const ExerciseSchema = Type.Object({
 	description: Type.Union([Type.String(), Type.Null()]),
 	bodyLoad: Type.Array(BodyLoadSchema)
 })
+
+export const WorkoutExerciseSchema = Type.Object({
+	exercise: ExerciseSchema,
+	sets: Type.Number(),
+	reps: Type.Number(),
+	rest: Type.Number()
+})

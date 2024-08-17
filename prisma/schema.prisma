@@ -52,22 +52,34 @@ model UserWorkoutPrograms {
 }
 
 model Workout {
-  id               Int             @id @default(autoincrement())
-  createdAt        DateTime        @default(now())
-  updatedAt        DateTime        @updatedAt
-  exercises        Exercise[]
-  title            String          @default("")
-  workoutProgram   WorkoutProgram? @relation(fields: [workoutProgramId], references: [id])
+  id               Int               @id @default(autoincrement())
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  title            String            @default("")
+  workoutProgram   WorkoutProgram?   @relation(fields: [workoutProgramId], references: [id])
   workoutProgramId Int?
+  exercises        WorkoutExercise[]
+}
+
+model WorkoutExercise {
+  id         Int      @id @default(autoincrement())
+  workout    Workout  @relation(fields: [workoutId], references: [id])
+  workoutId  Int
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId Int
+  sets       Int      @default(0)
+  reps       Int      @default(0)
+  weight     Int      @default(0)
+  rest       Int      @default(0)
 }
 
 model Exercise {
-  id          Int        @id @default(autoincrement())
-  title       String     @default("")
-  description String?    @default("")
-  bodyLoad    BodyLoad[]
-  workout     Workout?   @relation(fields: [workoutId], references: [id])
-  workoutId   Int?
+  id              Int               @id @default(autoincrement())
+  title           String            @default("")
+  description     String?           @default("")
+  bodyLoad        BodyLoad[]
+  workoutId       Int?
+  WorkoutExercise WorkoutExercise[]
 }
 
 model BodyLoad {

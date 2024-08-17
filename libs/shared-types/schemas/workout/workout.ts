@@ -1,6 +1,6 @@
 import { Static, Type } from '@sinclair/typebox'
 import { TDate } from '../t-date'
-import { ExerciseSchema } from '../exercises'
+import { WorkoutExerciseSchema } from '../exercises'
 
 export const WorkoutSchema = Type.Object({
 	id: Type.Number(),
@@ -9,11 +9,11 @@ export const WorkoutSchema = Type.Object({
 	title: Type.String()
 })
 
-const withExercises = Type.Object({
-	exercises: Type.Array(ExerciseSchema)
+const withWorkoutExercises = Type.Object({
+	exercises: Type.Array(WorkoutExerciseSchema)
 })
 
-const FullWorkoutSchema = Type.Intersect([WorkoutSchema, withExercises])
+const FullWorkoutSchema = Type.Intersect([WorkoutSchema, withWorkoutExercises])
 
 export const WorkoutReply = Type.Object({
 	workout: WorkoutSchema

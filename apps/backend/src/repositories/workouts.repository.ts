@@ -30,7 +30,7 @@ export class WorkoutsRepository {
 	async getFullWorkout(id: number) {
 		return this.server.prisma.workout.findUnique({
 			where: { id },
-			include: { exercises: { include: { bodyLoad: true } } }
+			include: { exercises: { include: { exercise: { include: { bodyLoad: true } } } } }
 		})
 	}
 
