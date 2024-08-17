@@ -2,6 +2,7 @@ import { ErrorReply } from '../schemas/error'
 import { CreateTelegramUserDto, CreateUserDto, LoginUserDto, UserReplyType } from '../schemas/users'
 import {
 	CreateWorkoutProgramDto,
+	EditWorkoutProgramDto,
 	GetWorkoutProgramReply,
 	WorkoutProgramReply,
 	WorkoutProgramsReply
@@ -22,6 +23,7 @@ interface HttpServiceInterface {
 		value: string,
 		body: P
 	) => Promise<Response<T, E>>
+	put: <P extends Body, T = unknown, E = unknown>(value: string, body: P) => Promise<Response<T, E>>
 	get: <T = unknown, E = unknown>(value: string) => Promise<Response<T, E>>
 	delete: <T = unknown, E = unknown>(value: string) => Promise<Response<T, E>>
 }
@@ -46,6 +48,12 @@ export class Api {
 	}
 	getWorkoutProgram(id: string) {
 		return this.httpClient.get<GetWorkoutProgramReply, ErrorReply>(`/workout-programs/${id}`)
+	}
+	updateWorkoutProgram(id: string, body: EditWorkoutProgramDto) {
+		return this.httpClient.put<EditWorkoutProgramDto, WorkoutProgramReply, ErrorReply>(
+			`/workout-programs/${id}`,
+			body
+		)
 	}
 	getWorkout(workoutId: string | number) {
 		return this.httpClient.get<FullWorkoutReply, ErrorReply>(`/workouts/${workoutId}`)

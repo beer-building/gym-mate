@@ -38,6 +38,9 @@ class HttpService {
 	post<RESPONSE, BODY>(url: string, body?: BODY) {
 		return this.buildRequest<RESPONSE, BODY>(url, 'POST', body)
 	}
+	put<RESPONSE, BODY>(url: string, body?: BODY) {
+		return this.buildRequest<RESPONSE, BODY>(url, 'PUT', body)
+	}
 	delete<RESPONSE, BODY>(url: string) {
 		return this.buildRequest<RESPONSE, BODY>(url, 'DELETE')
 	}

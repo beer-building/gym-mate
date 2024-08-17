@@ -18,7 +18,7 @@ composer.callbackQuery(/open_exercise_(\d+)/, async (ctx) => {
 		.map(({ muscle, value }) => `${HUMAN_MUSCLE_NAMES[muscle]}: ${value}`)
 		.join('\n')}`
 
-	ctx.answerCallbackQuery()
+	await ctx.answerCallbackQuery()
 	ctx.reply(text, {
 		// reply_markup: programsKeyboard.toFlowed(1),
 		parse_mode: 'Markdown'
