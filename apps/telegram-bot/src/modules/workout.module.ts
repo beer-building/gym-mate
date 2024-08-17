@@ -11,9 +11,7 @@ composer.callbackQuery(/open_workout_(\d+)/, async (ctx) => {
 
 	const keyboard = new InlineKeyboard()
 
-	console.log(data.workout.exercises, 'data.workout.exercises')
-
-	data.workout.exercises.forEach((exercise) => {
+	data.workout.exercises.forEach(({ exercise }) => {
 		keyboard.text(exercise.title, 'open_exercise_' + exercise.id)
 	})
 

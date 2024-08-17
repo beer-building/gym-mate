@@ -16,8 +16,24 @@ export class UsersService {
 		this.usersRepository = new UsersRepository(server)
 	}
 
+	async findUserByEmail(email: string) {
+		const existUser = await this.usersRepository.findUserByEmail(email)
+
+		if (!existUser) throw this.server.httpErrors.unauthorized(usersErrors.USER_NOT_FOUND_ERROR)
+
+		return existUser
+	}
+
+	async findUserByChatId(chatId: number) {
+		const existUser = await this.usersRepository.findUserByChatId(chatId)
+
+		if (!existUser) throw this.server.httpErrors.unauthorized(usersErrors.USER_NOT_FOUND_ERROR)
+
+		return existUser
+	}
+
 	async checkRegisteredUser(email: string) {
-		const existUser = await this.usersRepository.findUser(email)
+		const existUser = await this.usersRepository.findUserByEmail(email)
 
 		if (existUser) throw this.server.httpErrors.badRequest(usersErrors.ALREADY_REGISTERED_ERROR)
 
@@ -38,7 +54,7 @@ export class UsersService {
 	}
 
 	async registerUser({ user }: CreateUserDto) {
-		const existUser = await this.usersRepository.findUser(user.email)
+		const existUser = await this.usersRepository.findUserByEmail(user.email)
 
 		if (existUser) throw this.server.httpErrors.badRequest(usersErrors.ALREADY_REGISTERED_ERROR)
 
@@ -60,9 +76,7 @@ export class UsersService {
 	}
 
 	async loginUser(email: string, password: string) {
-		const existUser = await this.usersRepository.findUser(email)
-
-		if (!existUser) throw this.server.httpErrors.unauthorized(usersErrors.USER_NOT_FOUND_ERROR)
+		const existUser = await this.findUserByEmail(email)
 
 		const isCorrectPass = await compare(password, existUser.passwordHash!)
 

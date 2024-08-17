@@ -25,5 +25,9 @@ bot.api.setMyCommands(COMMAND_DESCRIPTION)
 
 bot.use(modules)
 
+process.on('unhandledRejection', (err) => {
+	console.log(err)
+})
+
 bot.catch((err) => console.error(err.error))
 bot.start()

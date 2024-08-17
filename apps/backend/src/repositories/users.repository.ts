@@ -9,7 +9,7 @@ export class UsersRepository {
 		this.server = server
 	}
 
-	async findUser(email: string): Promise<User | null> {
+	async findUserByEmail(email: string): Promise<User | null> {
 		return this.server.prisma.user.findUnique({ where: { email } })
 	}
 

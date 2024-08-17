@@ -37,6 +37,12 @@ export class Api {
 	signupUser(body: CreateUserDto) {
 		return this.httpClient.post<CreateUserDto, UserReplyType, ErrorReply>('/users', body)
 	}
+	loginTelegramUser(body: CreateTelegramUserDto) {
+		return this.httpClient.post<CreateTelegramUserDto, UserReplyType, ErrorReply>(
+			'/users/telegram/login',
+			body
+		)
+	}
 	signupTelegramUser(body: CreateTelegramUserDto) {
 		return this.httpClient.post<CreateTelegramUserDto, UserReplyType, ErrorReply>(
 			'/users/telegram',

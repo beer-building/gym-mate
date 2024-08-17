@@ -11,11 +11,15 @@ import ExerciseModule from './exercise.module'
 import { serverHttp } from '../services/http.service'
 
 const composer = new Composer<AppContext>((ctx, next) => {
-	if (ctx.session.token) {
-		serverHttp.setToken(ctx.session.token)
-	}
+	try {
+		if (ctx.session.token) {
+			serverHttp.setToken(ctx.session.token)
+		}
 
-	next()
+		next()
+	} catch (error) {
+		console.log(error)
+	}
 })
 
 composer.use(AuthModule)

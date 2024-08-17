@@ -6,7 +6,15 @@ const composer = new Composer<AppContext>()
 
 composer.command('start', async (ctx) => {
 	if (!ctx.session.token) {
-		const { data } = await api.signupTelegramUser({ user: { chatId: ctx.chatId } })
+		const { data } = await api
+			.signupTelegramUser({ user: { chatId: ctx.chatId } })
+			.catch((error) => {
+				if (error.status === 400) {
+					return api.loginTelegramUser({ user: { chatId: ctx.chatId } })
+				}
+
+				return Promise.reject(error)
+			})
 
 		console.log('New user registered', data)
 		ctx.session.userId = data.user.id
@@ -16,7 +24,7 @@ composer.command('start', async (ctx) => {
 		console.log('User start session with: ', ctx.session)
 	}
 
-	ctx.reply('reply')
+	await ctx.reply('You are logged in!')
 })
 
 export default composer

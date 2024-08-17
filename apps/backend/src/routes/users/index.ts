@@ -1,6 +1,11 @@
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox'
 
-import { LoginSchema, RegisterSchema, RegisterTelegramSchema } from '../../schemas/users'
+import {
+	LoginSchema,
+	RegisterSchema,
+	RegisterTelegramSchema,
+	TelegramLoginSchema
+} from '../../schemas/users'
 import { UsersService } from '../../services'
 
 const usersRoutes: FastifyPluginAsyncTypebox = async (server) => {
@@ -9,17 +14,19 @@ const usersRoutes: FastifyPluginAsyncTypebox = async (server) => {
 	server.post('/', { schema: RegisterSchema }, async (request, reply) => {
 		const createdUser = await usersService.registerUser(request.body)
 
-		reply.status(201)
-
-		return usersService.buildUserResponse(createdUser)
+		reply.status(201).send(usersService.buildUserResponse(createdUser))
 	})
 
 	server.post('/telegram', { schema: RegisterTelegramSchema }, async (request, reply) => {
 		const createdUser = await usersService.registerTelegramUser(request.body)
 
-		reply.status(201)
+		reply.status(201).send(usersService.buildUserResponse(createdUser))
+	})
 
-		return usersService.buildUserResponse(createdUser)
+	server.post('/telegram/login', { schema: TelegramLoginSchema }, async (request, reply) => {
+		const user = await usersService.findUserByChatId(request.body.user.chatId)
+
+		reply.status(200).send(usersService.buildUserResponse(user))
 	})
 
 	server.post('/login', { schema: LoginSchema }, async (request, reply) => {
@@ -27,9 +34,7 @@ const usersRoutes: FastifyPluginAsyncTypebox = async (server) => {
 
 		const user = await usersService.loginUser(email, password)
 
-		reply.status(200)
-
-		return usersService.buildUserResponse(user)
+		reply.status(200).send(usersService.buildUserResponse(user))
 	})
 }
 
