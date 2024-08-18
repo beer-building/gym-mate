@@ -24,7 +24,7 @@ const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 		const workoutProgramId = request.params.id
 		const userId = request.user.id
 
-		const newWorkout = await workoutsService.createWorkout(userId, workoutProgramId)
+		const newWorkout = await workoutsService.createWorkout(userId, workoutProgramId, request.body)
 
 		return { workout: newWorkout }
 	})

@@ -33,6 +33,7 @@ composer.callbackQuery(/edit_program_(\d+)/, async (ctx) => {
 	const id = ctx.match[1]!
 
 	const editKeyboard = new InlineKeyboard()
+		.text('Add workout', `add_workout_to_program_${id}`)
 		.text('Change title', `change_program_title_${id}`)
 		.text('Change description', `change_program_description_${id}`)
 
@@ -95,6 +96,26 @@ composer.callbackQuery(/delete_program_(\d+)/, async (ctx) => {
 
 	await ctx.answerCallbackQuery()
 	ctx.reply('Program deleted')
+})
+
+composer.callbackQuery(/add_workout_to_program_(\d+)/, async (ctx) => {
+	const id = ctx.match[1]!
+
+	await ctx.answerCallbackQuery()
+	await ctx.reply('Enter workout title: ')
+
+	let replied = false
+
+	composer
+		.filter(() => !replied)
+		.on('message:text', async (ctx) => {
+			const title = ctx.message.text
+
+			await api.createWorkout(id, { workout: { title } })
+
+			replied = true
+			await ctx.reply('Workout added')
+		})
 })
 
 export default composer

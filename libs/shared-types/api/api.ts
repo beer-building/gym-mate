@@ -7,7 +7,7 @@ import {
 	WorkoutProgramReply,
 	WorkoutProgramsReply
 } from '../schemas/workout-programs'
-import { FullWorkoutReply } from '../schemas/workout'
+import { CreateWorkoutDto, FullWorkoutReply } from '../schemas/workout'
 import { FullExerciseReply } from '../schemas/exercises'
 
 type Body = object | string
@@ -63,6 +63,12 @@ export class Api {
 	}
 	getWorkout(workoutId: string | number) {
 		return this.httpClient.get<FullWorkoutReply, ErrorReply>(`/workouts/${workoutId}`)
+	}
+	createWorkout(workoutProgramId: string | number, body: CreateWorkoutDto) {
+		return this.httpClient.post<CreateWorkoutDto, ErrorReply>(
+			`/workout-programs/${workoutProgramId}/workouts`,
+			body
+		)
 	}
 	getExercise(exerciseId: string | number) {
 		return this.httpClient.get<FullExerciseReply, ErrorReply>(`/exercises/${exerciseId}`)

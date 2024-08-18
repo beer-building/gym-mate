@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify'
 import { WorkoutsRepository } from '../repositories'
 import { WorkoutProgramService } from './workout-program.service'
-import { UpdateWorkoutDto } from '@gym-mate/shared-types'
+import { CreateWorkoutDto, UpdateWorkoutDto } from '@gym-mate/shared-types'
 import { workoutErrors } from '../constants'
 
 export class WorkoutsService {
@@ -43,10 +43,10 @@ export class WorkoutsService {
 		return this.workoutRepository.updateWorkout(workoutId, dto)
 	}
 
-	async createWorkout(userId: number, workoutProgramId: number) {
+	async createWorkout(userId: number, workoutProgramId: number, dto: CreateWorkoutDto) {
 		await this.workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId)
 
-		return this.workoutRepository.createWorkout(workoutProgramId)
+		return this.workoutRepository.createWorkout(workoutProgramId, dto)
 	}
 
 	async deleteWorkout(workoutId: number, userId: number, workoutProgramId: number) {
