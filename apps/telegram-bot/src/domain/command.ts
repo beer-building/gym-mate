@@ -4,4 +4,4 @@ export const Command = {
 	createProgram: 'create_program'
 } as const
 
-export type Command = keyof typeof Command
+export type Command = (typeof Command)[keyof typeof Command]

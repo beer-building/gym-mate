@@ -13,7 +13,7 @@ const bot = new Bot<AppContext>(BOT_TOKEN)
 
 bot.use(
 	session({
-		initial: () => ({ token: '' }),
+		initial: () => ({ token: '', userId: null }),
 		storage: new PrismaAdapter(prisma.session),
 		// Give every user their personal session storage
 		// (will be shared across groups and in their private chat)

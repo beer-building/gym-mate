@@ -1,6 +1,14 @@
-import { fetch } from 'undici'
+import { fetch, Response } from 'undici'
 import { BACKEND_URL } from '../plugins/config'
 import { Api } from '@gym-mate/shared-types'
+
+export class HttpError extends Error {
+	response: Response
+	constructor(res: Response) {
+		super(res.statusText)
+		this.response = res
+	}
+}
 
 class HttpService {
 	token: string
@@ -17,7 +25,7 @@ class HttpService {
 	): Promise<{ data: DATA; status: number }> {
 		const fullUrl = new URL(url, this.baseUrl)
 
-		const req = await fetch(fullUrl, {
+		const response = await fetch(fullUrl, {
 			headers: {
 				'content-type': 'application/json',
 				...(this.token ? { Authorization: `Bearer ${this.token}` } : {})
@@ -26,11 +34,11 @@ class HttpService {
 			method
 		})
 
-		if (!req.ok) return Promise.reject(req)
+		if (!response.ok) throw new HttpError(response)
 
-		const data = (await req.json()) as DATA
+		const data = (await response.json()) as DATA
 
-		return Promise.resolve({ data, status: req.status })
+		return Promise.resolve({ data, status: response.status })
 	}
 	get<RESPONSE>(url: string) {
 		return this.buildRequest<RESPONSE>(url, 'GET')

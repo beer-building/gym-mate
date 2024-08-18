@@ -14,5 +14,9 @@ export const COMMAND_DESCRIPTION: Array<GymBotCommand> = [
 	{
 		command: Command.programs,
 		description: 'List of all your workout programs'
+	},
+	{
+		command: Command.createProgram,
+		description: 'Create new workout program'
 	}
 ]

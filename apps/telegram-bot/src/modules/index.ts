@@ -2,32 +2,24 @@ import { Composer } from 'grammy'
 
 import { AppContext } from '../domain/app-context'
 
-import AuthModule from './auth.module'
 import StartModule from './start.module'
 import WorkoutModule from './workout.module'
 import ProgramModule from './program.module'
 import ProgramsModule from './programs.module'
+import CreateProgramModule from './create-program.module'
 import ExerciseModule from './exercise.module'
-import { serverHttp } from '../services/http.service'
+import { errorBoundaryMiddleware, updateTokenMiddleware } from '../middlewares'
 
-const composer = new Composer<AppContext>((ctx, next) => {
-	try {
-		if (ctx.session.token) {
-			serverHttp.setToken(ctx.session.token)
-		}
+const composer = new Composer<AppContext>()
 
-		next()
-	} catch (error) {
-		console.log(error)
-	}
-})
-
-composer.use(AuthModule)
 composer.use(StartModule)
-composer.use(ProgramModule)
-composer.use(ProgramsModule)
-composer.use(WorkoutModule)
-composer.use(ExerciseModule)
+composer.errorBoundary(errorBoundaryMiddleware()).use(updateTokenMiddleware)
+
+composer.errorBoundary(errorBoundaryMiddleware()).use(ProgramModule)
+composer.errorBoundary(errorBoundaryMiddleware()).use(ProgramsModule)
+composer.errorBoundary(errorBoundaryMiddleware()).use(CreateProgramModule)
+composer.errorBoundary(errorBoundaryMiddleware()).use(WorkoutModule)
+composer.errorBoundary(errorBoundaryMiddleware()).use(ExerciseModule)
 
 composer.command('current_state', (ctx) => {
 	ctx.reply(`<pre>${JSON.stringify(ctx.session)}</pre>`, {
