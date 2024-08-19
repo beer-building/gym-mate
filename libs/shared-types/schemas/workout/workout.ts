@@ -24,3 +24,4 @@ export const FullWorkoutReply = Type.Object({
 })
 
 export type FullWorkoutReply = Static<typeof FullWorkoutReply>
+export type WorkoutReply = Static<typeof WorkoutReply>

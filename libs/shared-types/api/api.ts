@@ -7,7 +7,12 @@ import {
 	WorkoutProgramReply,
 	WorkoutProgramsReply
 } from '../schemas/workout-programs'
-import { CreateWorkoutDto, FullWorkoutReply } from '../schemas/workout'
+import {
+	CreateWorkoutDto,
+	FullWorkoutReply,
+	UpdateWorkoutDto,
+	WorkoutReply
+} from '../schemas/workout'
 import { FullExerciseReply } from '../schemas/exercises'
 
 type Body = object | string
@@ -31,6 +36,7 @@ interface HttpServiceInterface {
 // TODO: Find other place for this
 export class Api {
 	constructor(private readonly httpClient: HttpServiceInterface) {}
+	// Auth
 	loginUser(body: LoginUserDto) {
 		return this.httpClient.post<LoginUserDto, UserReplyType, ErrorReply>('/users/login', body)
 	}
@@ -49,6 +55,13 @@ export class Api {
 			body
 		)
 	}
+	// Workout Programs
+	createWorkoutProgram(body: CreateWorkoutProgramDto) {
+		return this.httpClient.post<CreateWorkoutProgramDto, WorkoutProgramReply, ErrorReply>(
+			'/workout-programs',
+			body
+		)
+	}
 	workoutProgramsList() {
 		return this.httpClient.get<WorkoutProgramsReply, ErrorReply>('/workout-programs')
 	}
@@ -61,30 +74,32 @@ export class Api {
 			body
 		)
 	}
+	deleteWorkoutProgram(id: string) {
+		return this.httpClient.delete<boolean, ErrorReply>(`/workout-programs/${id}`)
+	}
+	// Workouts
 	getWorkout(workoutId: string | number) {
 		return this.httpClient.get<FullWorkoutReply, ErrorReply>(`/workouts/${workoutId}`)
 	}
 	createWorkout(workoutProgramId: string | number, body: CreateWorkoutDto) {
-		return this.httpClient.post<CreateWorkoutDto, ErrorReply>(
+		return this.httpClient.post<CreateWorkoutDto, WorkoutReply, ErrorReply>(
 			`/workout-programs/${workoutProgramId}/workouts`,
 			body
 		)
 	}
-	getExercise(exerciseId: string | number) {
-		return this.httpClient.get<FullExerciseReply, ErrorReply>(`/exercises/${exerciseId}`)
+	updateWorkout(workoutId: string | number, body: UpdateWorkoutDto) {
+		return this.httpClient.put<UpdateWorkoutDto, WorkoutReply, ErrorReply>(
+			`/workouts/${workoutId}`,
+			body
+		)
 	}
 	getWorkoutProgramWorkouts(workoutProgramId: string | number, workoutId: string | number) {
 		return this.httpClient.get<FullWorkoutReply, ErrorReply>(
 			`/workout-programs/${workoutProgramId}/workouts/${workoutId}`
 		)
 	}
-	createWorkoutProgram(body: CreateWorkoutProgramDto) {
-		return this.httpClient.post<CreateWorkoutProgramDto, WorkoutProgramReply, ErrorReply>(
-			'/workout-programs',
-			body
-		)
-	}
-	deleteWorkoutProgram(id: string) {
-		return this.httpClient.delete<boolean, ErrorReply>(`/workout-programs/${id}`)
+	// Exercises
+	getExercise(exerciseId: string | number) {
+		return this.httpClient.get<FullExerciseReply, ErrorReply>(`/exercises/${exerciseId}`)
 	}
 }

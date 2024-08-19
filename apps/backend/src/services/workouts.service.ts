@@ -21,7 +21,11 @@ export class WorkoutsService {
 	}
 
 	async findWorkout(id: number) {
-		return this.workoutRepository.findWorkout(id)
+		const workout = await this.workoutRepository.findWorkout(id)
+		if (!workout || !workout.workoutProgramId)
+			throw this.server.httpErrors.badRequest(workoutErrors.NOT_EXIST)
+
+		return workout
 	}
 
 	async getFullWorkout(id: number) {
@@ -32,13 +36,12 @@ export class WorkoutsService {
 		return workout
 	}
 
-	async updateWorkout(
-		workoutId: number,
-		dto: UpdateWorkoutDto,
-		userId: number,
-		workoutProgramId: number
-	) {
-		await this.workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId)
+	async updateWorkout(workoutId: number, dto: UpdateWorkoutDto, userId: number) {
+		const workout = await this.workoutRepository.findWorkout(workoutId)
+		if (!workout || !workout.workoutProgramId)
+			throw this.server.httpErrors.badRequest(workoutErrors.NOT_EXIST)
+
+		await this.workoutProgramService.findUserWorkoutProgram(userId, workout?.workoutProgramId)
 
 		return this.workoutRepository.updateWorkout(workoutId, dto)
 	}
