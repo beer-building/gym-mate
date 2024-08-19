@@ -1,30 +1,11 @@
-import { Composer, InlineKeyboard } from 'grammy'
+import { Composer } from 'grammy'
 import { AppContext } from '../domain'
-import { api } from '../services/http.service'
+import { WorkoutKeyboards } from '../keyboards'
 
 const composer = new Composer<AppContext>()
 
-composer.callbackQuery(/open_workout_(\d+)/, async (ctx) => {
-	const workoutId = ctx.match[1]!
+composer.callbackQuery(/open_workout_(\d+)/, WorkoutKeyboards.openWorkoutKeyboard)
 
-	const { data } = await api.getWorkout(workoutId)
-
-	const keyboard = new InlineKeyboard()
-
-	data.workout.exercises.forEach(({ exercise }) => {
-		keyboard.text(exercise.title, 'open_exercise_' + exercise.id)
-	})
-
-	const text = `
-	    *Workout:* ${data.workout.title}
-	    `
-
-	await ctx.answerCallbackQuery()
-
-	ctx.reply(text, {
-		reply_markup: keyboard.toFlowed(1),
-		parse_mode: 'Markdown'
-	})
-})
+composer.callbackQuery(/edit_workout_(\d+)/, WorkoutKeyboards.editWorkoutKeyboard)
 
 export default composer
