@@ -50,7 +50,7 @@ export class WorkoutsService {
 	async addExerciseToWorkout(workoutId: number, dto: number) {
 		const workout = await this.getFullWorkout(workoutId)
 
-		if (workout.exercises.find(({ exercise }) => exercise.id === dto)) {
+		if (workout.workoutExercises.find(({ exercise }) => exercise.id === dto)) {
 			throw this.server.httpErrors.conflict(workoutErrors.ALREADY_ADDED)
 		}
 

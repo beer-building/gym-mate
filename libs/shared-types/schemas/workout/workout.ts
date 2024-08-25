@@ -10,7 +10,7 @@ export const WorkoutSchema = Type.Object({
 })
 
 const withWorkoutExercises = Type.Object({
-	exercises: Type.Array(WorkoutExerciseSchema)
+	workoutExercises: Type.Array(WorkoutExerciseSchema)
 })
 
 const FullWorkoutSchema = Type.Intersect([WorkoutSchema, withWorkoutExercises])

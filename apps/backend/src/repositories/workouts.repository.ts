@@ -18,7 +18,7 @@ export class WorkoutsRepository {
 		return this.server.prisma.workout.update({
 			where: { id },
 			data: {
-				exercises: {
+				workoutExercises: {
 					createMany: {
 						data: {
 							exerciseId: dto
@@ -45,7 +45,7 @@ export class WorkoutsRepository {
 	async getFullWorkout(id: number) {
 		return this.server.prisma.workout.findUnique({
 			where: { id },
-			include: { exercises: { include: { exercise: { include: { bodyLoad: true } } } } }
+			include: { workoutExercises: { include: { exercise: { include: { bodyLoad: true } } } } }
 		})
 	}
 

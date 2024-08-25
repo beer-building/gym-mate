@@ -9,11 +9,14 @@ export const openWorkoutKeyboard: CallbackQueryMiddleware = async (ctx) => {
 
 	const keyboard = new InlineKeyboard()
 
-	data.workout.exercises.forEach(({ exercise }) => {
+	data.workout.workoutExercises.forEach(({ exercise }) => {
 		keyboard.text(exercise.title, 'open_exercise_' + exercise.id).row()
 	})
 
-	keyboard.text('Edit', 'edit_workout_' + workoutId).text('Delete', 'delete_workout_' + workoutId)
+	keyboard
+		.text('Edit', 'edit_workout_' + workoutId)
+		.text('Delete', 'delete_workout_' + workoutId)
+		.toFlowed(2)
 
 	const text = `
 	    *Workout:* ${data.workout.title}

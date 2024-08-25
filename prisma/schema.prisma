@@ -59,7 +59,7 @@ model Workout {
   title            String            @default("")
   workoutProgram   WorkoutProgram?   @relation(fields: [workoutProgramId], references: [id])
   workoutProgramId Int?
-  exercises        WorkoutExercise[]
+  workoutExercises WorkoutExercise[]
 }
 
 model WorkoutExercise {
