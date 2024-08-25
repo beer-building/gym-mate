@@ -20,7 +20,6 @@ composer.callbackQuery(/open_exercise_(\d+)/, async (ctx) => {
 
 	await ctx.answerCallbackQuery()
 	ctx.reply(text, {
-		// reply_markup: programsKeyboard.toFlowed(1),
 		parse_mode: 'Markdown'
 	})
 })

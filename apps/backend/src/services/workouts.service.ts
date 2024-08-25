@@ -38,12 +38,23 @@ export class WorkoutsService {
 
 	async updateWorkout(workoutId: number, dto: UpdateWorkoutDto, userId: number) {
 		const workout = await this.workoutRepository.findWorkout(workoutId)
+
 		if (!workout || !workout.workoutProgramId)
 			throw this.server.httpErrors.badRequest(workoutErrors.NOT_EXIST)
 
 		await this.workoutProgramService.findUserWorkoutProgram(userId, workout?.workoutProgramId)
 
 		return this.workoutRepository.updateWorkout(workoutId, dto)
+	}
+
+	async addExerciseToWorkout(workoutId: number, dto: number) {
+		const workout = await this.getFullWorkout(workoutId)
+
+		if (workout.exercises.find(({ exercise }) => exercise.id === dto)) {
+			throw this.server.httpErrors.conflict(workoutErrors.ALREADY_ADDED)
+		}
+
+		return this.workoutRepository.addExerciseToWorkout(workoutId, dto)
 	}
 
 	async createWorkout(userId: number, workoutProgramId: number, dto: CreateWorkoutDto) {

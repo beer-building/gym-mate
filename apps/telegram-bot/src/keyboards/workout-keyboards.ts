@@ -21,8 +21,8 @@ export const openWorkoutKeyboard: CallbackQueryMiddleware = async (ctx) => {
 
 	await ctx.answerCallbackQuery()
 
-	ctx.reply(text, {
-		reply_markup: keyboard.toFlowed(2),
+	await ctx.reply(text, {
+		reply_markup: keyboard,
 		parse_mode: 'Markdown'
 	})
 }
@@ -32,11 +32,11 @@ export const editWorkoutKeyboard: CallbackQueryMiddleware = async (ctx) => {
 
 	const editKeyboard = new InlineKeyboard()
 		.text('Change title', `change_workout_title_${id}`)
-		.text('Add exercise')
-		.text('Remove exercise')
+		.text('Add exercise', `exercise_to_workout_list_${id}`)
+		.text('Remove exercise') //TODO
 
 	await ctx.answerCallbackQuery()
-	ctx.reply('Edit workout', {
+	await ctx.reply('Edit workout', {
 		reply_markup: editKeyboard
 	})
 }

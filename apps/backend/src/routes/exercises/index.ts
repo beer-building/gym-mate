@@ -1,6 +1,6 @@
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox'
 import { ExercisesService } from '../../services'
-import { GetExerciseSchema } from '../../schemas'
+import { GetExerciseSchema, GetExercisesSchema } from '../../schemas'
 
 const exercisesRoute: FastifyPluginAsyncTypebox = async (server) => {
 	const exercisesService = new ExercisesService(server)
@@ -13,6 +13,12 @@ const exercisesRoute: FastifyPluginAsyncTypebox = async (server) => {
 		const exercise = await exercisesService.getExercise(exerciseId)
 
 		reply.status(200).send({ exercise })
+	})
+
+	server.get('', { schema: GetExercisesSchema }, async (request, reply) => {
+		const exercises = await exercisesService.getExerciseByMuscleGroup()
+
+		reply.status(200).send({ exercises })
 	})
 }
 

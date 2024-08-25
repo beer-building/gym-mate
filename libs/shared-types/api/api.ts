@@ -8,12 +8,13 @@ import {
 	WorkoutProgramsReply
 } from '../schemas/workout-programs'
 import {
+	AddWorkoutExerciseDto,
 	CreateWorkoutDto,
 	FullWorkoutReply,
 	UpdateWorkoutDto,
 	WorkoutReply
 } from '../schemas/workout'
-import { FullExerciseReply } from '../schemas/exercises'
+import { ExercisesByMuscleGroupReply, FullExerciseReply } from '../schemas/exercises'
 
 type Body = object | string
 
@@ -98,8 +99,17 @@ export class Api {
 			`/workout-programs/${workoutProgramId}/workouts/${workoutId}`
 		)
 	}
+	addExerciseToWorkout(workoutId: string | number, body: AddWorkoutExerciseDto) {
+		return this.httpClient.put<AddWorkoutExerciseDto, WorkoutReply, ErrorReply>(
+			`/workouts/${workoutId}/add_exercise`,
+			body
+		)
+	}
 	// Exercises
 	getExercise(exerciseId: string | number) {
 		return this.httpClient.get<FullExerciseReply, ErrorReply>(`/exercises/${exerciseId}`)
+	}
+	getAllExercises() {
+		return this.httpClient.get<ExercisesByMuscleGroupReply, ErrorReply>(`/exercises`)
 	}
 }

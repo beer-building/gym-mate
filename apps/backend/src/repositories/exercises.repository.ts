@@ -13,4 +13,10 @@ export class ExercisesRepository {
 			include: { bodyLoad: true }
 		})
 	}
+
+	async getExercises() {
+		return this.server.prisma.exercise.findMany({
+			include: { bodyLoad: true }
+		})
+	}
 }

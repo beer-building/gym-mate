@@ -1,5 +1,5 @@
 import { Muscle } from '@prisma/client'
-import { Type } from '@sinclair/typebox'
+import { Type, Static } from '@sinclair/typebox'
 
 export const BodyLoadSchema = Type.Object({
 	muscle: Type.Enum(Muscle),
@@ -12,6 +12,8 @@ export const ExerciseSchema = Type.Object({
 	description: Type.Union([Type.String(), Type.Null()]),
 	bodyLoad: Type.Array(BodyLoadSchema)
 })
+
+export type ExerciseSchema = Static<typeof ExerciseSchema>
 
 export const WorkoutExerciseSchema = Type.Object({
 	exercise: ExerciseSchema,

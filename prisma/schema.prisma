@@ -26,8 +26,9 @@ model User {
   image                  String?
   isRegistered           Boolean               @default(false)
   chatId                 Int?                  @unique
-  createdWorkoutPrograms WorkoutProgram[]
   workoutPrograms        UserWorkoutPrograms[]
+  // TODO: not used now
+  createdWorkoutPrograms WorkoutProgram[]
 }
 
 model WorkoutProgram {

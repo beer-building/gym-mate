@@ -14,6 +14,21 @@ export class WorkoutsRepository {
 		})
 	}
 
+	async addExerciseToWorkout(id: number, dto: number) {
+		return this.server.prisma.workout.update({
+			where: { id },
+			data: {
+				exercises: {
+					createMany: {
+						data: {
+							exerciseId: dto
+						}
+					}
+				}
+			}
+		})
+	}
+
 	async updateWorkout(id: number, dto: UpdateWorkoutDto) {
 		return this.server.prisma.workout.update({
 			data: { ...dto.workout },
