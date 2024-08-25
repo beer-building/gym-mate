@@ -2,6 +2,7 @@ import { InlineKeyboard } from 'grammy'
 import { CallbackQueryMiddleware } from '../domain'
 import { api } from '../services/http.service'
 
+//TODO: should return only keyboard and not use ctx
 export const openWorkoutKeyboard: CallbackQueryMiddleware = async (ctx) => {
 	const workoutId = ctx.match[1]!
 
@@ -9,8 +10,8 @@ export const openWorkoutKeyboard: CallbackQueryMiddleware = async (ctx) => {
 
 	const keyboard = new InlineKeyboard()
 
-	data.workout.workoutExercises.forEach(({ exercise }) => {
-		keyboard.text(exercise.title, 'open_exercise_' + exercise.id).row()
+	data.workout.workoutExercises.forEach(({ exercise, id }) => {
+		keyboard.text(exercise.title, 'open_workout_exercise_' + id).row()
 	})
 
 	keyboard

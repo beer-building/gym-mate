@@ -14,10 +14,3 @@ export const ExerciseSchema = Type.Object({
 })
 
 export type ExerciseSchema = Static<typeof ExerciseSchema>
-
-export const WorkoutExerciseSchema = Type.Object({
-	exercise: ExerciseSchema,
-	sets: Type.Number(),
-	reps: Type.Number(),
-	rest: Type.Number()
-})

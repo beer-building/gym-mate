@@ -7,7 +7,7 @@ import WorkoutModule from './workout.module'
 import ProgramModule from './program.module'
 import ProgramsModule from './programs.module'
 import ProgramCreateModule from './program-create.module'
-import ExerciseModule from './exercise.module'
+import WorkoutExercise from './workout-exercise.module'
 import { errorBoundaryMiddleware, updateTokenMiddleware } from '../middlewares'
 
 const composer = new Composer<AppContext>()
@@ -19,7 +19,7 @@ composer.errorBoundary(errorBoundaryMiddleware()).use(ProgramModule)
 composer.errorBoundary(errorBoundaryMiddleware()).use(ProgramsModule)
 composer.errorBoundary(errorBoundaryMiddleware()).use(ProgramCreateModule)
 composer.errorBoundary(errorBoundaryMiddleware()).use(WorkoutModule)
-composer.errorBoundary(errorBoundaryMiddleware()).use(ExerciseModule)
+composer.errorBoundary(errorBoundaryMiddleware()).use(WorkoutExercise)
 
 composer.command('current_state', (ctx) => {
 	ctx.reply(`<pre>${JSON.stringify(ctx.session)}</pre>`, {

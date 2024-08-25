@@ -1,6 +1,6 @@
 import { Static, Type } from '@sinclair/typebox'
 import { TDate } from '../t-date'
-import { WorkoutExerciseSchema } from '../exercises'
+import { WorkoutExerciseSchema } from '../workout-exercise'
 
 export const WorkoutSchema = Type.Object({
 	id: Type.Number(),

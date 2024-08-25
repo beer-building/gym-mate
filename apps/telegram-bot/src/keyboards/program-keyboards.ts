@@ -2,6 +2,7 @@ import { CommandMiddleware, InlineKeyboard } from 'grammy'
 import { api } from '../services/http.service'
 import { AppContext, CallbackQueryMiddleware } from '../domain'
 
+//TODO: should return only keyboard and not use ctx
 export const programsListKeyboard: CommandMiddleware<AppContext> = async (ctx) => {
 	const { data } = await api.workoutProgramsList()
 

@@ -15,6 +15,7 @@ import {
 	WorkoutReply
 } from '../schemas/workout'
 import { ExercisesByMuscleGroupReply, FullExerciseReply } from '../schemas/exercises'
+import { WorkoutExerciseReply } from '../schemas/workout-exercise'
 
 type Body = object | string
 
@@ -104,6 +105,10 @@ export class Api {
 			`/workouts/${workoutId}/add_exercise`,
 			body
 		)
+	}
+	// Workout exercises
+	getWorkoutExercise(exerciseId: string | number) {
+		return this.httpClient.get<WorkoutExerciseReply, ErrorReply>(`/workout-exercises/${exerciseId}`)
 	}
 	// Exercises
 	getExercise(exerciseId: string | number) {
