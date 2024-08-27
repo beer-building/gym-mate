@@ -8,6 +8,7 @@ const envSchema = z.object({
 	BACKEND_URL: z.string()
 })
 
+// TODO: replace with typebox
 const envValidationResult = envSchema.safeParse(process.env)
 
 if (!envValidationResult.success) {

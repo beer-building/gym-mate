@@ -1,5 +1,6 @@
 import { FastifyInstance } from 'fastify'
 import { WorkoutExerciseRepository } from '../repositories'
+import { EditWorkoutExerciseDto } from '@gym-mate/shared-types'
 
 export class WorkoutExerciseService {
 	server: FastifyInstance
@@ -14,6 +15,14 @@ export class WorkoutExerciseService {
 		const exercise = await this.workoutExercisesRepository.getExercise(exerciseId)
 
 		if (!exercise) throw this.server.httpErrors.badRequest('Exercise with this id does not exist')
+
+		return exercise
+	}
+
+	async updateExercise(exerciseId: number, dto: EditWorkoutExerciseDto) {
+		await this.getExercise(exerciseId)
+
+		const exercise = await this.workoutExercisesRepository.updateExercise(exerciseId, dto)
 
 		return exercise
 	}

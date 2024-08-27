@@ -15,7 +15,7 @@ import {
 	WorkoutReply
 } from '../schemas/workout'
 import { ExercisesByMuscleGroupReply, FullExerciseReply } from '../schemas/exercises'
-import { WorkoutExerciseReply } from '../schemas/workout-exercise'
+import { EditWorkoutExerciseDto, WorkoutExerciseReply } from '../schemas/workout-exercise'
 
 type Body = object | string
 
@@ -109,6 +109,12 @@ export class Api {
 	// Workout exercises
 	getWorkoutExercise(exerciseId: string | number) {
 		return this.httpClient.get<WorkoutExerciseReply, ErrorReply>(`/workout-exercises/${exerciseId}`)
+	}
+	updateWorkoutExercise(exerciseId: string | number, body: EditWorkoutExerciseDto) {
+		return this.httpClient.put<EditWorkoutExerciseDto, WorkoutExerciseReply, ErrorReply>(
+			`/workout-exercises/${exerciseId}`,
+			body
+		)
 	}
 	// Exercises
 	getExercise(exerciseId: string | number) {

@@ -1,3 +1,4 @@
+import { EditWorkoutExerciseDto } from '@gym-mate/shared-types'
 import { FastifyInstance } from 'fastify'
 
 export class WorkoutExerciseRepository {
@@ -17,6 +18,14 @@ export class WorkoutExerciseRepository {
 	async getExercises() {
 		return this.server.prisma.workoutExercise.findMany({
 			include: { exercise: true }
+		})
+	}
+
+	async updateExercise(id: number, dto: EditWorkoutExerciseDto) {
+		return this.server.prisma.workoutExercise.update({
+			where: { id },
+			data: dto.workoutExercise,
+			include: { exercise: { include: { bodyLoad: true } } }
 		})
 	}
 }
