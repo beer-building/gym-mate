@@ -1,14 +1,16 @@
 import { FastifyInstance } from 'fastify'
-import { WorkoutExerciseRepository } from '../repositories'
+import { WorkoutExerciseHistoryRepository, WorkoutExerciseRepository } from '../repositories'
 import { EditWorkoutExerciseDto } from '@gym-mate/shared-types'
 
 export class WorkoutExerciseService {
 	server: FastifyInstance
 	workoutExercisesRepository: WorkoutExerciseRepository
+	workoutExerciseHistoryRepository: WorkoutExerciseHistoryRepository
 
 	constructor(server: FastifyInstance) {
 		this.server = server
 		this.workoutExercisesRepository = new WorkoutExerciseRepository(server)
+		this.workoutExerciseHistoryRepository = new WorkoutExerciseHistoryRepository(server)
 	}
 
 	async getExercise(exerciseId: number) {
@@ -23,6 +25,14 @@ export class WorkoutExerciseService {
 		await this.getExercise(exerciseId)
 
 		const exercise = await this.workoutExercisesRepository.updateExercise(exerciseId, dto)
+
+		if (
+			dto.workoutExercise.reps !== exercise.reps ||
+			dto.workoutExercise.sets !== exercise.sets ||
+			dto.workoutExercise.weight !== exercise.weight
+		) {
+			this.workoutExerciseHistoryRepository.createHistory(dto, exercise.id)
+		}
 
 		return exercise
 	}
