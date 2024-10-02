@@ -5,8 +5,8 @@ export const CreateWorkoutSchema = {
 	description: 'Create workout in workout program',
 	params: IdParams,
 	body: CreateWorkoutDto,
-	tags: ['Authentication'],
-	summary: 'Workout program workout',
+	tags: ['Workouts'],
+	summary: 'Create workout in workout program',
 	response: {
 		201: WorkoutReply,
 		400: ErrorReply

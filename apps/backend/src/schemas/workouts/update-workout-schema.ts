@@ -5,8 +5,8 @@ export const UpdateWorkoutSchema = {
 	description: 'Update workout in workout program',
 	params: IdParams,
 	body: UpdateWorkoutDto,
-	tags: ['Authentication'],
-	summary: 'Workout program workout',
+	tags: ['Workouts'],
+	summary: 'Update workout in workout program',
 	response: {
 		200: WorkoutReply,
 		400: ErrorReply
