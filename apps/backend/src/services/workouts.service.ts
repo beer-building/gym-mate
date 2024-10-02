@@ -12,7 +12,7 @@ export class WorkoutsService {
 
 	constructor(server: FastifyInstance) {
 		this.server = server
-		this.workoutRepository = new WorkoutsRepository(server)
+		this.workoutRepository = new WorkoutsRepository(server.prisma)
 		this.workoutProgramService = new WorkoutProgramService(server)
 	}
 

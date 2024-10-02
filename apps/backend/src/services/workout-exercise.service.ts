@@ -9,8 +9,8 @@ export class WorkoutExerciseService {
 
 	constructor(server: FastifyInstance) {
 		this.server = server
-		this.workoutExercisesRepository = new WorkoutExerciseRepository(server)
-		this.workoutExerciseHistoryRepository = new WorkoutExerciseHistoryRepository(server)
+		this.workoutExercisesRepository = new WorkoutExerciseRepository(server.prisma)
+		this.workoutExerciseHistoryRepository = new WorkoutExerciseHistoryRepository(server.prisma)
 	}
 
 	async getExercise(exerciseId: number) {

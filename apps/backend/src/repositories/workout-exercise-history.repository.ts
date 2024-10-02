@@ -1,19 +1,18 @@
 import { EditWorkoutExerciseDto } from '@gym-mate/shared-types'
-import { Exercise } from '@prisma/client'
-import { FastifyInstance } from 'fastify'
+import { Exercise, PrismaClient } from '@prisma/client'
 
 export class WorkoutExerciseHistoryRepository {
-	server: FastifyInstance
+	prisma: PrismaClient
 
-	constructor(server: FastifyInstance) {
-		this.server = server
+	constructor(prisma: PrismaClient) {
+		this.prisma = prisma
 	}
 
 	async createHistory(
 		{ workoutExercise }: EditWorkoutExerciseDto,
 		workoutExerciseId: Exercise['id']
 	) {
-		return this.server.prisma.workoutExerciseHistory.create({
+		return this.prisma.workoutExerciseHistory.create({
 			data: {
 				workoutExerciseId,
 				reps: workoutExercise.reps,

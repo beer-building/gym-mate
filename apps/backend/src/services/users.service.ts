@@ -13,7 +13,7 @@ export class UsersService {
 
 	constructor(server: FastifyInstance) {
 		this.server = server
-		this.usersRepository = new UsersRepository(server)
+		this.usersRepository = new UsersRepository(server.prisma)
 	}
 
 	async findUserByEmail(email: string) {
