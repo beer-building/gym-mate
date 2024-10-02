@@ -1,4 +1,6 @@
-import { Static, Type } from '@sinclair/typebox'
+import { Type } from '@sinclair/typebox'
+import type { Static } from '@sinclair/typebox'
+
 import { WorkoutSchema } from './workout'
 
 export const WorkoutsReply = Type.Object({

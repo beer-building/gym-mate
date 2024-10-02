@@ -1,21 +1,26 @@
-import { ErrorReply } from '../schemas/error'
-import { CreateTelegramUserDto, CreateUserDto, LoginUserDto, UserReplyType } from '../schemas/users'
-import {
+import type { ErrorReply } from '../schemas/error'
+import type {
+	CreateTelegramUserDto,
+	CreateUserDto,
+	LoginUserDto,
+	UserReplyType
+} from '../schemas/users'
+import type {
 	CreateWorkoutProgramDto,
 	EditWorkoutProgramDto,
 	GetWorkoutProgramReply,
 	WorkoutProgramReply,
 	WorkoutProgramsReply
 } from '../schemas/workout-programs'
-import {
+import type {
 	AddWorkoutExerciseDto,
 	CreateWorkoutDto,
 	FullWorkoutReply,
 	UpdateWorkoutDto,
 	WorkoutReply
 } from '../schemas/workout'
-import { ExercisesByMuscleGroupReply, FullExerciseReply } from '../schemas/exercises'
-import { EditWorkoutExerciseDto, WorkoutExerciseReply } from '../schemas/workout-exercise'
+import type { ExercisesByMuscleGroupReply, FullExerciseReply } from '../schemas/exercises'
+import type { EditWorkoutExerciseDto, WorkoutExerciseReply } from '../schemas/workout-exercise'
 
 type Body = object | string
 
