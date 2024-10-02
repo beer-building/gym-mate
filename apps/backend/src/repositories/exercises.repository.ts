@@ -1,21 +1,21 @@
-import { FastifyInstance } from 'fastify'
+import { PrismaClient } from '@prisma/client'
 
 export class ExercisesRepository {
-	server: FastifyInstance
+	prisma: PrismaClient
 
-	constructor(server: FastifyInstance) {
-		this.server = server
+	constructor(prisma: PrismaClient) {
+		this.prisma = prisma
 	}
 
 	async getExercise(id: number) {
-		return this.server.prisma.exercise.findUnique({
+		return this.prisma.exercise.findUnique({
 			where: { id },
 			include: { bodyLoad: true }
 		})
 	}
 
 	async getExercises() {
-		return this.server.prisma.exercise.findMany({
+		return this.prisma.exercise.findMany({
 			include: { bodyLoad: true }
 		})
 	}

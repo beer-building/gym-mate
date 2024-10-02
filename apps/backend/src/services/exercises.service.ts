@@ -7,7 +7,7 @@ export class ExercisesService {
 
 	constructor(server: FastifyInstance) {
 		this.server = server
-		this.exercisesRepository = new ExercisesRepository(server)
+		this.exercisesRepository = new ExercisesRepository(server.prisma)
 	}
 
 	async getExercise(exerciseId: number) {

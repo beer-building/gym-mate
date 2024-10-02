@@ -1,28 +1,28 @@
 import { EditWorkoutExerciseDto } from '@gym-mate/shared-types'
-import { FastifyInstance } from 'fastify'
+import { PrismaClient } from '@prisma/client'
 
 export class WorkoutExerciseRepository {
-	server: FastifyInstance
+	prisma: PrismaClient
 
-	constructor(server: FastifyInstance) {
-		this.server = server
+	constructor(prisma: PrismaClient) {
+		this.prisma = prisma
 	}
 
 	async getExercise(id: number) {
-		return this.server.prisma.workoutExercise.findUnique({
+		return this.prisma.workoutExercise.findUnique({
 			where: { id },
 			include: { exercise: { include: { bodyLoad: true } } }
 		})
 	}
 
 	async getExercises() {
-		return this.server.prisma.workoutExercise.findMany({
+		return this.prisma.workoutExercise.findMany({
 			include: { exercise: true }
 		})
 	}
 
 	async updateExercise(id: number, dto: EditWorkoutExerciseDto) {
-		return this.server.prisma.workoutExercise.update({
+		return this.prisma.workoutExercise.update({
 			where: { id },
 			data: dto.workoutExercise,
 			include: { exercise: { include: { bodyLoad: true } } }

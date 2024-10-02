@@ -11,7 +11,7 @@ export class WorkoutProgramService {
 
 	constructor(server: FastifyInstance) {
 		this.server = server
-		this.workoutProgramRepository = new WorkoutProgramRepository(server)
+		this.workoutProgramRepository = new WorkoutProgramRepository(server.prisma)
 	}
 
 	createWorkoutProgram(dto: CreateWorkoutProgramDto, userId: number) {

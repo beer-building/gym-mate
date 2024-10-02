@@ -1,45 +1,45 @@
 import { CreateWorkoutProgramDto, EditWorkoutProgramDto } from '@gym-mate/shared-types'
-import { FastifyInstance } from 'fastify'
+import { PrismaClient } from '@prisma/client'
 
 export class WorkoutProgramRepository {
-	server: FastifyInstance
+	prisma: PrismaClient
 
-	constructor(server: FastifyInstance) {
-		this.server = server
+	constructor(prisma: PrismaClient) {
+		this.prisma = prisma
 	}
 
 	async createWorkoutProgram(dto: CreateWorkoutProgramDto, userId: number) {
-		return this.server.prisma.workoutProgram.create({
+		return this.prisma.workoutProgram.create({
 			data: { ...dto.workoutProgram, userId }
 		})
 	}
 
 	async findWorkoutProgram(id: number) {
-		return this.server.prisma.workoutProgram.findUnique({ where: { id } })
+		return this.prisma.workoutProgram.findUnique({ where: { id } })
 	}
 
 	async updateWorkoutProgram(dto: EditWorkoutProgramDto, workoutProgramId: number) {
-		return this.server.prisma.workoutProgram.update({
+		return this.prisma.workoutProgram.update({
 			where: { id: workoutProgramId },
 			data: dto.workoutProgram
 		})
 	}
 
 	async findUserWorkoutPrograms(userId: number) {
-		return this.server.prisma.workoutProgram.findMany({
+		return this.prisma.workoutProgram.findMany({
 			where: { userId }
 		})
 	}
 
 	async findUserWorkoutProgram(userId: number, workoutProgramId: number) {
-		return this.server.prisma.workoutProgram.findUnique({
+		return this.prisma.workoutProgram.findUnique({
 			where: { userId: userId, id: workoutProgramId },
 			include: { workouts: true }
 		})
 	}
 
 	async deleteWorkoutProgram(userId: number, workoutProgramId: number) {
-		return this.server.prisma.workoutProgram.delete({
+		return this.prisma.workoutProgram.delete({
 			where: { userId: userId, id: workoutProgramId }
 		})
 	}
