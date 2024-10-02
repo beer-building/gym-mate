@@ -5,8 +5,8 @@ import { WorkoutProgramWorkoutParams } from '../id-params'
 export const DeleteWorkoutSchema = {
 	description: 'Delete workout in workout program',
 	params: WorkoutProgramWorkoutParams,
-	tags: ['Authentication'],
-	summary: 'Delete workout',
+	tags: ['Workouts'],
+	summary: 'Delete workout in workout program',
 	response: {
 		200: Type.Object({ ok: Type.Boolean() }),
 		400: ErrorReply
