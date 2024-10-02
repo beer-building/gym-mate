@@ -11,7 +11,7 @@
 		"start": "pnpm run build:ts && fastify start -l info dist/src/app.js",
 		"build:ts": "tsc",
 		"watch:ts": "tsc -w",
-		"dev": "pnpm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"pnpm:watch:ts\" \"pnpm:dev:start\"",
+		"dev": "tsx watch src .env | pino-pretty --colorize",
 		"dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/src/app.js",
 		"prisma:generate": "prisma generate --schema=../../prisma/schema.prisma",
 		"lint": "prettier --check . && eslint . --ext .js,.ts",
@@ -32,18 +32,18 @@
 		"@gym-mate/shared-types": "workspace:*",
 		"@sinclair/typebox": "^0.31.28",
 		"bcryptjs": "^2.4.3",
+		"dotenv": "^16.4.5",
 		"fastify": "^4.0.0",
-		"fastify-cli": "^5.9.0",
 		"fastify-plugin": "^4.0.0"
 	},
 	"devDependencies": {
 		"@types/bcryptjs": "^2.4.6",
 		"@types/node": "^20.4.4",
 		"@types/tap": "^15.0.5",
-		"concurrently": "^8.2.2",
-		"fastify-tsconfig": "^2.0.0",
+		"pino-pretty": "^11.2.2",
 		"tap": "^16.1.0",
 		"ts-node": "^10.4.0",
+		"tsx": "^4.11.0",
 		"typescript": "^5.2.2"
 	}
 }

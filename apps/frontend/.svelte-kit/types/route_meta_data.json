@@ -1,0 +1,30 @@
+{
+	"/": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	],
+	"/app": [
+		"src/routes/app/+page.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	],
+	"/app/profile": [
+		"src/routes/+layout.ts"
+	],
+	"/app/workout-programs": [
+		"src/routes/+layout.ts"
+	],
+	"/app/workout-programs/new": [
+		"src/routes/+layout.ts"
+	],
+	"/auth": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	],
+	"/auth/login": [
+		"src/routes/+layout.ts"
+	],
+	"/auth/signup": [
+		"src/routes/+layout.ts"
+	]
+}

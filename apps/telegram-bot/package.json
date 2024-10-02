@@ -1,0 +1,22 @@
+{
+	"name": "telegram-bot",
+	"version": "1.0.0",
+	"description": "Gymmate telegram bot",
+	"main": "index.js",
+	"scripts": {
+		"dev": "tsx watch ./src/main.ts",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"license": "ISC",
+	"dependencies": {
+		"@gym-mate/shared-types": "workspace:*",
+		"@grammyjs/storage-prisma": "^2.4.2",
+		"@sinclair/typebox": "^0.31.28",
+		"dotenv": "^16.4.5",
+		"grammy": "^1.24.0",
+		"tsx": "^4.11.0",
+		"typescript": "^5.4.5",
+		"undici": "^6.18.2",
+		"zod": "^3.23.8"
+	}
+}

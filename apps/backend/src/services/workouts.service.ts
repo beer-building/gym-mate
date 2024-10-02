@@ -1,7 +1,8 @@
 import { FastifyInstance } from 'fastify'
 import { WorkoutsRepository } from '../repositories'
 import { WorkoutProgramService } from './workout-program.service'
-import { UpdateWorkoutDto } from '@gym-mate/shared-types'
+import { CreateWorkoutDto, UpdateWorkoutDto } from '@gym-mate/shared-types'
+import { workoutErrors } from '../constants'
 
 export class WorkoutsService {
 	server: FastifyInstance
@@ -20,24 +21,46 @@ export class WorkoutsService {
 	}
 
 	async findWorkout(id: number) {
-		return this.workoutRepository.findWorkout(id)
+		const workout = await this.workoutRepository.findWorkout(id)
+		if (!workout || !workout.workoutProgramId)
+			throw this.server.httpErrors.badRequest(workoutErrors.NOT_EXIST)
+
+		return workout
 	}
 
-	async updateWorkout(
-		workoutId: number,
-		dto: UpdateWorkoutDto,
-		userId: number,
-		workoutProgramId: number
-	) {
-		await this.workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId)
+	async getFullWorkout(id: number) {
+		const workout = await this.workoutRepository.getFullWorkout(id)
+
+		if (!workout) throw this.server.httpErrors.badRequest(workoutErrors.NOT_EXIST)
+
+		return workout
+	}
+
+	async updateWorkout(workoutId: number, dto: UpdateWorkoutDto, userId: number) {
+		const workout = await this.workoutRepository.findWorkout(workoutId)
+
+		if (!workout || !workout.workoutProgramId)
+			throw this.server.httpErrors.badRequest(workoutErrors.NOT_EXIST)
+
+		await this.workoutProgramService.findUserWorkoutProgram(userId, workout?.workoutProgramId)
 
 		return this.workoutRepository.updateWorkout(workoutId, dto)
 	}
 
-	async createWorkout(userId: number, workoutProgramId: number) {
+	async addExerciseToWorkout(workoutId: number, dto: number) {
+		const workout = await this.getFullWorkout(workoutId)
+
+		if (workout.workoutExercises.find(({ exercise }) => exercise.id === dto)) {
+			throw this.server.httpErrors.conflict(workoutErrors.ALREADY_ADDED)
+		}
+
+		return this.workoutRepository.addExerciseToWorkout(workoutId, dto)
+	}
+
+	async createWorkout(userId: number, workoutProgramId: number, dto: CreateWorkoutDto) {
 		await this.workoutProgramService.findUserWorkoutProgram(userId, workoutProgramId)
 
-		return this.workoutRepository.createWorkout(workoutProgramId)
+		return this.workoutRepository.createWorkout(workoutProgramId, dto)
 	}
 
 	async deleteWorkout(workoutId: number, userId: number, workoutProgramId: number) {

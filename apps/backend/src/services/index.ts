@@ -1,3 +1,5 @@
 export * from './users.service'
 export * from './workout-program.service'
 export * from './workouts.service'
+export * from './exercises.service'
+export * from './workout-exercise.service'

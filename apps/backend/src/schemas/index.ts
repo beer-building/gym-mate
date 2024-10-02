@@ -1,4 +1,6 @@
 export * from './users'
 export * from './workout-programs'
 export * from './workouts'
+export * from './exercises'
+export * from './workout-exercises'
 export * from './id-params'

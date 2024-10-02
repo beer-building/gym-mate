@@ -1,0 +1,282 @@
+{
+  "../../libs/ui/src/components/Icon/icons/profile.svg?raw": {
+    "file": "chunks/profile.js",
+    "isDynamicEntry": true,
+    "src": "../../libs/ui/src/components/Icon/icons/profile.svg?raw"
+  },
+  "../../libs/ui/src/components/Icon/icons/trash.svg?raw": {
+    "file": "chunks/trash.js",
+    "isDynamicEntry": true,
+    "src": "../../libs/ui/src/components/Icon/icons/trash.svg?raw"
+  },
+  "../../libs/ui/src/components/Icon/icons/workout.svg?raw": {
+    "file": "chunks/workout.js",
+    "isDynamicEntry": true,
+    "src": "../../libs/ui/src/components/Icon/icons/workout.svg?raw"
+  },
+  "../../node_modules/.pnpm/@sveltejs+kit@1.27.6_svelte@4.2.7_vite@4.5.0/node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
+    "file": "entries/fallbacks/error.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_stores.js"
+    ],
+    "isEntry": true,
+    "src": "../../node_modules/.pnpm/@sveltejs+kit@1.27.6_svelte@4.2.7_vite@4.5.0/node_modules/@sveltejs/kit/src/runtime/components/error.svelte"
+  },
+  "../../node_modules/.pnpm/@sveltejs+kit@1.27.6_svelte@4.2.7_vite@4.5.0/node_modules/@sveltejs/kit/src/runtime/components/layout.svelte": {
+    "file": "entries/fallbacks/layout.svelte.js",
+    "imports": [
+      "_ssr.js"
+    ],
+    "isEntry": true,
+    "src": "../../node_modules/.pnpm/@sveltejs+kit@1.27.6_svelte@4.2.7_vite@4.5.0/node_modules/@sveltejs/kit/src/runtime/components/layout.svelte"
+  },
+  "../../node_modules/.pnpm/@sveltejs+kit@1.27.6_svelte@4.2.7_vite@4.5.0/node_modules/@sveltejs/kit/src/runtime/server/index.js": {
+    "file": "index.js",
+    "imports": [
+      "_internal.js",
+      "_index.js",
+      "_ssr.js"
+    ],
+    "isEntry": true,
+    "src": "../../node_modules/.pnpm/@sveltejs+kit@1.27.6_svelte@4.2.7_vite@4.5.0/node_modules/@sveltejs/kit/src/runtime/server/index.js"
+  },
+  ".svelte-kit/generated/server/internal.js": {
+    "file": "internal.js",
+    "imports": [
+      "_internal.js"
+    ],
+    "isEntry": true,
+    "src": ".svelte-kit/generated/server/internal.js"
+  },
+  "Icon.css": {
+    "file": "_app/immutable/assets/Icon.d9577866.css",
+    "src": "Icon.css"
+  },
+  "_Input.js": {
+    "css": [
+      "_app/immutable/assets/Icon.d9577866.css"
+    ],
+    "file": "chunks/Input.js",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_RouteGuard.js": {
+    "file": "chunks/RouteGuard.js",
+    "imports": [
+      "_ssr.js",
+      "_navigation.js"
+    ]
+  },
+  "_auth.service.js": {
+    "file": "chunks/auth.service.js",
+    "imports": [
+      "_http-service.js"
+    ]
+  },
+  "_constants.js": {
+    "file": "chunks/constants.js",
+    "imports": [
+      "_http-service.js"
+    ]
+  },
+  "_http-service.js": {
+    "file": "chunks/http-service.js"
+  },
+  "_index.js": {
+    "file": "chunks/index.js"
+  },
+  "_internal.js": {
+    "file": "chunks/internal.js",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_navigation.js": {
+    "file": "chunks/navigation.js"
+  },
+  "_ssr.js": {
+    "file": "chunks/ssr.js"
+  },
+  "_stores.js": {
+    "file": "chunks/stores.js",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_workout-programs.api.js": {
+    "file": "chunks/workout-programs.api.js",
+    "imports": [
+      "_http-service.js"
+    ]
+  },
+  "src/routes/+layout.css": {
+    "file": "_app/immutable/assets/_layout.ea058804.css",
+    "src": "src/routes/+layout.css"
+  },
+  "src/routes/+layout.ts": {
+    "css": [
+      "_app/immutable/assets/_layout.ea058804.css"
+    ],
+    "file": "entries/pages/_layout.ts.js",
+    "imports": [
+      "_auth.service.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/+layout.ts"
+  },
+  "src/routes/+page.css": {
+    "file": "_app/immutable/assets/_page.6bcd567f.css",
+    "src": "src/routes/+page.css"
+  },
+  "src/routes/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/_page.6bcd567f.css"
+    ],
+    "file": "entries/pages/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_auth.service.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/+page.svelte"
+  },
+  "src/routes/app/+layout.css": {
+    "file": "_app/immutable/assets/_layout.fb1d0df0.css",
+    "src": "src/routes/app/+layout.css"
+  },
+  "src/routes/app/+layout.svelte": {
+    "css": [
+      "_app/immutable/assets/_layout.fb1d0df0.css",
+      "_app/immutable/assets/Icon.d9577866.css"
+    ],
+    "dynamicImports": [
+      "../../libs/ui/src/components/Icon/icons/profile.svg?raw",
+      "../../libs/ui/src/components/Icon/icons/trash.svg?raw",
+      "../../libs/ui/src/components/Icon/icons/workout.svg?raw"
+    ],
+    "file": "entries/pages/app/_layout.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_stores.js",
+      "_RouteGuard.js",
+      "_auth.service.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/app/+layout.svelte"
+  },
+  "src/routes/app/+page.ts": {
+    "file": "entries/pages/app/_page.ts.js",
+    "imports": [
+      "_index.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/app/+page.ts"
+  },
+  "src/routes/app/profile/+page.svelte": {
+    "file": "entries/pages/app/profile/_page.svelte.js",
+    "imports": [
+      "_ssr.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/app/profile/+page.svelte"
+  },
+  "src/routes/app/workout-programs/+page.css": {
+    "file": "_app/immutable/assets/_page.ca8c0b7d.css",
+    "src": "src/routes/app/workout-programs/+page.css"
+  },
+  "src/routes/app/workout-programs/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/_page.ca8c0b7d.css"
+    ],
+    "file": "entries/pages/app/workout-programs/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_workout-programs.api.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/app/workout-programs/+page.svelte"
+  },
+  "src/routes/app/workout-programs/[id]/+page.svelte": {
+    "file": "entries/pages/app/workout-programs/_id_/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_stores.js",
+      "_workout-programs.api.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/app/workout-programs/[id]/+page.svelte"
+  },
+  "src/routes/app/workout-programs/new/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/Icon.d9577866.css"
+    ],
+    "file": "entries/pages/app/workout-programs/new/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_Input.js",
+      "_navigation.js",
+      "_workout-programs.api.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/app/workout-programs/new/+page.svelte"
+  },
+  "src/routes/auth/+layout.svelte": {
+    "file": "entries/pages/auth/_layout.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_RouteGuard.js",
+      "_auth.service.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/auth/+layout.svelte"
+  },
+  "src/routes/auth/+page.svelte": {
+    "file": "entries/pages/auth/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_RouteGuard.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/auth/+page.svelte"
+  },
+  "src/routes/auth/login/+page.css": {
+    "file": "_app/immutable/assets/_page.a1e917d8.css",
+    "src": "src/routes/auth/login/+page.css"
+  },
+  "src/routes/auth/login/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/_page.a1e917d8.css",
+      "_app/immutable/assets/Icon.d9577866.css"
+    ],
+    "file": "entries/pages/auth/login/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_Input.js",
+      "_constants.js",
+      "_auth.service.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/auth/login/+page.svelte"
+  },
+  "src/routes/auth/signup/+page.css": {
+    "file": "_app/immutable/assets/_page.afdf2424.css",
+    "src": "src/routes/auth/signup/+page.css"
+  },
+  "src/routes/auth/signup/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/_page.afdf2424.css",
+      "_app/immutable/assets/Icon.d9577866.css"
+    ],
+    "file": "entries/pages/auth/signup/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_Input.js",
+      "_constants.js",
+      "_auth.service.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/auth/signup/+page.svelte"
+  }
+}

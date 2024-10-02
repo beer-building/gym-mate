@@ -1,5 +1,5 @@
 import { createEvent, createStore, sample } from 'effector'
-import { workoutProgramsApi } from '$lib/api/workout-programs'
+import { workoutProgramsApi } from '$lib/api'
 import type { WorkoutProgramUnit } from '@gym-mate/shared-types'
 
 export const workoutProgram$ = createStore({} as WorkoutProgramUnit)

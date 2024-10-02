@@ -10,32 +10,48 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Used for session management in telegram bot
+model Session {
+  id    Int    @id @default(autoincrement())
+  key   String @unique
+  value String
+}
+
 model User {
-  id                     Int                   @id @default(autoincrement())
-  createdAt              DateTime              @default(now())
-  email                  String                @unique
-  passwordHash           String
-  username               String                @default("")
-  image                  String?
-  createdWorkoutPrograms WorkoutProgram[]
+  id           Int     @id @default(autoincrement())
+  email        String? @unique
+  passwordHash String?
+  username     String  @default("")
+  image        String?
+  isRegistered Boolean @default(false)
+  chatId       Int?    @unique
+
   workoutPrograms        UserWorkoutPrograms[]
+  // TODO: not used now
+  createdWorkoutPrograms WorkoutProgram[]
+
+  createdAt DateTime @default(now())
 }
 
 model WorkoutProgram {
-  id                  Int                   @id @default(autoincrement())
-  createdAt           DateTime              @default(now())
-  createdBy           User                  @relation(fields: [userId], references: [id])
-  userId              Int
-  updatedAt           DateTime              @updatedAt
-  title               String                @default("")
-  description         String                @default("")
+  id          Int    @id @default(autoincrement())
+  title       String @default("")
+  description String @default("")
+
+  createdBy User @relation(fields: [userId], references: [id])
+  userId    Int
+
   workouts            Workout[]
   userWorkoutPrograms UserWorkoutPrograms[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model UserWorkoutPrograms {
-  user             User           @relation(fields: [userId], references: [id])
-  userId           Int
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
   workoutProgram   WorkoutProgram @relation(fields: [workoutProgramId], references: [id])
   workoutProgramId Int
 
@@ -43,12 +59,45 @@ model UserWorkoutPrograms {
 }
 
 model Workout {
-  id               Int             @id @default(autoincrement())
-  createdAt        DateTime        @default(now())
-  updatedAt        DateTime        @updatedAt
-  exercises        Exercise[]
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String   @default("")
+
   workoutProgram   WorkoutProgram? @relation(fields: [workoutProgramId], references: [id])
   workoutProgramId Int?
+
+  workoutExercises WorkoutExercise[]
+
+  history WorkoutExerciseHistory[]
+}
+
+model WorkoutExercise {
+  id Int @id @default(autoincrement())
+
+  workout   Workout @relation(fields: [workoutId], references: [id])
+  workoutId Int
+
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId Int
+
+  sets   Int @default(0)
+  reps   Int @default(0)
+  weight Int @default(0)
+  rest   Int @default(120)
+}
+
+model WorkoutExerciseHistory {
+  id                Int @id @default(autoincrement())
+  workoutExerciseId Int
+
+  weight Int @default(0)
+  reps   Int @default(0)
+  sets   Int @default(0)
+
+  createdAt DateTime @default(now())
+
+  Workout Workout[]
 }
 
 model Exercise {
@@ -56,16 +105,18 @@ model Exercise {
   title       String     @default("")
   description String?    @default("")
   bodyLoad    BodyLoad[]
-  workout     Workout?   @relation(fields: [workoutId], references: [id])
-  workoutId   Int?
+
+  workoutId       Int?
+  WorkoutExercise WorkoutExercise[]
 }
 
 model BodyLoad {
-  id         Int      @id @default(autoincrement())
+  id     Int    @id @default(autoincrement())
+  muscle Muscle
+  value  Int    @default(0)
+
   exercise   Exercise @relation(fields: [exerciseId], references: [id])
   exerciseId Int
-  muscle     Muscle
-  value      Int      @default(0) // max - 10 min - 1
 }
 
 enum Muscle {

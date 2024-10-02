@@ -1,7 +1,6 @@
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox'
-import { DeleteWorkoutSchema, GetWorkoutsSchema, UpdateWorkoutSchema } from '../../../../schemas'
+import { DeleteWorkoutSchema, GetWorkoutsSchema, CreateWorkoutSchema } from '../../../../schemas'
 import { WorkoutsService } from '../../../../services'
-import { CreateWorkoutSchema } from '../../../../schemas'
 
 const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 	const workoutsService = new WorkoutsService(server)
@@ -20,20 +19,9 @@ const workoutsRoute: FastifyPluginAsyncTypebox = async (server) => {
 		const workoutProgramId = request.params.id
 		const userId = request.user.id
 
-		const newWorkout = await workoutsService.createWorkout(userId, workoutProgramId)
+		const newWorkout = await workoutsService.createWorkout(userId, workoutProgramId, request.body)
 
 		return { workout: newWorkout }
-	})
-
-	server.put('/:workoutId', { schema: UpdateWorkoutSchema }, async (request, reply) => {
-		const workoutProgramId = request.params.id
-		const workoutId = request.params.workoutId
-		const userId = request.user.id
-		const dto = request.body
-
-		const workout = await workoutsService.updateWorkout(workoutId, dto, userId, workoutProgramId)
-
-		reply.status(204).send({ workout })
 	})
 
 	server.delete('/:workoutId', { schema: DeleteWorkoutSchema }, async (request) => {

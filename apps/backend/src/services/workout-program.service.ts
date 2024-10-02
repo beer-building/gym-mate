@@ -56,4 +56,8 @@ export class WorkoutProgramService {
 
 		return workoutProgram
 	}
+
+	deleteUserWorkoutProgram(userId: number, workoutProgramId: number) {
+		return this.workoutProgramRepository.deleteWorkoutProgram(userId, workoutProgramId)
+	}
 }

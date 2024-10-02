@@ -1,6 +1,7 @@
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox'
 import { WorkoutProgramService } from '../../../services'
 import {
+	DeleteProgramSchema,
 	EditWorkoutProgramSchema,
 	GetWorkoutProgramSchema
 } from '../../../schemas/workout-programs'
@@ -33,6 +34,15 @@ const workoutProgramRoutes: FastifyPluginAsyncTypebox = async (server) => {
 		)
 
 		return { workoutProgram: updatedWorkoutProgram }
+	})
+
+	server.delete('/', { schema: DeleteProgramSchema }, async (request) => {
+		const userId = request.user.id
+		const workoutProgramId = request.params.id
+
+		await workoutProgramService.deleteUserWorkoutProgram(userId, workoutProgramId)
+
+		return { success: true }
 	})
 }
 

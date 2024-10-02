@@ -37,4 +37,10 @@ export class WorkoutProgramRepository {
 			include: { workouts: true }
 		})
 	}
+
+	async deleteWorkoutProgram(userId: number, workoutProgramId: number) {
+		return this.server.prisma.workoutProgram.delete({
+			where: { userId: userId, id: workoutProgramId }
+		})
+	}
 }

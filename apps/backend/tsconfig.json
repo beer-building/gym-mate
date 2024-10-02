@@ -1,8 +1,22 @@
 {
-	"extends": ["../../tsconfig.json", "fastify-tsconfig"],
+	"extends": ["../../tsconfig.json"],
 	"compilerOptions": {
+		"target": "ES2022",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
 		"outDir": "dist",
-		"sourceMap": true
+		"sourceMap": true,
+		"esModuleInterop": true,
+		"strict": true,
+		"resolveJsonModule": true,
+		"removeComments": true,
+		"newLine": "lf",
+		"noUnusedLocals": true,
+		"noFallthroughCasesInSwitch": true,
+		"isolatedModules": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"lib": ["ESNext"]
 	},
 	"include": ["src/**/*.ts", "node_modules/@gym-mate/**/*"]
 }

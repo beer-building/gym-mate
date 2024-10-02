@@ -1,0 +1,1 @@
+import{h as t,y as e}from"./http-service.b939156e.js";import{c as r,a}from"./index.9a7c659e.js";const f=r({effect:t.get("/workout-programs")}),g=a({effect:t.post("/workout-programs")}),m=r({effect:e(o=>t.get(`/workout-programs/${o}`)())});export{g as c,f as g,m as w};
