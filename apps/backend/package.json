@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"test": "pnpm run build:ts && tsc -p test/tsconfig.json && tap --ts \"test/**/*.test.ts\"",
-		"start": "pnpm run build:ts && fastify start -l info dist/src/app.js",
+		"start": "node dist/src/index.js",
 		"build:ts": "tsc",
 		"watch:ts": "tsc -w",
 		"dev": "tsx watch src .env | pino-pretty --colorize",
@@ -34,7 +34,8 @@
 		"bcryptjs": "^2.4.3",
 		"dotenv": "^16.4.5",
 		"fastify": "^4.0.0",
-		"fastify-plugin": "^4.0.0"
+		"fastify-plugin": "^4.0.0",
+		"prisma": "^5.6.0"
 	},
 	"devDependencies": {
 		"@types/bcryptjs": "^2.4.6",

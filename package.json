@@ -8,7 +8,9 @@
 		"frontend:build": "pnpm --filter @gym-mate/frontend run build",
 		"dev": "pnpm recursive run dev",
 		"lint": "pnpm recursive run lint",
-		"lint:ts": "pnpm recursive run lint:ts"
+		"lint:ts": "pnpm recursive run lint:ts",
+		"start:backend": "pnpm --filter @gym-mate/backend run start",
+		"start:telegram-bot": "pnpm --filter @gym-mate/telegram-bot run start"
 	},
 	"prisma": {
 		"seed": "ts-node ./prisma/seeds/index.ts"
