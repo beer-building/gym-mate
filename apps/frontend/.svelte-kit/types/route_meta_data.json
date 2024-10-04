@@ -17,6 +17,9 @@
 	"/app/workout-programs/new": [
 		"src/routes/+layout.ts"
 	],
+	"/app/workout-programs/[id]": [
+		"src/routes/+layout.ts"
+	],
 	"/auth": [
 		"src/routes/+layout.ts",
 		"src/routes/+layout.ts"

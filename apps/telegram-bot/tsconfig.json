@@ -1,4 +1,5 @@
 {
+	"extends": ["../../tsconfig.json"],
 	"compilerOptions": {
 		"alwaysStrict": true,
 		"noImplicitAny": true,
@@ -22,7 +23,21 @@
 		"noImplicitUseStrict": false,
 		"suppressExcessPropertyErrors": false,
 		"suppressImplicitAnyIndexErrors": false,
-		"noStrictGenericChecks": false
+		"noStrictGenericChecks": false,
+		"skipLibCheck": true,
+
+		"target": "ES2022",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"sourceMap": true,
+		"esModuleInterop": true,
+		"strict": true,
+		"resolveJsonModule": true,
+		"removeComments": true,
+		"newLine": "lf",
+		"isolatedModules": true,
+		"lib": ["ESNext"],
+		"outDir": "dist"
 	},
-	"include": ["src/**/*"]
+	"include": ["src/**/*.ts", "node_modules/@gym-mate/**/*"]
 }

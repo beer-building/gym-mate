@@ -1,26 +1,55 @@
-version: '3'
 services:
   postgres:
     container_name: postgres
     image: postgres:latest
     ports:
-      - '5444:5432'
+      - '5432:5432'
     volumes:
       - /data/postgres:/data/postgres
-    env_file:
-      - docker.env
+    environment:
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD: 'admin'
+      POSTGRES_DB: 'gym-mate'
     networks:
-      - postgres
+      - internal
+    expose:
+      - '5432'
 
-  # TODO: For feature (It isn't working now)
-  # frontend: 
-  #   container_name: frontend
-  #   build: 
-  #     context: .
-  #     dockerfile: ./configs/docker/frontend/Dockerfile
-  #   ports:
-  #     - '4000:80'
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: ./apps/backend/Dockerfile
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    networks:
+      - internal
+    restart: always
+
+  telegram-bot:
+    container_name: telegram-bot
+    build:
+      context: .
+      dockerfile: ./apps/telegram-bot/Dockerfile
+    depends_on:
+      - backend
+    networks:
+      - internal
+
+  prisma-studio:
+    container_name: prisma-studio
+    build:
+      context: .
+      dockerfile: ./configs/docker/prisma-studio/Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - '5555:5555'
+    networks:
+      - internal
 
 networks:
-  postgres:
+  internal:
     driver: bridge
