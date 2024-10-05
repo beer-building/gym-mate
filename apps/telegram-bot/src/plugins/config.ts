@@ -1,7 +1,9 @@
 import { z } from 'zod'
 import { config } from 'dotenv'
 
-config()
+config({
+	path: '../../.env'
+})
 
 const envSchema = z.object({
 	BOT_TOKEN: z.string(),

@@ -21,18 +21,18 @@ COPY ./.env ./.env
 RUN pnpm install --frozen-lockfile
 RUN pnpm --filter @gym-mate/telegram-bot build:ts
 
-# Stage 2: Final image for production
-FROM node:20-alpine
+# # Stage 2: Final image for production
+# FROM node:20-alpine
 
-# Create working directory
-WORKDIR /app
+# # Create working directory
+# WORKDIR /app
 
-# Copy files from the build stage
-COPY --from=base /app/apps/telegram-bot /app
-COPY --from=base /app/node_modules /node_modules
-COPY --from=base /app/prisma /prisma
-COPY --from=base /app/tsconfig.json /tsconfig.json
-COPY --from=base /app/.env /.env
+# # Copy files from the build stage
+# COPY --from=base /app/apps/telegram-bot /app
+# COPY --from=base /app/node_modules /node_modules
+# COPY --from=base /app/prisma /prisma
+# COPY --from=base /app/tsconfig.json /tsconfig.json
+# COPY --from=base /app/.env /.env
 
 # Start the bot
-CMD ["npm", "start"]
+CMD ["sh", "-c", "pnpm start:telegram-bot"]
