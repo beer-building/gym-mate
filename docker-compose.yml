@@ -37,6 +37,7 @@ services:
       dockerfile: ./apps/telegram-bot/Dockerfile
     environment:
       BACKEND_URL: 'http://backend:3000'
+      DATABASE_URL: 'postgresql://admin:admin@postgres:5432/gym-mate?schema=public'
     depends_on:
       - backend
 
