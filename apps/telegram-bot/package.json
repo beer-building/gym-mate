@@ -1,11 +1,11 @@
 {
-	"name": "telegram-bot",
+	"name": "@gym-mate/telegram-bot",
 	"version": "1.0.0",
 	"description": "Gymmate telegram bot",
 	"main": "index.js",
 	"scripts": {
 		"dev": "tsx watch ./src/main.ts",
-		"start": "node dist/main.js",
+		"start": "node dist/src/main.js",
 		"build:ts": "tsc",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
