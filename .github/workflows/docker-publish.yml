@@ -1,0 +1,27 @@
+name: Publish Docker image to GitHub Container Registry
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build and push Docker image for backend
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/backend:${{ github.sha }} ./apps/backend
+          docker push ghcr.io/${{ github.repository }}/backend:${{ github.sha }}
+
+      - name: Build and push Docker image for telegram-bot
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/telegram-bot:${{ github.sha }} ./apps/telegram-bot
+          docker push ghcr.io/${{ github.repository }}/telegram-bot:${{ github.sha }}
