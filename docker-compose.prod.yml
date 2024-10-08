@@ -39,6 +39,7 @@ services:
       - internal
 
   backend:
+    container_name: gym-mate-backend
     image: ghcr.io/beer-building/gym-mate/backend:prod
     ports:
       - '3000:3000'
@@ -51,6 +52,7 @@ services:
     restart: always
 
   telegram-bot:
+    container_name: gym-mate-bot
     image: ghcr.io/beer-building/gym-mate/telegram-bot:prod
     environment:
       BACKEND_URL: 'http://backend:3000'
