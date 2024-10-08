@@ -26,7 +26,7 @@ docker-compose up --build
 npx prisma db seed
 ```
 
-### 4. Start frontend && backend
+### 4. Start all services in dev mode
 
 ```
 pnpm dev

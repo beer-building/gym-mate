@@ -25,35 +25,8 @@ services:
       - 5555:5555
     networks:
       - internal
-
-  backend:
-    container_name: backend
-    build:
-      context: .
-      dockerfile: ./apps/backend/Dockerfile
-    ports:
-      - '3000:3000'
-    environment:
-      DATABASE_URL: 'postgresql://admin:admin@postgres:5432/gym-mate?schema=public'
     depends_on:
       - postgres
-    networks:
-      - internal
-    restart: always
-
-  telegram-bot:
-    container_name: telegram-bot
-    build:
-      context: .
-      dockerfile: ./apps/telegram-bot/Dockerfile
-    environment:
-      BACKEND_URL: 'http://backend:3000'
-      DATABASE_URL: 'postgresql://admin:admin@postgres:5432/gym-mate?schema=public'
-    depends_on:
-      - backend
-
-    networks:
-      - internal
 
 networks:
   internal:

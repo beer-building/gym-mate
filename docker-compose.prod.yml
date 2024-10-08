@@ -1,4 +1,14 @@
 services:
+  watchtower:
+    image: containrrr/watchtower
+    command:
+      - '--label-enable'
+      - '--interval'
+      - '30'
+      - '--rolling-restart'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
   postgres:
     container_name: postgres
     image: postgres:latest
