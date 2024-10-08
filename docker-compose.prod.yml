@@ -1,0 +1,55 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    volumes:
+      - /data/postgres:/data/postgres
+    environment:
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD: 'admin'
+      POSTGRES_DB: 'gym-mate'
+    networks:
+      - internal
+    expose:
+      - '5432'
+
+  prisma-studio:
+    container_name: prisma-studio
+    image: timothyjmiller/prisma-studio:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_URL: 'postgresql://admin:admin@postgres:5432/gym-mate?schema=public'
+    ports:
+      - 5555:5555
+    depends_on:
+      - postgres
+    networks:
+      - internal
+
+  backend:
+    image: ghcr.io/beer-building/gym-mate/backend:prod
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: 'postgresql://admin:admin@postgres:5432/gym-mate?schema=public'
+    depends_on:
+      - postgres
+    networks:
+      - internal
+    restart: always
+
+  telegram-bot:
+    image: ghcr.io/beer-building/gym-mate/telegram-bot:prod
+    environment:
+      BACKEND_URL: 'http://backend:3000'
+      DATABASE_URL: 'postgresql://admin:admin@postgres:5432/gym-mate?schema=public'
+    depends_on:
+      - backend
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
