@@ -23,10 +23,10 @@ jobs:
 
       - name: Build and push Docker image for backend
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/backend:${{ github.sha }} ./apps/backend
+          docker build -t ghcr.io/${{ github.repository }}/backend:${{ github.sha }} -f ./apps/backend .
           docker push ghcr.io/${{ github.repository }}/backend:${{ github.sha }}
 
       - name: Build and push Docker image for telegram-bot
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/telegram-bot:${{ github.sha }} ./apps/telegram-bot
+          docker build -t ghcr.io/${{ github.repository }}/telegram-bot:${{ github.sha }} -f ./apps/telegram-bot .
           docker push ghcr.io/${{ github.repository }}/telegram-bot:${{ github.sha }}
