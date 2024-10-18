@@ -24,7 +24,7 @@ export class UsersService {
 		return existUser
 	}
 
-	async findUserByChatId(chatId: number) {
+	async findUserByChatId(chatId: string) {
 		const existUser = await this.usersRepository.findUserByChatId(chatId)
 
 		if (!existUser) throw this.server.httpErrors.unauthorized(usersErrors.USER_NOT_FOUND_ERROR)

@@ -13,6 +13,7 @@ const workoutProgramsRoutes: FastifyPluginAsyncTypebox = async (server) => {
 	server.get('/', { schema: GetWorkoutProgramsSchema }, async (request) => {
 		const userId = request.user.id
 		const workoutPrograms = await workoutProgramService.findUserWorkoutPrograms(userId)
+		console.log(workoutPrograms, 'workoutPrograms')
 
 		return { workoutPrograms }
 	})

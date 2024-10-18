@@ -12,7 +12,7 @@ export class UsersRepository {
 		return this.prisma.user.findUnique({ where: { email } })
 	}
 
-	async findUserByChatId(chatId: number): Promise<User | null> {
+	async findUserByChatId(chatId: string): Promise<User | null> {
 		return this.prisma.user.findUnique({ where: { chatId } })
 	}
 

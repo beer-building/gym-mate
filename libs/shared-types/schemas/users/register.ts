@@ -10,7 +10,7 @@ export const CreateUserDto = Type.Object({
 
 export const CreateTelegramUserDto = Type.Object({
 	user: Type.Object({
-		chatId: Type.Number()
+		chatId: Type.String()
 	})
 })
 

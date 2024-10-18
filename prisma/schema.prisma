@@ -24,7 +24,7 @@ model User {
   username     String  @default("")
   image        String?
   isRegistered Boolean @default(false)
-  chatId       Int?    @unique
+  chatId       String? @unique
 
   workoutPrograms        UserWorkoutPrograms[]
   // TODO: not used now
