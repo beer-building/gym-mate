@@ -27,7 +27,9 @@ composer.command([Command.login, 'start'], async (ctx) => {
 		console.log('user already logged in with token', ctx.session.token)
 	}
 
-	await ctx.reply('You are logged in!')
+	await ctx.reply(
+		'You are logged in 🎉! Type /create-program or /programs to create new program or get list of your trainings.'
+	)
 })
 
 export default composer
