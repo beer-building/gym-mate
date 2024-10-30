@@ -6,6 +6,8 @@ services:
       - '--interval'
       - '30'
       - '--rolling-restart'
+    env_file:
+      - .env
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
