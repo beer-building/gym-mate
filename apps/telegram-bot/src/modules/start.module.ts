@@ -29,7 +29,7 @@ composer.command([Command.login, 'start'], async (ctx) => {
 
 	await ctx.reply(
 		`You are logged in 🎉! 
-		Type /create-program or /programs to create new program or get list of your trainings.`
+Type /create-program or /programs to create new program or get list of your trainings.`
 	)
 })
 
