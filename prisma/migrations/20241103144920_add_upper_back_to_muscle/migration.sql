@@ -1,0 +1,2 @@
+-- AlterEnum
+ALTER TYPE "Muscle" ADD VALUE 'UPPER_BACK';
