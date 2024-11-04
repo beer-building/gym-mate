@@ -549,123 +549,204 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'One Arm Kettlebell Z Press',
+			description: 'https://www.muscleandstrength.com/exercises/one-arm-kettlebell-z-press',
 			bodyLoad: {
 				createMany: {
 					data: [
-						{ muscle: Muscle.FRONT_DELTA, value: 7 },
-						{ muscle: Muscle.MIDDLE_DELTA, value: 4 }
+						{
+							muscle: 'FRONT_DELTA',
+							value: 7
+						},
+						{
+							muscle: 'MIDDLE_DELTA',
+							value: 4
+						}
 					]
 				}
 			}
 		},
 		{
 			title: 'Standing Banded Face Pull',
+			description: 'https://www.muscleandstrength.com/exercises/banded-face-pull',
 			bodyLoad: {
 				createMany: {
 					data: [
-						{ muscle: Muscle.REAR_DELTA, value: 6 },
-						{ muscle: Muscle.TRAPEZE, value: 4 }
+						{
+							muscle: 'REAR_DELTA',
+							value: 6
+						}
 					]
 				}
 			}
 		},
 		{
 			title: 'Cable External Rotation',
+			description: 'https://www.muscleandstrength.com/exercises/cable-external-rotation',
 			bodyLoad: {
 				createMany: {
-					data: [{ muscle: Muscle.REAR_DELTA, value: 5 }]
+					data: [
+						{
+							muscle: 'REAR_DELTA',
+							value: 5
+						}
+					]
 				}
 			}
 		},
 		{
 			title: 'Cable Face Pull with External Rotation',
+			description:
+				'https://www.muscleandstrength.com/exercises/cable-face-pull-with-external-rotation',
 			bodyLoad: {
 				createMany: {
 					data: [
-						{ muscle: Muscle.REAR_DELTA, value: 6 },
-						{ muscle: Muscle.TRAPEZE, value: 3 }
+						{
+							muscle: 'REAR_DELTA',
+							value: 6
+						}
 					]
 				}
 			}
 		},
 		{
 			title: 'Side Lying Rear Delt Fly',
+			description: 'https://www.muscleandstrength.com/exercises/side-lying-rear-delt-fly',
 			bodyLoad: {
 				createMany: {
-					data: [{ muscle: Muscle.REAR_DELTA, value: 8 }]
+					data: [
+						{
+							muscle: 'REAR_DELTA',
+							value: 8
+						}
+					]
 				}
 			}
 		},
 		{
 			title: 'Landmine Lateral Raise',
+			description: 'https://www.muscleandstrength.com/exercises/landmine-lateral-raise',
 			bodyLoad: {
 				createMany: {
-					data: [{ muscle: Muscle.MIDDLE_DELTA, value: 7 }]
+					data: [
+						{
+							muscle: 'MIDDLE_DELTA',
+							value: 7
+						}
+					]
 				}
 			}
 		},
 		{
 			title: 'Banded Lateral Raise',
+			description: 'https://www.muscleandstrength.com/exercises/banded-lateral-raise',
 			bodyLoad: {
 				createMany: {
-					data: [{ muscle: Muscle.MIDDLE_DELTA, value: 6 }]
+					data: [
+						{
+							muscle: 'MIDDLE_DELTA',
+							value: 6
+						}
+					]
 				}
 			}
 		},
 		{
 			title: 'Kettlebell Lateral Raise',
+			description: 'https://www.muscleandstrength.com/exercises/kettlebell-lateral-raise',
 			bodyLoad: {
 				createMany: {
-					data: [{ muscle: Muscle.MIDDLE_DELTA, value: 6 }]
+					data: [
+						{
+							muscle: 'MIDDLE_DELTA',
+							value: 6
+						}
+					]
 				}
 			}
 		},
 		{
 			title: 'Standing Kettlebell Press',
+			description: 'https://www.muscleandstrength.com/exercises/standing-kettlebell-press',
 			bodyLoad: {
 				createMany: {
 					data: [
-						{ muscle: Muscle.FRONT_DELTA, value: 8 },
-						{ muscle: Muscle.MIDDLE_DELTA, value: 5 }
+						{
+							muscle: 'FRONT_DELTA',
+							value: 8
+						},
+						{
+							muscle: 'MIDDLE_DELTA',
+							value: 5
+						}
 					]
 				}
 			}
 		},
 		{
 			title: 'Lateral Raise Partials',
+			description: 'https://www.muscleandstrength.com/exercises/lateral-raise-partials',
 			bodyLoad: {
 				createMany: {
-					data: [{ muscle: Muscle.MIDDLE_DELTA, value: 6 }]
+					data: [
+						{
+							muscle: 'MIDDLE_DELTA',
+							value: 6
+						}
+					]
 				}
 			}
 		},
 		{
 			title: 'Alternating Dumbbell Front Raise',
+			description:
+				'https://www.muscleandstrength.com/exercises/alternate-standing-dumbbell-front-raise.html',
 			bodyLoad: {
 				createMany: {
-					data: [{ muscle: Muscle.FRONT_DELTA, value: 7 }]
+					data: [
+						{
+							muscle: 'FRONT_DELTA',
+							value: 7
+						}
+					]
 				}
 			}
 		},
 		{
 			title: 'Standing One Arm Kettlebell Press',
+			description: 'https://www.muscleandstrength.com/exercises/standing-one-arm-kettlebell-press',
 			bodyLoad: {
 				createMany: {
 					data: [
-						{ muscle: Muscle.FRONT_DELTA, value: 8 },
-						{ muscle: Muscle.MIDDLE_DELTA, value: 4 }
+						{
+							muscle: 'FRONT_DELTA',
+							value: 8
+						},
+						{
+							muscle: 'MIDDLE_DELTA',
+							value: 4
+						}
 					]
 				}
 			}
 		},
 		{
 			title: 'Dumbbell 6 Ways (Raise)',
+			description: 'https://www.muscleandstrength.com/exercises/dumbbell-6-ways',
 			bodyLoad: {
 				createMany: {
 					data: [
-						{ muscle: Muscle.FRONT_DELTA, value: 4 },
-						{ muscle: Muscle.MIDDLE_DELTA, value: 4 },
-						{ muscle: Muscle.REAR_DELTA, value: 4 }
+						{
+							muscle: 'FRONT_DELTA',
+							value: 4
+						},
+						{
+							muscle: 'MIDDLE_DELTA',
+							value: 4
+						},
+						{
+							muscle: 'REAR_DELTA',
+							value: 4
+						}
 					]
 				}
 			}
