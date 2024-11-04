@@ -6,6 +6,7 @@ export const HUMAN_MUSCLE_NAMES: Record<Muscle, string> = {
 	[Muscle.LATISSIMUS]: 'Latissimus',
 	[Muscle.TRAPEZE]: 'Trapeze',
 	[Muscle.NECK]: 'Neck',
+	[Muscle.UPPER_BACK]: 'Upper back',
 
 	[Muscle.BUTTOCKS]: 'Buttocks',
 
