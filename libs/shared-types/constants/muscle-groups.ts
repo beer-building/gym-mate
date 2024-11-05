@@ -16,6 +16,7 @@ export type MuscleGroup = (typeof MuscleGroup)[keyof typeof MuscleGroup]
 
 export const MUSCLE_GROUPS: Record<MuscleGroup, Array<Muscle>> = {
 	[MuscleGroup.BACK_AND_NECK]: [
+		Muscle.UPPER_BACK,
 		Muscle.SMALL_OF_THE_BACK,
 		Muscle.LATISSIMUS,
 		Muscle.TRAPEZE,

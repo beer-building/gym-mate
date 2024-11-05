@@ -4,6 +4,7 @@ import { WorkoutKeyboards } from '../keyboards'
 import { api } from '../services/http.service'
 import { HUMAN_MUSCLE_NAMES, MUSCLE_GROUPS, MuscleGroup } from '@gym-mate/shared-types'
 import { Muscle } from '@prisma/client'
+import { HUMAN_MUSCLE_GROUP_NAMES } from '@gym-mate/shared-types/constants/human-muscle-group-names'
 
 const composer = new Composer<AppContext>()
 
@@ -39,7 +40,12 @@ composer.callbackQuery(/exercise_to_workout_list_(\d+)/, async (ctx) => {
 	const keyboard = new InlineKeyboard()
 
 	Object.values(MuscleGroup).forEach((muscleGroup) => {
-		keyboard.text(muscleGroup, `open_muscle_group_for_workout_${muscleGroup}_${id}`).row()
+		keyboard
+			.text(
+				HUMAN_MUSCLE_GROUP_NAMES[muscleGroup],
+				`choose_equipment_for_muscle_group_${muscleGroup}_${id}`
+			)
+			.row()
 	})
 
 	const text = `
@@ -52,6 +58,8 @@ composer.callbackQuery(/exercise_to_workout_list_(\d+)/, async (ctx) => {
 	})
 })
 
+composer.callbackQuery(/choose_equipment_for_muscle_group_(\w+)_(\d+)/, async (ctx) => {})
+
 composer.callbackQuery(/open_muscle_group_for_workout_(\w+)_(\d+)/, async (ctx) => {
 	const muscleGroup = ctx.match[1]! as MuscleGroup
 	const id = ctx.match[2]!
@@ -61,11 +69,13 @@ composer.callbackQuery(/open_muscle_group_for_workout_(\w+)_(\d+)/, async (ctx) 
 	const keyboard = new InlineKeyboard()
 
 	MUSCLE_GROUPS[muscleGroup].forEach((muscle) => {
-		keyboard.text(muscle, `open_exercises_for_muscle_group_${muscle}_${id}`).row()
+		keyboard
+			.text(HUMAN_MUSCLE_NAMES[muscle], `open_exercises_for_muscle_group_${muscle}_${id}`)
+			.row()
 	})
 
 	const text = `
-	    *Exercises in ${muscleGroup}:* 
+	    *Exercises in muscle group* ${HUMAN_MUSCLE_GROUP_NAMES[muscleGroup]}: 
 	    `
 
 	await ctx.reply(text, {
@@ -91,7 +101,7 @@ composer.callbackQuery(/open_exercises_for_muscle_group_(\w+)_(\d+)/, async (ctx
 		})
 
 	const text = `
-	    *Exercises in*: ${HUMAN_MUSCLE_NAMES[muscle]}:
+	    *Exercises for muscle* ${HUMAN_MUSCLE_NAMES[muscle]}:
 	    `
 
 	await ctx.reply(text, {

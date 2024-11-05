@@ -105,6 +105,7 @@ model Exercise {
   title       String     @unique
   description String?    @default("")
   bodyLoad    BodyLoad[]
+  equipment   Equipment? @default(NONE)
 
   workoutId       Int?
   WorkoutExercise WorkoutExercise[]
@@ -161,17 +162,21 @@ enum Muscle {
   SHIN
 }
 
-// TODO: implement later
-// enum Equipment {
-//   BARBELL
-//   DUMBBELL
-//   KETTLEBELL
-//   CABLE
-//   MACHINE
-//   BODYWEIGHT
-//   BAND
-//   PLATE
-//   BALL
-//   BENCH
-//   NONE
-// }
+enum Equipment {
+  BARBELL
+  TRAP_BAR
+  DUMBBELL
+  KETTLEBELL
+  CABLE
+  MACHINE
+  BODYWEIGHT
+  BAND
+  PLATE
+  BALL
+  BENCH
+  PULL_UP_BAR
+  SMITH_MACHINE
+  CHAINS
+  SLED
+  NONE
+}

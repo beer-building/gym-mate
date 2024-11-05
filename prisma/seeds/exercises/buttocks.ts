@@ -1,10 +1,11 @@
-import { Muscle, Prisma } from '@prisma/client'
+import { Equipment, Muscle, Prisma } from '@prisma/client'
 import { createMigration } from '../helpers'
 
 createMigration(async (prisma) => {
 	const exercises: Array<Prisma.ExerciseCreateInput> = [
 		{
 			title: 'Bulgarian squats',
+			equipment: Equipment.DUMBBELL,
 			description: 'The Bulgarian squat is a great exercise for the buttocks and thighs.',
 			bodyLoad: {
 				createMany: {
@@ -43,6 +44,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Dumbbell Step Up',
+			equipment: Equipment.DUMBBELL,
 			description: 'The dumbbell step-up is a great exercise for the buttocks and thighs.',
 			bodyLoad: {
 				createMany: {
@@ -81,6 +83,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Barbell Hip Thrust',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/barbell-hip-thrust',
 			bodyLoad: {
 				createMany: {
@@ -103,6 +106,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Buttocks Kickback',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/barbell-hip-thrust',
 			bodyLoad: {
 				createMany: {
@@ -121,6 +125,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Romanian Deadlift',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/dumbbell-stiff-leg-deadlift.html',
 			bodyLoad: {
 				createMany: {
@@ -159,6 +164,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Barbell Hip Thrust',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/barbell-hip-thrust',
 			bodyLoad: {
 				createMany: {
@@ -173,6 +179,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Good Mornings',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/good-mornings.html',
 			bodyLoad: {
 				createMany: {
@@ -187,6 +194,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Standing Glute Kickback',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/standing-glute-kickback.html',
 			bodyLoad: {
 				createMany: {
@@ -201,6 +209,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Glute Kick Back',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/glute-kick-back.html',
 			bodyLoad: {
 				createMany: {
@@ -215,6 +224,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Wide Smith Machine Squat',
+			equipment: Equipment.SMITH_MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/wide-smith-machine-squat.html',
 			bodyLoad: {
 				createMany: {
@@ -229,6 +239,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Bodyweight Glute Bridge',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/bodyweight-glute-bridge',
 			bodyLoad: {
 				createMany: {
@@ -243,6 +254,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Reverse Hyperextension',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/reverse-hyperextension',
 			bodyLoad: {
 				createMany: {
@@ -257,6 +269,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Single Leg Glute Bridge',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/single-leg-glute-bridge',
 			bodyLoad: {
 				createMany: {
@@ -270,21 +283,8 @@ createMigration(async (prisma) => {
 			}
 		},
 		{
-			title: 'Weighted Hyperextension',
-			description: 'https://www.muscleandstrength.com/exercises/weighted-hyperextension',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.BUTTOCKS,
-							value: 0
-						}
-					]
-				}
-			}
-		},
-		{
 			title: 'Barbell Glute Bridge',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/barbell-glute-bridge',
 			bodyLoad: {
 				createMany: {
@@ -299,6 +299,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Side Lying Clam',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/side-lying-clam',
 			bodyLoad: {
 				createMany: {
@@ -313,6 +314,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Hip Thruster with Mini Band',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/hip-thruster-with-mini-band',
 			bodyLoad: {
 				createMany: {
@@ -327,6 +329,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Bodyweight Hip Thrust',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/bodyweight-hip-thrust',
 			bodyLoad: {
 				createMany: {
@@ -341,6 +344,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Banded Glute Bridge',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/banded-glute-bridge',
 			bodyLoad: {
 				createMany: {
@@ -355,6 +359,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Good Mornings Off Pins',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/good-morning-off-pins',
 			bodyLoad: {
 				createMany: {
@@ -369,6 +374,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Single Leg Hip Thrust with Dumbbell',
+			equipment: Equipment.DUMBBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/single-leg-hip-thrust-with-dumbbell',
 			bodyLoad: {
@@ -384,6 +390,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Curtsy Lunge (AKA Drop Lunge)',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/curtsy-lunge',
 			bodyLoad: {
 				createMany: {
@@ -398,6 +405,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Banded Good Morning',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/banded-good-mornings',
 			bodyLoad: {
 				createMany: {
@@ -412,6 +420,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Lateral Band Walk',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/lateral-band-walk',
 			bodyLoad: {
 				createMany: {
@@ -426,6 +435,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: '90/90 Piriformis Stretch',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/90-90-piriformis-stretch',
 			bodyLoad: {
 				createMany: {
@@ -440,6 +450,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Marching Glute Bridge',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/marching-glute-bridge',
 			bodyLoad: {
 				createMany: {
@@ -454,6 +465,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'GHD Back Extension',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/ghd-back-extension',
 			bodyLoad: {
 				createMany: {
@@ -468,6 +480,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Single Leg Good Morning',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/single-leg-good-morning',
 			bodyLoad: {
 				createMany: {
@@ -481,21 +494,8 @@ createMigration(async (prisma) => {
 			}
 		},
 		{
-			title: 'Glute Foam Rolling',
-			description: 'https://www.muscleandstrength.com/exercises/foam-rolling-glutes',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.BUTTOCKS,
-							value: 0
-						}
-					]
-				}
-			}
-		},
-		{
 			title: 'Banded Hip Thruster',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/banded-hip-thruster',
 			bodyLoad: {
 				createMany: {
@@ -508,22 +508,10 @@ createMigration(async (prisma) => {
 				}
 			}
 		},
-		{
-			title: 'Glute Lacrosse Ball',
-			description: 'https://www.muscleandstrength.com/exercises/glute-lacrosse-ball',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.BUTTOCKS,
-							value: 0
-						}
-					]
-				}
-			}
-		},
+
 		{
 			title: 'Hip Extensions',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/hip-extensions.html',
 			bodyLoad: {
 				createMany: {
@@ -538,6 +526,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Banded Multi Directional Toe Touch',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/banded-multi-directional-toe-touch',
 			bodyLoad: {
 				createMany: {
@@ -552,6 +541,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'X-Band Walk',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/x-band-walk',
 			bodyLoad: {
 				createMany: {
@@ -566,6 +556,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Single Leg Hip Thrust',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/single-leg-hip-thrust',
 			bodyLoad: {
 				createMany: {
@@ -580,6 +571,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Seated Good Mornings',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/seated-good-mornings.html',
 			bodyLoad: {
 				createMany: {
@@ -594,6 +586,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Side Lying Clam with Band',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/side-lying-clam-with-band',
 			bodyLoad: {
 				createMany: {
@@ -608,6 +601,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Sled Pull Through',
+			equipment: Equipment.SLED,
 			description: 'https://www.muscleandstrength.com/exercises/sled-pull-through',
 			bodyLoad: {
 				createMany: {
@@ -622,6 +616,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Knee to Chest Single Leg Glute Bridge',
+			equipment: Equipment.NONE,
 			description:
 				'https://www.muscleandstrength.com/exercises/knee-to-chest-single-leg-glute-bridge',
 			bodyLoad: {
@@ -637,6 +632,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Dynamic Pigeon',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/dynamic-pigeon',
 			bodyLoad: {
 				createMany: {
@@ -651,6 +647,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Figure 4 Glute Stretch',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/figure-4-glute-stretch',
 			bodyLoad: {
 				createMany: {
@@ -665,6 +662,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Standing External Rotation',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/standing-external-rotation',
 			bodyLoad: {
 				createMany: {
@@ -679,6 +677,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'GHD Back Extension Iso Hold',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/ghd-back-extension-iso-hold',
 			bodyLoad: {
 				createMany: {
@@ -693,6 +692,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Supine Hip Internal Rotation',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/supine-hip-internal-rotation',
 			bodyLoad: {
 				createMany: {
@@ -707,6 +707,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Supine Hip Internal Rotation',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/supine-hip-internal-rotation',
 			bodyLoad: {
 				createMany: {
@@ -721,6 +722,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Bodyweight Hip Thruster',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/bodyweight-hip-thruster',
 			bodyLoad: {
 				createMany: {
@@ -735,6 +737,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Diagonal Band Walk',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/diagonal-band-walk',
 			bodyLoad: {
 				createMany: {
