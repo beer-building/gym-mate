@@ -1,10 +1,11 @@
-import { Muscle, Prisma } from '@prisma/client'
+import { Equipment, Muscle, Prisma } from '@prisma/client'
 import { createMigration } from '../helpers'
 
 createMigration(async (prisma) => {
 	const exercises: Array<Prisma.ExerciseCreateInput> = [
 		{
 			title: 'Seated/standing dumbbell press',
+			equipment: Equipment.DUMBBELL,
 			bodyLoad: {
 				createMany: {
 					data: [
@@ -26,6 +27,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Military Press (AKA Overhead Press)',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/military-press.html',
 			bodyLoad: {
 				createMany: {
@@ -48,6 +50,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Dumbbell Lateral Raise',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html',
 			bodyLoad: {
 				createMany: {
@@ -66,6 +69,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Pull from the top rear delt block',
+			equipment: Equipment.CABLE,
 			bodyLoad: {
 				createMany: {
 					data: [
@@ -91,6 +95,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'One-Arm Dumbbell Lateral Raise',
+			equipment: Equipment.DUMBBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/one-arm-dumbbell-lateral-raise.html',
 			bodyLoad: {
@@ -105,6 +110,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Dumbbell Upright Row',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/dumbbell-upright-row.html',
 			bodyLoad: {
 				createMany: {
@@ -118,6 +124,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Cable Upright Row',
+			equipment: Equipment.CABLE,
 			description: 'https://www.muscleandstrength.com/exercises/cable-upright-row.html',
 			bodyLoad: {
 				createMany: {
@@ -131,6 +138,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Smith Machine Upright Row',
+			equipment: Equipment.SMITH_MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/smith-machine-upright-row.html',
 			bodyLoad: {
 				createMany: {
@@ -144,6 +152,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Bent Over Low Pulley Rear Delt Fly',
+			equipment: Equipment.CABLE,
 			description: 'https://www.muscleandstrength.com/exercises/bent-over-cable-rear-delt-fly',
 			bodyLoad: {
 				createMany: {
@@ -153,6 +162,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Band Pull Apart',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/band-pull-apart',
 			bodyLoad: {
 				createMany: {
@@ -165,6 +175,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Weight Plate Front Raise',
+			equipment: Equipment.PLATE,
 			description: 'https://www.muscleandstrength.com/exercises/weight-plate-front-raise.html',
 			bodyLoad: {
 				createMany: {
@@ -174,6 +185,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Half Kneeling Landmine Press',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/half-kneeling-landmine-press',
 			bodyLoad: {
 				createMany: {
@@ -186,6 +198,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Standing Arnold Press',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/standing-arnold-press.html',
 			bodyLoad: {
 				createMany: {
@@ -198,6 +211,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Z Press',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/z-press',
 			bodyLoad: {
 				createMany: {
@@ -210,6 +224,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Seated Neutral Grip Dumbbell Shoulder Press',
+			equipment: Equipment.DUMBBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/seated-palms-in-dumbbell-press.html',
 			bodyLoad: {
@@ -223,6 +238,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Push Press',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/push-press',
 			bodyLoad: {
 				createMany: {
@@ -235,6 +251,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Kettlebell Halo',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/kettlebell-halo',
 			bodyLoad: {
 				createMany: {
@@ -248,6 +265,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Clean Press',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/clean-press.html',
 			bodyLoad: {
 				createMany: {
@@ -260,6 +278,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Banded Shoulder Dislocates',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/banded-shoulder-dislocates',
 			bodyLoad: {
 				createMany: {
@@ -272,6 +291,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Bent Over Rear Delt Fly (Head on Bench)',
+			equipment: Equipment.DUMBBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/bent-over-rear-delt-fly-head-on-bench',
 			bodyLoad: {
@@ -282,6 +302,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Incline Rear Delt Fly',
+			equipment: Equipment.DUMBBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/dumbbell-reverse-fly-on-incline-bench.html',
 			bodyLoad: {
@@ -292,6 +313,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Kettlebell Angled Press',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/kettlebell-angled-press',
 			bodyLoad: {
 				createMany: {
@@ -304,6 +326,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Arm Circles',
+			equipment: Equipment.NONE,
 			description: 'https://www.muscleandstrength.com/exercises/arm-circles',
 			bodyLoad: {
 				createMany: {
@@ -316,6 +339,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Banded Standing Shoulder Press',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/banded-standing-shoulder-press',
 			bodyLoad: {
 				createMany: {
@@ -328,6 +352,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Dumbbell Lateral Raise',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html',
 			bodyLoad: {
 				createMany: {
@@ -340,6 +365,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Military Press (AKA Overhead Press)',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/military-press.html',
 			bodyLoad: {
 				createMany: {
@@ -352,6 +378,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Bent Over Dumbbell Reverse Fly',
+			equipment: Equipment.DUMBBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/bent-over-dumbbell-reverse-fly.html',
 			bodyLoad: {
@@ -362,6 +389,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Seated Dumbbell Press',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/seated-dumbbell-press.html',
 			bodyLoad: {
 				createMany: {
@@ -374,6 +402,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Seated Arnold Press',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/seated-arnold-press.html',
 			bodyLoad: {
 				createMany: {
@@ -386,6 +415,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Standing Dumbbell Shoulder Press',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/standing-dumbbell-press.html',
 			bodyLoad: {
 				createMany: {
@@ -398,6 +428,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Smith Machine Shoulder Press',
+			equipment: Equipment.SMITH_MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/smith-machine-shoulder-press.html',
 			bodyLoad: {
 				createMany: {
@@ -410,6 +441,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Seated Dumbbell Lateral Raise',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/seated-dumbbell-lateral-raise.html',
 			bodyLoad: {
 				createMany: {
@@ -422,6 +454,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Seated Barbell Shoulder Press',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/seated-shoulder-press.html',
 			bodyLoad: {
 				createMany: {
@@ -434,6 +467,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Standing Cable Reverse Fly',
+			equipment: Equipment.CABLE,
 			description: 'https://www.muscleandstrength.com/exercises/standing-cable-flys.html',
 			bodyLoad: {
 				createMany: {
@@ -443,6 +477,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Cable Face Pull',
+			equipment: Equipment.CABLE,
 			description: 'https://www.muscleandstrength.com/exercises/cable-face-pull',
 			bodyLoad: {
 				createMany: {
@@ -455,6 +490,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Seated Behind the Neck Shoulder Press',
+			equipment: Equipment.BARBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/seated-barbell-press-behind-neck.html',
 			bodyLoad: {
@@ -468,6 +504,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Seated Bent Over Dumbbell Reverse Fly',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/dumbbell-reverse-fly.html',
 			bodyLoad: {
 				createMany: {
@@ -477,6 +514,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Standing Dumbbell Front Raise',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/dumbbell-front-raise.html',
 			bodyLoad: {
 				createMany: {
@@ -486,6 +524,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Machine Shoulder Press',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/machine-shoulder-press',
 			bodyLoad: {
 				createMany: {
@@ -498,6 +537,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Cable Lateral Raise',
+			equipment: Equipment.CABLE,
 			description: 'https://www.muscleandstrength.com/exercises/two-arm-cable-lateral-raise.html',
 			bodyLoad: {
 				createMany: {
@@ -510,6 +550,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Single Arm Cable Lateral Raise (Crossbody)',
+			equipment: Equipment.CABLE,
 			description: 'https://www.muscleandstrength.com/exercises/one-arm-cable-lateral-raise.html',
 			bodyLoad: {
 				createMany: {
@@ -522,6 +563,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Machine Reverse Fly',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/machine-reverse-fly',
 			bodyLoad: {
 				createMany: {
@@ -531,6 +573,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Machine Lateral Raise',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/machine-lateral-raise.html',
 			bodyLoad: {
 				createMany: {
@@ -540,6 +583,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Barbell Front Raise',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/barbell-front-raise.html',
 			bodyLoad: {
 				createMany: {
@@ -549,6 +593,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'One Arm Kettlebell Z Press',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/one-arm-kettlebell-z-press',
 			bodyLoad: {
 				createMany: {
@@ -567,6 +612,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Standing Banded Face Pull',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/banded-face-pull',
 			bodyLoad: {
 				createMany: {
@@ -581,6 +627,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Cable External Rotation',
+			equipment: Equipment.CABLE,
 			description: 'https://www.muscleandstrength.com/exercises/cable-external-rotation',
 			bodyLoad: {
 				createMany: {
@@ -595,6 +642,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Cable Face Pull with External Rotation',
+			equipment: Equipment.CABLE,
 			description:
 				'https://www.muscleandstrength.com/exercises/cable-face-pull-with-external-rotation',
 			bodyLoad: {
@@ -610,6 +658,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Side Lying Rear Delt Fly',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/side-lying-rear-delt-fly',
 			bodyLoad: {
 				createMany: {
@@ -624,6 +673,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Landmine Lateral Raise',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/landmine-lateral-raise',
 			bodyLoad: {
 				createMany: {
@@ -638,6 +688,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Banded Lateral Raise',
+			equipment: Equipment.BAND,
 			description: 'https://www.muscleandstrength.com/exercises/banded-lateral-raise',
 			bodyLoad: {
 				createMany: {
@@ -652,6 +703,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Kettlebell Lateral Raise',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/kettlebell-lateral-raise',
 			bodyLoad: {
 				createMany: {
@@ -666,6 +718,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Standing Kettlebell Press',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/standing-kettlebell-press',
 			bodyLoad: {
 				createMany: {
@@ -684,6 +737,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Lateral Raise Partials',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/lateral-raise-partials',
 			bodyLoad: {
 				createMany: {
@@ -698,6 +752,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Alternating Dumbbell Front Raise',
+			equipment: Equipment.DUMBBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/alternate-standing-dumbbell-front-raise.html',
 			bodyLoad: {
@@ -713,6 +768,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Standing One Arm Kettlebell Press',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/standing-one-arm-kettlebell-press',
 			bodyLoad: {
 				createMany: {
@@ -731,6 +787,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Dumbbell 6 Ways (Raise)',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/dumbbell-6-ways',
 			bodyLoad: {
 				createMany: {

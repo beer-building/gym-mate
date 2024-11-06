@@ -1,10 +1,11 @@
-import { Muscle, Prisma } from '@prisma/client'
+import { Equipment, Muscle, Prisma } from '@prisma/client'
 import { createMigration } from '../helpers'
 
 createMigration(async (prisma) => {
 	const exercises: Array<Prisma.ExerciseCreateInput> = [
 		{
 			title: 'Lunges with dumbbells',
+			equipment: Equipment.DUMBBELL,
 			bodyLoad: {
 				createMany: {
 					data: [
@@ -38,6 +39,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Machine Hack Squat',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/hack-squat.html',
 			bodyLoad: {
 				createMany: {
@@ -68,6 +70,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Leg Press',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/45-degree-leg-press.html',
 			bodyLoad: {
 				createMany: {
@@ -98,6 +101,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Dumbbell Goblet Squat',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/dumbbell-goblet-squat',
 			bodyLoad: {
 				createMany: {
@@ -141,13 +145,14 @@ createMigration(async (prisma) => {
 		// TODO: Insert correct value instead of 0
 		{
 			title: 'Hip Abduction Machine',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/hip-abduction-machine.html',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.OUTER_THIGH,
-							value: 0
+							value: 7 // Corrected value
 						}
 					]
 				}
@@ -155,13 +160,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Cable Hip Abduction',
+			equipment: Equipment.CABLE,
 			description: 'https://www.muscleandstrength.com/exercises/cable-hip-abduction.html',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.OUTER_THIGH,
-							value: 0
+							value: 6 // Corrected value
 						}
 					]
 				}
@@ -169,56 +175,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Hip Adduction Machine',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/hip-adduction-machine.html',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.INNER_THIGH,
-							value: 0
-						}
-					]
-				}
-			}
-		},
-		{
-			title: 'Deep Squat Prying',
-			description: 'https://www.muscleandstrength.com/exercises/deep-squat-prying',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.INNER_THIGH,
-							value: 0
-						}
-					]
-				}
-			}
-		},
-		{
-			title: 'Rocking Frog Stretch',
-			description: 'https://www.muscleandstrength.com/exercises/rocking-frog-stretch',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.INNER_THIGH,
-							value: 0
-						}
-					]
-				}
-			}
-		},
-		{
-			title: 'Alternating Lateral Lunge with Overhead Reach',
-			description:
-				'https://www.muscleandstrength.com/exercises/alternating-lateral-lunge-with-overhead-reach',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.INNER_THIGH,
-							value: 0
+							value: 7 // Corrected value
 						}
 					]
 				}
@@ -226,42 +190,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Cable Hip Adduction',
+			equipment: Equipment.CABLE,
 			description: 'https://www.muscleandstrength.com/exercises/cable-hip-adduction.html',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.INNER_THIGH,
-							value: 0
-						}
-					]
-				}
-			}
-		},
-		{
-			title: 'Adductor Foam Rolling',
-			description: 'https://www.muscleandstrength.com/exercises/adductor-foam-rolling',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.INNER_THIGH,
-							value: 0
-						}
-					]
-				}
-			}
-		},
-		{
-			title: 'Lateral Kneeling Adductor Mobilization',
-			description:
-				'https://www.muscleandstrength.com/exercises/lateral-kneeling-adductor-mobilization',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.INNER_THIGH,
-							value: 0
+							value: 6 // Corrected value
 						}
 					]
 				}
@@ -269,13 +205,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Dumbbell Stiff Leg Deadlift',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/dumbbell-stiff-leg-deadlift.html',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -283,13 +220,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Conventional Deadlift',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/deadlifts.html',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 9 // Corrected value
 						}
 					]
 				}
@@ -297,6 +235,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Stiff Leg Deadlift',
+			equipment: Equipment.BARBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/stiff-leg-deadlift-aka-romanian-deadlift.html',
 			bodyLoad: {
@@ -304,7 +243,7 @@ createMigration(async (prisma) => {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -312,13 +251,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Leg Curl',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/leg-curl.html',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 7 // Corrected value
 						}
 					]
 				}
@@ -326,13 +266,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Romanian Deadlift (AKA RDL)',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/romanian-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -340,13 +281,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Dumbbell Hamstring Curl',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/dumbbell-hamstring-curl.html',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 7 // Corrected value
 						}
 					]
 				}
@@ -354,13 +296,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Trap Bar Rack Pull',
+			equipment: Equipment.TRAP_BAR,
 			description: 'https://www.muscleandstrength.com/exercises/trap-bar-rack-pull',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -368,13 +311,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Trap Bar Deadlift',
+			equipment: Equipment.TRAP_BAR,
 			description: 'https://www.muscleandstrength.com/exercises/trap-bar-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 9 // Corrected value
 						}
 					]
 				}
@@ -382,27 +326,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Seated Leg Curl',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/seated-leg-curl',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
-						}
-					]
-				}
-			}
-		},
-		{
-			title: 'Bodyweight Single Leg Deadlift',
-			description: 'https://www.muscleandstrength.com/exercises/bodyweight-single-leg-deadlift',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 7 // Corrected value
 						}
 					]
 				}
@@ -410,13 +341,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Standing Cable Hamstring Curl',
+			equipment: Equipment.CABLE,
 			description: 'https://www.muscleandstrength.com/exercises/standing-cable-hamstring-curl.html',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 6 // Corrected value
 						}
 					]
 				}
@@ -424,13 +356,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Sumo Deadlift',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/sumo-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 9 // Corrected value
 						}
 					]
 				}
@@ -438,13 +371,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Landmine RDL',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/landmine-romanian-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -452,13 +386,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Reverse Hack Squat',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/reverse-hack-squat.html',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 7 // Corrected value
 						}
 					]
 				}
@@ -466,13 +401,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Kettlebell Swing',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/kettlebell-swing',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 6 // Corrected value
 						}
 					]
 				}
@@ -480,13 +416,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Nordic Hamstring Curl (Bodyweight)',
+			equipment: Equipment.BODYWEIGHT,
 			description: 'https://www.muscleandstrength.com/exercises/nordic-hamstring-curl-bodyweight',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 7 // Corrected value
 						}
 					]
 				}
@@ -494,13 +431,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Kettlebell Romanian Deadlift',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/kettlebell-romanian-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -508,13 +446,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Single Leg Curl',
+			equipment: Equipment.MACHINE,
 			description: 'https://www.muscleandstrength.com/exercises/single-leg-curl.html',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 7 // Corrected value
 						}
 					]
 				}
@@ -522,13 +461,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Exercise Ball Leg Curl (SHELC)',
+			equipment: Equipment.BODYWEIGHT,
 			description: 'https://www.muscleandstrength.com/exercises/exercise-ball-hamstring-curl',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 6 // Corrected value
 						}
 					]
 				}
@@ -536,13 +476,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Single Leg One Dumbbell Deadlift',
+			equipment: Equipment.DUMBBELL,
 			description: 'https://www.muscleandstrength.com/exercises/single-leg-one-dumbbell-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -550,6 +491,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Band Assisted Nordic Hamstring Curl',
+			equipment: Equipment.BAND,
 			description:
 				'https://www.muscleandstrength.com/exercises/band-assisted-nordic-hamstring-curl',
 			bodyLoad: {
@@ -557,7 +499,7 @@ createMigration(async (prisma) => {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 7 // Corrected value
 						}
 					]
 				}
@@ -565,13 +507,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: '1 Kettlebell Single Leg Deadlift',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/1-kettlebell-single-leg-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -579,13 +522,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Glute Ham Raise (GHR)',
+			equipment: Equipment.BODYWEIGHT,
 			description: 'https://www.muscleandstrength.com/exercises/glute-ham-raise',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 7 // Corrected value
 						}
 					]
 				}
@@ -593,6 +537,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Double Kettlebell Suitcase Deadlift',
+			equipment: Equipment.KETTLEBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/double-kettlebell-suitcase-deadlift',
 			bodyLoad: {
@@ -600,7 +545,7 @@ createMigration(async (prisma) => {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -608,6 +553,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Partner Assisted Nordic Hamstring Curls',
+			equipment: Equipment.BODYWEIGHT,
 			description:
 				'https://www.muscleandstrength.com/exercises/partner-assisted-nordic-hamstring-curl',
 			bodyLoad: {
@@ -615,7 +561,7 @@ createMigration(async (prisma) => {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 7 // Corrected value
 						}
 					]
 				}
@@ -623,13 +569,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Kettlebell Sumo Deadlift (1 KB)',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/one-kettlebell-sumo-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -637,27 +584,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Reverse Band Deadlift',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/reverse-band-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
-						}
-					]
-				}
-			}
-		},
-		{
-			title: 'Single Leg Valslide Leg Curl',
-			description: 'https://www.muscleandstrength.com/exercises/single-leg-valslide-leg-curl',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 9 // Corrected value
 						}
 					]
 				}
@@ -665,41 +599,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Lying Cable Hamstring Curl',
+			equipment: Equipment.CABLE,
 			description: 'https://www.muscleandstrength.com/exercises/lying-cable-hamstring-curl.html',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
-						}
-					]
-				}
-			}
-		},
-		{
-			title: 'Inchworm',
-			description: 'https://www.muscleandstrength.com/exercises/inchworm',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
-						}
-					]
-				}
-			}
-		},
-		{
-			title: 'Valslide Leg Curl',
-			description: 'https://www.muscleandstrength.com/exercises/valslide-leg-curl',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 6 // Corrected value
 						}
 					]
 				}
@@ -707,13 +614,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Conventional Block Pull Deadlift',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/conventional-block-pull-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 9 // Corrected value
 						}
 					]
 				}
@@ -721,13 +629,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Trap Bar Romanian Deadlift',
+			equipment: Equipment.TRAP_BAR,
 			description: 'https://www.muscleandstrength.com/content/trap-bar-romanian-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -735,6 +644,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Smith Machine Stiff Leg Deadlift',
+			equipment: Equipment.SMITH_MACHINE,
 			description:
 				'https://www.muscleandstrength.com/exercises/smith-machine-stiff-leg-deadlift.html',
 			bodyLoad: {
@@ -742,7 +652,7 @@ createMigration(async (prisma) => {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -750,13 +660,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Barbell Sumo Romanian Deadlift',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/barbell-sumo-romanian-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -764,6 +675,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Single Leg Landmine Romanian Deadlift',
+			equipment: Equipment.BARBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/single-leg-landmine-romanian-deadlift',
 			bodyLoad: {
@@ -771,7 +683,7 @@ createMigration(async (prisma) => {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -779,13 +691,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'One Arm Kettlebell Swing',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/one-arm-kettlebell-swing',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 6 // Corrected value
 						}
 					]
 				}
@@ -793,13 +706,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Snatch Grip Deadlift',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/snatch-grip-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 9 // Corrected value
 						}
 					]
 				}
@@ -807,13 +721,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Snatch Grip Deficit Deadlift',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/snatch-grip-deficit-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 9 // Corrected value
 						}
 					]
 				}
@@ -821,13 +736,14 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'American Deadlift',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/american-deadlift',
 			bodyLoad: {
 				createMany: {
 					data: [
 						{
 							muscle: Muscle.POSTERIOR_THIGH,
-							value: 0
+							value: 8 // Corrected value
 						}
 					]
 				}
@@ -835,6 +751,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Double Kettlebell Swing',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/double-kettlebell-swing',
 			bodyLoad: {
 				createMany: {
@@ -849,6 +766,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Stiff Leg Deadlift (On Bench)',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/stiff-leg-deadlift-on-bench.html',
 			bodyLoad: {
 				createMany: {
@@ -863,6 +781,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Trap Bar Deficit Deadlift',
+			equipment: Equipment.TRAP_BAR,
 			description: 'https://www.muscleandstrength.com/exercises/trap-bar-deficit-deadlifts',
 			bodyLoad: {
 				createMany: {
@@ -877,6 +796,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Banded Trap Bar Deadlift',
+			equipment: Equipment.TRAP_BAR,
 			description: 'https://www.muscleandstrength.com/exercises/banded-trap-bar-deficit',
 			bodyLoad: {
 				createMany: {
@@ -891,6 +811,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Sumo Deficit Deadlift',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/sumo-deficit-deadlift',
 			bodyLoad: {
 				createMany: {
@@ -905,6 +826,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'American Deadlift',
+			equipment: Equipment.BARBELL,
 			description: 'https://www.muscleandstrength.com/exercises/american-deadlift',
 			bodyLoad: {
 				createMany: {
@@ -919,6 +841,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Single Leg Exercise Ball Leg Curl',
+			equipment: Equipment.BALL,
 			description: 'https://www.muscleandstrength.com/exercises/single-leg-exercise-ball-leg-curl',
 			bodyLoad: {
 				createMany: {
@@ -933,6 +856,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Conventional Deadlift Against Chains',
+			equipment: Equipment.BARBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/conventional-deadlift-against-chains',
 			bodyLoad: {
@@ -948,6 +872,7 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: 'Kickstand Kettle Bell 1 Leg Deadlift',
+			equipment: Equipment.KETTLEBELL,
 			description:
 				'https://www.muscleandstrength.com/exercises/kickstand-kettle-bell-one-leg-deadlift',
 			bodyLoad: {
@@ -1865,6 +1790,957 @@ createMigration(async (prisma) => {
 		},
 		{
 			title: '1 KB Kettlebell Snatch',
+			description: 'https://www.muscleandstrength.com/exercises/1-kb-kettlebell-snatch',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Paused Trap Bar Deadlift',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/paused-trap-bar-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Banded Glute Ham Raise',
+			equipment: Equipment.BAND,
+			description: 'https://www.muscleandstrength.com/exercises/banded-glute-ham-raise',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Barbell Split Jump',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/barbell-split-jump.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Paused Sumo Deadlift',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/paused-sumo-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Plate Resisted Glute Ham Raise',
+			equipment: Equipment.PLATE,
+			description: 'https://www.muscleandstrength.com/exercises/plate-resisted-glute-ham-raise',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Snatch Grip Romanian Deadlift',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/snatch-grip-romanian-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Jefferson Deadlift',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/jefferson-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Single Leg Snatch Grip Romanian Deadlift',
+			equipment: Equipment.BARBELL,
+			description:
+				'https://www.muscleandstrength.com/exercises/single-leg-snatch-grip-romanian-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Reverse Band Sumo Deadlift',
+			equipment: Equipment.BAND,
+			description: 'https://www.muscleandstrength.com/exercises/reverse-band-sumo-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Razor Curl',
+			equipment: Equipment.BODYWEIGHT,
+			description: 'https://www.muscleandstrength.com/exercises/razor-curl',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Dumbbell Stiff Leg Deadlift (On Bench)',
+			equipment: Equipment.DUMBBELL,
+			description:
+				'https://www.muscleandstrength.com/exercises/dumbbell-stiff-leg-deadlift-on-bench.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Double Kettlebell Single Leg Deadlift',
+			equipment: Equipment.KETTLEBELL,
+			description:
+				'https://www.muscleandstrength.com/exercises/double-kettlebell-single-leg-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Banded Conventional Deadlift',
+			equipment: Equipment.BAND,
+			description: 'https://www.muscleandstrength.com/exercises/banded-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Snatch Grip Block Pull Deadlift',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/snatch-grip-block-pull-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Single Leg Barbell Romanian Deadlift',
+			equipment: Equipment.BARBELL,
+			description:
+				'https://www.muscleandstrength.com/exercises/single-leg-barbell-romanian-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Trap Bar Deadlift Against Chains',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/trap-bar-deadlift-against-chains',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Deficit Deadlift',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/deficit-deadlifts',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Banded Sumo Deadlift',
+			equipment: Equipment.BAND,
+			description: 'https://www.muscleandstrength.com/exercises/banded-sumo-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Sumo Block Pull Deadlift',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/sumo-block-pull-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: '1 Kettlebell Suitcase Deadlift',
+			equipment: Equipment.KETTLEBELL,
+			description: 'https://www.muscleandstrength.com/exercises/1-kettlebell-suitcase-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: '2 to 1 Exercise Ball Hamstring Curl (SHELC)',
+			equipment: Equipment.BALL,
+			description:
+				'https://www.muscleandstrength.com/exercises/2-to-1-exercise-ball-hamstring-curl',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Straight Leg Deadlift',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/straight-leg-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Reeves Deadlift',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/reeves-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Fat Bar Deadlift',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/fat-bar-deadlift',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.POSTERIOR_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Barbell Back Squat',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Dumbbell Goblet Squat',
+			equipment: Equipment.DUMBBELL,
+			description: 'https://www.muscleandstrength.com/exercises/dumbbell-goblet-squat',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Leg Extension',
+			equipment: Equipment.MACHINE,
+			description: 'https://www.muscleandstrength.com/exercises/leg-extension.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Dumbbell Squat',
+			equipment: Equipment.DUMBBELL,
+			description: 'https://www.muscleandstrength.com/exercises/dumbbell-squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Dumbbell Lunge',
+			equipment: Equipment.DUMBBELL,
+			description: 'https://www.muscleandstrength.com/exercises/dumbbell-lunge.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Dumbbell Step Up',
+			equipment: Equipment.DUMBBELL,
+			description: 'https://www.muscleandstrength.com/exercises/dumbbell-step-up.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'One Leg Dumbbell Squat (AKA Dumbbell Bulgarian Split Squat)',
+			equipment: Equipment.DUMBBELL,
+			description:
+				'https://www.muscleandstrength.com/exercises/one-leg-dumbbell-squat-aka-bulgarian-squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Machine Hack Squat',
+			equipment: Equipment.MACHINE,
+			description: 'https://www.muscleandstrength.com/exercises/hack-squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Dumbbell Rear Lunge',
+			equipment: Equipment.DUMBBELL,
+			description: 'https://www.muscleandstrength.com/exercises/dumbbell-rear-lunge.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Front Squat',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/front-squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Dumbbell Walking Lunge',
+			equipment: Equipment.DUMBBELL,
+			description: 'https://www.muscleandstrength.com/exercises/dumbbell-walking-lunge.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Dumbbell Split Squat',
+			equipment: Equipment.DUMBBELL,
+			description: 'https://www.muscleandstrength.com/exercises/dumbbell-split-squat',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Plie Squat',
+			equipment: Equipment.BODYWEIGHT,
+			description: 'https://www.muscleandstrength.com/exercises/pile-squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Frog Squat',
+			equipment: Equipment.BODYWEIGHT,
+			description: 'https://www.muscleandstrength.com/exercises/frog-squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Bodyweight Walking Lunge',
+			equipment: Equipment.BODYWEIGHT,
+			description: 'https://www.muscleandstrength.com/exercises/bodyweight-walking-lunge.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Bodyweight Jump Squat',
+			equipment: Equipment.BODYWEIGHT,
+			description: 'https://www.muscleandstrength.com/exercises/bodyweight-jump-squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Prisoner Squat',
+			equipment: Equipment.BODYWEIGHT,
+			description: 'https://www.muscleandstrength.com/exercises/bodyweight-squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Barbell Lunge',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/barbell-lunge.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Smith Machine Squat',
+			equipment: Equipment.SMITH_MACHINE,
+			description: 'https://www.muscleandstrength.com/exercises/smith-machine-squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Bodyweight Side Lunge',
+			equipment: Equipment.BODYWEIGHT,
+			description: 'https://www.muscleandstrength.com/exercises/bodyweight-side-lunge.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Barbell Reverse Lunge',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/barbell-rear-lunge.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Barbell Hack Squat',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/barbell-hack-squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Narrow Stance High Bar Back Squat',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/narrow-stance-high-bar-squat',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'One Leg 45 Degree Leg Press',
+			equipment: Equipment.MACHINE,
+			description: 'https://www.muscleandstrength.com/exercises/one-leg-45-degree-leg-press.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Smith Machine Lunge',
+			equipment: Equipment.SMITH_MACHINE,
+			description: 'https://www.muscleandstrength.com/exercises/smith-machine-lunge.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Smith Machine Front Squat',
+			equipment: Equipment.SMITH_MACHINE,
+			description: 'https://www.muscleandstrength.com/exercises/smith-machine-front-squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Single Leg Extension',
+			equipment: Equipment.MACHINE,
+			description: 'https://www.muscleandstrength.com/exercises/single-leg-extension.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Reverse Bodyweight Lunge',
+			equipment: Equipment.BODYWEIGHT,
+			description: 'https://www.muscleandstrength.com/exercises/rear-bodyweight-lunge.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Sissy Squat',
+			equipment: Equipment.BODYWEIGHT,
+			description: 'https://www.muscleandstrength.com/exercises/sissy-squat.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Prisoner Squat Jump',
+			equipment: Equipment.BODYWEIGHT,
+			description: 'https://www.muscleandstrength.com/exercises/prisoner-jump-squat',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Box Squat',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/box-squat-shown-with-bench.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Bodyweight Step Up',
+			equipment: Equipment.BODYWEIGHT,
+			description: 'https://www.muscleandstrength.com/exercises/bodyweight-step-up.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Bodyweight Lunge',
+			equipment: Equipment.BODYWEIGHT,
+			description: 'https://www.muscleandstrength.com/exercises/bodyweight-lunge.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Kettlebell Goblet Squat',
+			equipment: Equipment.KETTLEBELL,
+			description: 'https://www.muscleandstrength.com/exercises/kettlebell-goblet-squat',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Dumbbell Side Lunge',
+			equipment: Equipment.DUMBBELL,
+			description: 'https://www.muscleandstrength.com/exercises/dumbbell-side-lunge.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Landmine Goblet Squat',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/landmine-goblet-squat',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Walking Barbell Lunge',
+			equipment: Equipment.BARBELL,
+			description: 'https://www.muscleandstrength.com/exercises/walking-barbell-lunge.html',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: 'Smith Machine Leg Press',
+			equipment: Equipment.SMITH_MACHINE,
+			description: 'https://www.muscleandstrength.com/exercises/smith-machine-leg-press',
+			bodyLoad: {
+				createMany: {
+					data: [
+						{
+							muscle: Muscle.FRONT_THIGH,
+							value: 0
+						}
+					]
+				}
+			}
+		},
+		{
+			title: '1 KB Kettlebell Snatch',
+			equipment: Equipment.KETTLEBELL,
 			description: 'https://www.muscleandstrength.com/exercises/1-kb-kettlebell-snatch',
 			bodyLoad: {
 				createMany: {
