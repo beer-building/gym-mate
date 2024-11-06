@@ -466,12 +466,6 @@ createMigration(async (prisma) => {
 			bodyLoad: { createMany: { data: [{ muscle: Muscle.CHEST, value: 0 }] } }
 		},
 		{
-			title: 'Chain Fly',
-			equipment: Equipment.CHAINS,
-			description: 'https://www.muscleandstrength.com/exercises/chain-fly',
-			bodyLoad: { createMany: { data: [{ muscle: Muscle.CHEST, value: 0 }] } }
-		},
-		{
 			title: 'Straight Bar Dip',
 			equipment: Equipment.BODYWEIGHT,
 			description: 'https://www.muscleandstrength.com/exercises/straight-bar-dip',

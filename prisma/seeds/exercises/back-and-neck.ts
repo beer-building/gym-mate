@@ -1602,21 +1602,6 @@ createMigration(async (prisma) => {
 			}
 		},
 		{
-			title: 'Ring Inverted Row with Chains',
-			equipment: Equipment.CHAINS,
-			description: 'https://www.muscleandstrength.com/exercises/ring-inverted-row-with-chains',
-			bodyLoad: {
-				createMany: {
-					data: [
-						{
-							muscle: Muscle.UPPER_BACK,
-							value: 0
-						}
-					]
-				}
-			}
-		},
-		{
 			title: 'Reverse Grip Machine T-Bar Row',
 			equipment: Equipment.MACHINE,
 			description:
