@@ -102,9 +102,10 @@ model WorkoutExerciseHistory {
 
 model Exercise {
   id          Int        @id @default(autoincrement())
-  title       String     @default("")
+  title       String     @unique
   description String?    @default("")
   bodyLoad    BodyLoad[]
+  equipment   Equipment? @default(NONE)
 
   workoutId       Int?
   WorkoutExercise WorkoutExercise[]
@@ -121,11 +122,15 @@ model BodyLoad {
 
 enum Muscle {
   // BACK_AND_NECK
+  // TODO: RENAME TO LOWER BACK
   SMALL_OF_THE_BACK
+  // TODO: RENAME TO LATS
   LATISSIMUS
+  UPPER_BACK
   TRAPEZE
   NECK
 
+  // TODO: RENAME TO GLUTES
   BUTTOCKS
 
   // ABS_AND_OBLIQUES
@@ -145,10 +150,32 @@ enum Muscle {
   CHEST
 
   // LEGS
+  // TODO: RENAME TO QUADS
   FRONT_THIGH
+  // TODO: RENAME TO Hamstrings
   POSTERIOR_THIGH
+  // TODO: RENAME TO Adductors
   INNER_THIGH
+  // TODO: RENAME TO Abductors???
   OUTER_THIGH
 
   SHIN
+}
+
+enum Equipment {
+  BARBELL
+  TRAP_BAR
+  DUMBBELL
+  KETTLEBELL
+  CABLE
+  MACHINE
+  BODYWEIGHT
+  BAND
+  PLATE
+  BALL
+  BENCH
+  PULL_UP_BAR
+  SMITH_MACHINE
+  SLED
+  NONE
 }

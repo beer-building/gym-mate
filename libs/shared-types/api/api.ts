@@ -21,6 +21,7 @@ import type {
 } from '../schemas/workout'
 import type { ExercisesByMuscleGroupReply, FullExerciseReply } from '../schemas/exercises'
 import type { EditWorkoutExerciseDto, WorkoutExerciseReply } from '../schemas/workout-exercise'
+import type { Equipment } from '@prisma/client'
 
 type Body = object | string
 
@@ -125,7 +126,9 @@ export class Api {
 	getExercise(exerciseId: string | number) {
 		return this.httpClient.get<FullExerciseReply, ErrorReply>(`/exercises/${exerciseId}`)
 	}
-	getAllExercises() {
-		return this.httpClient.get<ExercisesByMuscleGroupReply, ErrorReply>(`/exercises`)
+	getAllExercises({ equipment }: { equipment?: Equipment }) {
+		return this.httpClient.get<ExercisesByMuscleGroupReply, ErrorReply>(
+			`/exercises${equipment ? `?equipment=${equipment}` : ''}`
+		)
 	}
 }

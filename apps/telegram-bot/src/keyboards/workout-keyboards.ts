@@ -32,15 +32,18 @@ export const openWorkoutKeyboard: CallbackQueryMiddleware = async (ctx) => {
 }
 
 export const editWorkoutKeyboard: CallbackQueryMiddleware = async (ctx) => {
-	const id = ctx.match[1]!
+	const workoutId = ctx.match[1]!
+
+	const { data } = await api.getWorkout(workoutId)
 
 	const editKeyboard = new InlineKeyboard()
-		.text('Change title', `change_workout_title_${id}`)
-		.text('Add exercise', `exercise_to_workout_list_${id}`)
+		.text('Change title', `change_workout_title_${workoutId}`)
+		.text('Add exercise', `exercise_to_workout_list_${workoutId}`)
 		.text('Remove exercise') //TODO
 
 	await ctx.answerCallbackQuery()
-	await ctx.reply('Edit workout', {
-		reply_markup: editKeyboard
+	await ctx.reply(`*Edit workout* ${data.workout.title}`, {
+		reply_markup: editKeyboard,
+		parse_mode: 'Markdown'
 	})
 }
