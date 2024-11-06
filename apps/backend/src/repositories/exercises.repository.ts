@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { Equipment, PrismaClient } from '@prisma/client'
 
 export class ExercisesRepository {
 	prisma: PrismaClient
@@ -14,9 +14,10 @@ export class ExercisesRepository {
 		})
 	}
 
-	async getExercises() {
+	async getExercises(query: { equipment?: Equipment }) {
 		return this.prisma.exercise.findMany({
-			include: { bodyLoad: true }
+			include: { bodyLoad: true },
+			where: { equipment: query.equipment }
 		})
 	}
 }

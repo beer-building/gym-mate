@@ -132,7 +132,7 @@ composer.callbackQuery(/open_exercises_for_muscle_group_(\w+)_(\w+)_(\d+)/, asyn
 		})
 
 	const text = `
-*Exercises for muscle* ${HUMAN_MUSCLE_NAMES[muscle]}:
+*Exercises for muscle* ${HUMAN_MUSCLE_NAMES[muscle]} *with* ${HUMAN_EQUIPMENT_NAMES[equipment]}:
 -----------------------------------------------------------------
 	    `
 

@@ -16,7 +16,7 @@ const exercisesRoute: FastifyPluginAsyncTypebox = async (server) => {
 	})
 
 	server.get('', { schema: GetExercisesSchema }, async (request, reply) => {
-		const exercises = await exercisesService.getExercises()
+		const exercises = await exercisesService.getExercises(request.query)
 
 		reply.status(200).send({ exercises })
 	})

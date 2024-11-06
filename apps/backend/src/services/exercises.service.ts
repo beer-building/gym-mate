@@ -1,5 +1,6 @@
 import { FastifyInstance } from 'fastify'
 import { ExercisesRepository } from '../repositories'
+import { Equipment } from '@prisma/client'
 
 export class ExercisesService {
 	server: FastifyInstance
@@ -18,8 +19,8 @@ export class ExercisesService {
 		return exercise
 	}
 
-	async getExercises() {
-		const exercises = await this.exercisesRepository.getExercises()
+	async getExercises(query: { equipment?: Equipment }) {
+		const exercises = await this.exercisesRepository.getExercises(query)
 
 		return exercises
 	}
