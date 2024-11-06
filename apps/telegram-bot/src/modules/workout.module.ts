@@ -9,7 +9,7 @@ import {
 	MuscleGroup
 } from '@gym-mate/shared-types'
 import { Equipment, Muscle } from '@prisma/client'
-import { HUMAN_MUSCLE_GROUP_NAMES } from '@gym-mate/shared-types/constants/human-muscle-group-names'
+import { HUMAN_MUSCLE_GROUP_NAMES } from '@gym-mate/shared-types'
 
 const composer = new Composer<AppContext>()
 

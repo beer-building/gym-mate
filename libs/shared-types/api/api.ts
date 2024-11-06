@@ -21,7 +21,7 @@ import type {
 } from '../schemas/workout'
 import type { ExercisesByMuscleGroupReply, FullExerciseReply } from '../schemas/exercises'
 import type { EditWorkoutExerciseDto, WorkoutExerciseReply } from '../schemas/workout-exercise'
-import { Equipment } from '@prisma/client'
+import type { Equipment } from '@prisma/client'
 
 type Body = object | string
 
