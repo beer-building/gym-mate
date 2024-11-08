@@ -101,7 +101,7 @@ composer.callbackQuery(/choose_equipment_for_muscle_group_(\w+)_(\d+)/, async (c
 		keyboard
 			.text(
 				HUMAN_EQUIPMENT_NAMES[equipment],
-				`open_exercises_for_muscle_group_${muscle}_${equipment}_${workoutId}`
+				`open_exercises_for_muscle_group_${muscle}__${equipment}__${workoutId}`
 			)
 			.row()
 	})
@@ -114,7 +114,7 @@ composer.callbackQuery(/choose_equipment_for_muscle_group_(\w+)_(\d+)/, async (c
 	})
 })
 
-composer.callbackQuery(/open_exercises_for_muscle_group_(\w+)_(\w+)_(\d+)/, async (ctx) => {
+composer.callbackQuery(/open_exercises_for_muscle_group_(\w+)__(\w+)__(\d+)/, async (ctx) => {
 	const muscle = ctx.match[1]! as Muscle
 	const equipment = ctx.match[2]! as Equipment
 	const workoutId = ctx.match[3]!
